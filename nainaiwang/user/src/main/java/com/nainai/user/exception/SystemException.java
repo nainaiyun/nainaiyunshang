@@ -9,7 +9,7 @@ import java.io.StringWriter;
  * @author haopeng yan
  * @version 1.0
  * @since 1.0
- * Copyright (C) 2018. haopeng yan All Rights Received
+ * Copyright (C) 2018. nainai All Rights Received
  */
 public class SystemException extends RuntimeException implements OpsException {
     private static final long serialVersionUID = 845314949705812686L;

@@ -6,7 +6,7 @@ package com.nainai.common;
  * @author haopeng yan
  * @version 1.0
  * @since 1.0
- * Copyright (C) 2018. haopeng yan All Rights Received
+ * Copyright (C) 2018. nainai All Rights Received
  */
 public class Constant {
 

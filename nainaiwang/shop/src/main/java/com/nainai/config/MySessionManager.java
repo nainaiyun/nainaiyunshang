@@ -13,7 +13,7 @@ package com.nainai.config;//package com.nainai.config;
 // * @author haopeng yan
 // * @version 1.0
 // * @since 1.0
-// * Copyright (C) 2018. haopeng yan All Rights Received
+// * Copyright (C) 2018. nainai All Rights Received
 // */
 //public class MySessionManager extends DefaultWebSessionManager{
 //    private static final String AUTHORIZATION = "Authorization";

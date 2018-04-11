@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @author haopeng yan
  * @version 1.0
  * @since 1.0
- * Copyright (C) 2018. haopeng yan All Rights Received
+ * Copyright (C) 2018. nainai All Rights Received
  */
 @Controller
 public class ErrorController {
