@@ -11,7 +11,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.ImportResource;
@@ -28,7 +27,7 @@ import org.springframework.data.redis.cache.RedisCacheManager;
 @SpringBootApplication
 @MapperScan("com.nainai.mapper")
 @ServletComponentScan("com.nainai.config")
-@EnableEurekaClient
+//@EnableEurekaClient
 @EnableCaching
 @Import(FdfsClientConfig.class)
 //@EnableCasClient

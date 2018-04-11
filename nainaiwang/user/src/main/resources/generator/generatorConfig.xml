@@ -6,7 +6,7 @@
     <!-- 引入 application.ymls -->
     <properties resource="application.yml" />
 
-    <classPathEntry location="/Users/yanhaopeng/.m2/repository/mysql/mysql-connector-java/6.0.6/mysql-connector-java-6.0.6.jar"/>
+    <classPathEntry location="/Users/yanhaopeng/.m2/repository/mysql/mysql-connector-java/5.1.46/mysql-connector-java-5.1.46.jar"/>
 
     <context id="DB2Tables"  targetRuntime="MyBatis3">
         <commentGenerator>
@@ -23,7 +23,7 @@
 
 
         <!-- 生成模型的包名和位置-->
-        <javaModelGenerator targetPackage="com.nainai.domain"
+        <javaModelGenerator targetPackage="com.nainai.user.domain"
                             targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
@@ -34,44 +34,13 @@
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!-- 生成DAO的包名和位置-->
-        <javaClientGenerator targetPackage="com.nainai.mapper"
+        <javaClientGenerator targetPackage="com.nainai.user.mapper"
                              targetProject="src/main/java" type="XMLMAPPER">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->
-        <table tableName="shop_info" domainObjectName="ShopInfo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
-        <table tableName="shop_suthentication" domainObjectName="ShopSuthentication" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
-        <table tableName="shop_style" domainObjectName="ShopStyle" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
-        <table tableName="shop_carousel" domainObjectName="ShopCarousel" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
-        <table tableName="shop_navigation" domainObjectName="ShopNavigation" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
-        <table tableName="shop_classify" domainObjectName="ShopClassify" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
-        <table tableName="shop_module" domainObjectName="ShopModule" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
-        <table tableName="shop_service" domainObjectName="ShopService" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
-        <table tableName="shop_news" domainObjectName="ShopNews" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-            <columnOverride column="content" javaType="java.lang.String" jdbcType="VARCHAR" />
-        </table>
-        <table tableName="shop_notice" domainObjectName="ShopNotice" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-            <columnOverride column="content" javaType="java.lang.String" jdbcType="VARCHAR" />
-        </table>
-        <table tableName="shop_browse" domainObjectName="ShopBrowse" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
-        <table tableName="shop_spread" domainObjectName="ShopSpread" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
         <table tableName="user" domainObjectName="User" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
             <columnOverride column="gid" javaType="java.lang.String" jdbcType="VARCHAR" />
-        </table>
-        <table tableName="bid" domainObjectName="Bid" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-            <columnOverride column="yq_user" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <columnOverride column="bid_require" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <columnOverride column="pro_brief" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <columnOverride column="bid_content" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <columnOverride column="eq" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <columnOverride column="other" javaType="java.lang.String" jdbcType="VARCHAR" />
-        </table>
-        <table tableName="products" domainObjectName="Products" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-            <columnOverride column="attribute" javaType="java.lang.String" jdbcType="VARCHAR" />
-        </table>
-        <table tableName="order_sell" domainObjectName="OrderSell" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
-        <table tableName="product_offer" domainObjectName="ProductOffer" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-            <columnOverride column="other" javaType="java.lang.String" jdbcType="VARCHAR" />
         </table>
 
     </context>

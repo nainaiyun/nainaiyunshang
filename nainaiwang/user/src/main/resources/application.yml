@@ -41,4 +41,10 @@ spring:
             connection-properties:
             #connectionProperties: druid.stat.mergeSql: true;druid.stat.slowSqlMillis: 5000
     jmx:
-      enabled: false
+        enabled: false
+#mybatis配置
+mybatis:
+    mapper-locations: classpath:mapping/*.xml
+    type-aliases-package: com.nainai.domain
+    configuration:
+        call-setters-on-nulls: true
