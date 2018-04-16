@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.jackson.JsonComponent;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -55,18 +56,15 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
         converters.add(converter);
     }
 
-    @Autowired
-    private CorsInterceptor corsInterceptor;
-
-    /**
-     * 跨域
-     *
-     * @param registry
-     */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(corsInterceptor);
+        String[] patterns = new String[] { "/smscode/*","/register/*","/login/*","/*.html","/swagger-resources/**"};
+        registry.addInterceptor(new SysInterceptor())
+                .addPathPatterns("/**")
+                .excludePathPatterns(patterns);
+        super.addInterceptors(registry);
     }
+
 
     /**统一异常处理
     @Override

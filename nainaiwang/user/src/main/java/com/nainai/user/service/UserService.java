@@ -3,6 +3,9 @@ package com.nainai.user.service;
 import com.alibaba.fastjson.JSONObject;
 import com.nainai.user.domain.User;
 
+import javax.jws.soap.SOAPBinding;
+import java.util.Map;
+
 /**
  * Created by haopeng yan on 2018/4/11
  *
@@ -13,11 +16,19 @@ import com.nainai.user.domain.User;
  */
 public interface UserService {
 
-    int insertUser(User user);
+    int deleteByPrimaryKey(Integer id);
 
-    int updateUserIdSelective(User user);
+    int insert(User user);
 
-    int deleteUserId(Integer id);
+    int insertSelective(User user);
+
+    User selectByPrimaryKey();
+
+    int updateByPrimaryKeySelective(User user);
+
+    int updateByPrimaryKey(User user);
+
+    User selectUserByUserName(String username);
 
     JSONObject selectUserId(Integer id);
 

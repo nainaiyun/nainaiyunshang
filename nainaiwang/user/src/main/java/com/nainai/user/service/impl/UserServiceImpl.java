@@ -23,22 +23,44 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public int insertUser(User user) {
-        return 0;
+    public int deleteByPrimaryKey(Integer id) {
+        return userMapper.deleteByPrimaryKey(id);
     }
 
     @Override
-    public int updateUserIdSelective(User user) {
-        return 0;
+    public int insert(User user) {
+        return userMapper.insert(user);
     }
 
     @Override
-    public int deleteUserId(Integer id) {
-        return 0;
+    public int insertSelective(User user) {
+        return userMapper.insertSelective(user);
+    }
+
+    @Override
+    public User selectByPrimaryKey() {
+        return null;
+    }
+
+    @Override
+    public int updateByPrimaryKeySelective(User user) {
+        return userMapper.updateByPrimaryKeySelective(user);
+    }
+
+    @Override
+    public int updateByPrimaryKey(User user) {
+        return userMapper.updateByPrimaryKey(user);
+    }
+
+    @Override
+    public User selectUserByUserName(String username) {
+        User user =userMapper.selectUserByUserName(username);
+        return user;
     }
 
     @Override
     public JSONObject selectUserId(Integer id) {
+
         JSONObject userJsonObject = new JSONObject();
         Optional<User> user = Optional.ofNullable(userMapper.selectByPrimaryKey(id));
         user.ifPresent(e -> userJsonObject.put("user",e));
