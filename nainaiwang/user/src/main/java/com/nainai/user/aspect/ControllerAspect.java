@@ -32,7 +32,7 @@ public class ControllerAspect {
     }
 
     @Before("log()")
-    public void doBefore(){
+    public void doBefore() {
         ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = requestAttributes.getRequest();
         JSONObject logInfos = new JSONObject();
