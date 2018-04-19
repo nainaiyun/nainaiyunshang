@@ -3,6 +3,7 @@ package com.nainai.user.common;
 /**
  * Created by haopeng yan on 2018/3/8 11:40.
  * 常量类
+ *
  * @author haopeng yan
  * @version 1.0
  * @since 1.0
