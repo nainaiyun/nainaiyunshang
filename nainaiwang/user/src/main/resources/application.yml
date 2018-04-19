@@ -1,5 +1,10 @@
 server:
     port: 8080
+#    ssl:
+#        key-store: keystore.p12
+#        key-store-password: 123456
+#        keyStoreType: PKCS12
+#        server.ssl.keyAlias: tomcat
 spring:
     application:
         name: user
@@ -48,3 +53,6 @@ mybatis:
     type-aliases-package: com.nainai.domain
     configuration:
         call-setters-on-nulls: true
+
+
+
