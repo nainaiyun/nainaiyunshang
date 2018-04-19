@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User selectUserByUserName(String username) {
-        User user =userMapper.selectUserByUserName(username);
+        User user = userMapper.selectUserByUserName(username);
         return user;
     }
 
@@ -63,7 +63,7 @@ public class UserServiceImpl implements UserService {
 
         JSONObject userJsonObject = new JSONObject();
         Optional<User> user = Optional.ofNullable(userMapper.selectByPrimaryKey(id));
-        user.ifPresent(e -> userJsonObject.put("user",e));
+        user.ifPresent(e -> userJsonObject.put("user", e));
         return userJsonObject;
     }
 }

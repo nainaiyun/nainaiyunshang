@@ -67,7 +67,7 @@ public class Result {
         this.data = data;
         return this;
     }
-    
+
     @Override
     public String toString() {
         return JSON.toJSONString(this);

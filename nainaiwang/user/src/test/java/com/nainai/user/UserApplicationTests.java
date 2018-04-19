@@ -9,14 +9,14 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class UserApplicationTests {
 
-	@Test
-	public void contextLoads() {
+    @Test
+    public void contextLoads() {
 
-	}
+    }
 
-	public static void  main (String args []){
-		System.out.println(1);
+    public static void main(String args[]) {
+        System.out.println(1);
 
-	}
+    }
 
 }

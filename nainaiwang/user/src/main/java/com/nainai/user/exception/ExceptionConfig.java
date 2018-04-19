@@ -37,7 +37,7 @@ public class ExceptionConfig {
      */
     public static String mm(String moduleName, boolean isCache, String errCode, String... args) {
         String message = null;
-        final String  errorMessageProperties= "ops_message.properties";
+        final String errorMessageProperties = "ops_message.properties";
         Properties properties = null;
         if (moduleName != null) {
             try {

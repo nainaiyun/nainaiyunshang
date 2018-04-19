@@ -27,14 +27,13 @@ import org.bouncycastle.util.encoders.Base64;
 public class JwtUtils {
     /**
      * 签发JWT
-     * @Author  科帮网
-     * @param id
-     * @param subject 可以是JSON数据 尽可能少
-     * @param ttlMillis
-     * @return  String
-     * @Date	2017年11月24日
-     * 2017年11月24日  张志朋  首次创建
      *
+     * @param id
+     * @param subject   可以是JSON数据 尽可能少
+     * @param ttlMillis
+     * @return String
+     * @Author
+     * @Date 2017年11月24日 2017年11月24日
      */
     public static String createJWT(String id, String subject, long ttlMillis) {
         SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
@@ -54,8 +53,10 @@ public class JwtUtils {
         }
         return builder.compact();
     }
+
     /**
      * 验证JWT
+     *
      * @param jwtStr
      * @return
      */
@@ -78,6 +79,7 @@ public class JwtUtils {
         }
         return checkResult;
     }
+
     public static SecretKey generalKey() {
         byte[] encodedKey = Base64.decode(SystemConstant.JWT_SECERT);
         SecretKey key = new SecretKeySpec(encodedKey, 0, encodedKey.length, "AES");
@@ -85,8 +87,8 @@ public class JwtUtils {
     }
 
     /**
-     *
      * 解析JWT字符串
+     *
      * @param jwt
      * @return
      * @throws Exception
@@ -98,9 +100,10 @@ public class JwtUtils {
                 .parseClaimsJws(jwt)
                 .getBody();
     }
+
     public static void main(String[] args) throws InterruptedException {
         //小明失效 10s
-        String sc = createJWT("1","小明", 3000);
+        String sc = createJWT("1", "小明", 3000);
         System.out.println(sc);
         System.out.println(validateJWT(sc).getErrCode());
         System.out.println(validateJWT(sc).getClaims().getId());
