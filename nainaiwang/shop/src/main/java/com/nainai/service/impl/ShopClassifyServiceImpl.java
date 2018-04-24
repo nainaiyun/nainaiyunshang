@@ -20,7 +20,7 @@ import java.util.Optional;
  * Copyright (C) 2018. nainai All Rights Received
  */
 @Service(value = "shopClassifyService")
-public class ShopClassifyServiceImpl implements ShopClassifyService{
+public class ShopClassifyServiceImpl implements ShopClassifyService {
     @Autowired
     private ShopClassifyMapper shopClassifyMapper;
 
@@ -43,21 +43,21 @@ public class ShopClassifyServiceImpl implements ShopClassifyService{
     public JSONObject selectShopClassifyId(String id) {
         JSONObject shopClassifyJsonObject = new JSONObject();
         Optional<ShopClassify> shopClassify = Optional.ofNullable(shopClassifyMapper.selectByPrimaryKey(id));
-        shopClassify.ifPresent(e -> shopClassifyJsonObject.put("shopClassify",e));
+        shopClassify.ifPresent(e -> shopClassifyJsonObject.put("shopClassify", e));
         return shopClassifyJsonObject;
     }
 
     @Override
-    public JSONObject selectShopClassifyByShopId(String shopId,int isBackgroundSystem) {
+    public JSONObject selectShopClassifyByShopId(String shopId, int isBackgroundSystem) {
         JSONObject shopClassifyJsonObject = new JSONObject();
         Optional<List<ShopClassify>> optional;
-        if (isBackgroundSystem==1){
-            optional= Optional.ofNullable(shopClassifyMapper.selectShopClassifyByShopIdBS(shopId));
-        }else {
-            optional= Optional.ofNullable(shopClassifyMapper.selectShopClassifyByShopId(shopId));
+        if (isBackgroundSystem == 1) {
+            optional = Optional.ofNullable(shopClassifyMapper.selectShopClassifyByShopIdBS(shopId));
+        } else {
+            optional = Optional.ofNullable(shopClassifyMapper.selectShopClassifyByShopId(shopId));
         }
 
-        optional.ifPresent(e -> shopClassifyJsonObject.put("shopClassifys",e));
+        optional.ifPresent(e -> shopClassifyJsonObject.put("shopClassifys", e));
         return shopClassifyJsonObject;
     }
 
@@ -65,7 +65,7 @@ public class ShopClassifyServiceImpl implements ShopClassifyService{
     public JSONObject selectShopClassifyAll() {
         JSONObject shopClassifyJsonObject = new JSONObject();
         Optional<List<ShopClassify>> shopClassifys = Optional.ofNullable(shopClassifyMapper.selectShopClassifyAll());
-        shopClassifys.ifPresent(e -> shopClassifyJsonObject.put("shopClassify",e));
+        shopClassifys.ifPresent(e -> shopClassifyJsonObject.put("shopClassify", e));
         return shopClassifyJsonObject;
     }
 
@@ -74,9 +74,9 @@ public class ShopClassifyServiceImpl implements ShopClassifyService{
         PageHelper.startPage(pageNum, pageSize);
         JSONObject shopClassifyJsonObject = new JSONObject();
         Optional<List<ShopClassify>> shopClassifys = Optional.ofNullable(shopClassifyMapper.selectShopClassifyAll());
-        shopClassifys.ifPresent(e -> shopClassifyJsonObject.put("shopClassify",e));
-        long count = PageHelper.count(()->shopClassifyMapper.selectShopClassifyAll());
-        shopClassifyJsonObject.put("count",count);
+        shopClassifys.ifPresent(e -> shopClassifyJsonObject.put("shopClassify", e));
+        long count = PageHelper.count(() -> shopClassifyMapper.selectShopClassifyAll());
+        shopClassifyJsonObject.put("count", count);
         return shopClassifyJsonObject;
     }
 }

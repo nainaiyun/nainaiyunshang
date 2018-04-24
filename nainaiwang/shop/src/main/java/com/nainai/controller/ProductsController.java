@@ -44,7 +44,7 @@ public class ProductsController {
         String shopId = jsonObject.getString("shopId");
         int pageNum = jsonObject.getInteger("pageNum");
         int pageSize = jsonObject.getInteger("pageSize");
-        return ResultGenerator.genSuccessResult(productsService.selectProductsandOfferByShopIdPage(pageNum,pageSize,shopId));
+        return ResultGenerator.genSuccessResult(productsService.selectProductsandOfferByShopIdPage(pageNum, pageSize, shopId));
     }
 
     /**
@@ -62,6 +62,6 @@ public class ProductsController {
     public Result selectProductsAll(@RequestBody JSONObject jsonObject) {
         int pageNum = jsonObject.getInteger("pageNum");
         int pageSize = jsonObject.getInteger("pageSize");
-        return ResultGenerator.genSuccessResult(productsService.selectProductsAllPage(pageNum,pageSize));
+        return ResultGenerator.genSuccessResult(productsService.selectProductsAllPage(pageNum, pageSize));
     }
 }

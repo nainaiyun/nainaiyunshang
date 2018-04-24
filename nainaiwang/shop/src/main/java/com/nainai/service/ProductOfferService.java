@@ -30,5 +30,5 @@ public interface ProductOfferService {
 
     JSONObject selectProductOfferListingByShopId(String shopId, String proName, String classifyId, String navigationId, String moduleId);
 
-    Map<String,Integer> selectProductIdByOfferId(Integer offerId);
+    Map<String, Integer> selectProductIdByOfferId(Integer offerId);
 }

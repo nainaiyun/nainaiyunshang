@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class OrderSellController {
     @Autowired
     private OrderSellService orderSellService;
+
     /**
      * 根据店铺编号查询当前店铺下的商品订单信息
      *
@@ -46,6 +47,7 @@ public class OrderSellController {
         int pageSize = jsonObject.getInteger("pageSize");
         return ResultGenerator.genSuccessResult(orderSellService.selectOrderSellByShopIdPage(pageNum, pageSize, shopId));
     }
+
     /**
      * 根据店铺编号以及订单状态查询当前店铺下的商品订单信息
      *
@@ -65,7 +67,7 @@ public class OrderSellController {
         int pageSize = jsonObject.getInteger("pageSize");
         int contractStatus = jsonObject.getInteger("contractStatus");
         String shopId = jsonObject.getString("shopId");
-        return ResultGenerator.genSuccessResult(orderSellService.selectOrderSellByShopIdAndStatusPage(pageNum, pageSize, shopId,contractStatus));
+        return ResultGenerator.genSuccessResult(orderSellService.selectOrderSellByShopIdAndStatusPage(pageNum, pageSize, shopId, contractStatus));
     }
 
     /**

@@ -20,6 +20,7 @@ import java.lang.reflect.Method;
 /**
  * Created by haopeng yan on 2018/1/4 17:18.
  * 缓存管理（注解用）
+ *
  * @author haopeng yan
  * @version 1.0
  * @since 1.0
@@ -78,7 +79,6 @@ public class RedisConfigurer extends CachingConfigurerSupport {
     }
 
     /**
-     *
      * @param factory
      * @return
      */

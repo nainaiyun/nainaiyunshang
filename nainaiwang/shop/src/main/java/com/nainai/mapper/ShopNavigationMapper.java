@@ -19,8 +19,10 @@ public interface ShopNavigationMapper {
     int updateByPrimaryKeySelective(ShopNavigation record);
 
     int updateByPrimaryKey(ShopNavigation record);
+
     /**
      * 根据shopId查找店铺导航栏
+     *
      * @param shopId
      * @return
      */
@@ -40,6 +42,7 @@ public interface ShopNavigationMapper {
 
     /**
      * 查找所有店铺导航栏
+     *
      * @return
      */
     @Select("select * from shop_navigation ")
@@ -58,6 +61,7 @@ public interface ShopNavigationMapper {
 
     /**
      * 根据店铺id与名称模糊查询店铺导航栏
+     *
      * @param shopId
      * @param name
      * @return
@@ -78,6 +82,7 @@ public interface ShopNavigationMapper {
 
     /**
      * 根据店铺id查询父级导航
+     *
      * @param shopId
      * @return
      */
@@ -97,6 +102,7 @@ public interface ShopNavigationMapper {
 
     /**
      * 根据店铺id查询父级导航
+     *
      * @param shopId
      * @return
      */
@@ -113,8 +119,10 @@ public interface ShopNavigationMapper {
             @Result(column = "update_time", property = "updateTime")
     })
     List<ShopNavigation> selectShopNavigationParentShopIdBS(String shopId);
+
     /**
      * 根据店铺id查询子级导航
+     *
      * @param shopId
      * @return
      */
@@ -134,6 +142,7 @@ public interface ShopNavigationMapper {
 
     /**
      * 根据店铺id查询子级导航
+     *
      * @param shopId
      * @return
      */

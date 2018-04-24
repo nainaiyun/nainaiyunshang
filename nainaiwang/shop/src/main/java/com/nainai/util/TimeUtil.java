@@ -16,9 +16,10 @@ import java.util.Date;
 public class TimeUtil {
     /**
      * 获取当前时间返回为date
+     *
      * @return
      */
-    public static Date getDate(){
+    public static Date getDate() {
         LocalDateTime localDateTime = LocalDateTime.now();
         ZoneId zone = ZoneId.systemDefault();
         Instant instant = localDateTime.atZone(zone).toInstant();

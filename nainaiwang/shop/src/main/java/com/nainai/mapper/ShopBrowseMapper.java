@@ -22,6 +22,7 @@ public interface ShopBrowseMapper {
 
     /**
      * 根据shopId查找ShopBrowse
+     *
      * @param shopId
      * @return
      */
@@ -37,6 +38,7 @@ public interface ShopBrowseMapper {
 
     /**
      * 根据shopId查找ShopBrowse,返回的是对象类型
+     *
      * @param shopId
      * @return
      */
@@ -52,6 +54,7 @@ public interface ShopBrowseMapper {
 
     /**
      * 查找所有ShopBrowse
+     *
      * @return
      */
     @Select("select * from shop_browse ")
@@ -66,6 +69,7 @@ public interface ShopBrowseMapper {
 
     /**
      * 根据店铺id与名称模糊查询
+     *
      * @param shopId
      * @param name
      * @return

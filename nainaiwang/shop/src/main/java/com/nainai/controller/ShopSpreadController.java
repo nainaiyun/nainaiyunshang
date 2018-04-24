@@ -166,6 +166,7 @@ public class ShopSpreadController {
 
     /**
      * 查询所有店铺推广信息
+     *
      * @param jsonObject
      * @return result
      */
@@ -199,6 +200,7 @@ public class ShopSpreadController {
 
     /**
      * 根据店铺id查询店铺下的店铺推广信息+报盘名称
+     *
      * @param jsonObject
      * @return result
      */
@@ -211,7 +213,7 @@ public class ShopSpreadController {
     public Result selectShopSpreadAndProNameShopId(@RequestBody JSONObject jsonObject) {
         String shopId = jsonObject.getString("shopId");
         int isBackgroundSystem = jsonObject.getInteger("isBackgroundSystem");
-        return ResultGenerator.genSuccessResult(shopSpreadService.selectShopSpreadAndProNameShopId(shopId,isBackgroundSystem));
+        return ResultGenerator.genSuccessResult(shopSpreadService.selectShopSpreadAndProNameShopId(shopId, isBackgroundSystem));
     }
 
 }

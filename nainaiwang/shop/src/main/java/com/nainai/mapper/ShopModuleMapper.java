@@ -22,6 +22,7 @@ public interface ShopModuleMapper {
 
     /**
      * 根据shopId查找店铺模块信息
+     *
      * @param shopId
      * @return
      */
@@ -34,8 +35,10 @@ public interface ShopModuleMapper {
             @Result(column = "update_time", property = "updateTime")
     })
     List<ShopModule> selectShopModuleShopId(String shopId);
+
     /**
      * 根据shopId查找店铺模块信息-后台系统
+     *
      * @param shopId
      * @return
      */
@@ -48,8 +51,10 @@ public interface ShopModuleMapper {
             @Result(column = "update_time", property = "updateTime")
     })
     List<ShopModule> selectShopModuleShopIdBS(String shopId);
+
     /**
      * 查找所有店铺模块信息
+     *
      * @return
      */
     @Select("select * from shop_module order by create_time asc")
@@ -60,11 +65,11 @@ public interface ShopModuleMapper {
             @Result(column = "create_time", property = "createTime"),
             @Result(column = "update_time", property = "updateTime")
     })
-
     List<ShopModule> selectShopModuleAll();
 
     /**
      * 根据店铺id与名称模糊查询店铺模块信息
+     *
      * @param shopId
      * @param name
      * @return

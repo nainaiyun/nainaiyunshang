@@ -223,7 +223,7 @@ public class ShopInfoController {
         int pageSize = jsonObject.getInteger("pageSize");
         String name = jsonObject.getString("name");
         String uname = request.getRemoteUser();
-        return ResultGenerator.genSuccessResult(shopInfoService.selectShopnfoAndSpreadPage(pageNum, pageSize,name));
+        return ResultGenerator.genSuccessResult(shopInfoService.selectShopnfoAndSpreadPage(pageNum, pageSize, name));
     }
 
 

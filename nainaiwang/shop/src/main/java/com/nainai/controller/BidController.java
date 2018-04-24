@@ -22,14 +22,15 @@ import org.springframework.web.client.RestTemplate;
 public class BidController {
 
 
-    @RequestMapping(value = "/test",method = RequestMethod.POST)
-    public Result test(){
-        String result = new RestTemplate().getForObject("http://sidecarphp/health",String.class);
+    @RequestMapping(value = "/test", method = RequestMethod.POST)
+    public Result test() {
+        String result = new RestTemplate().getForObject("http://sidecarphp/health", String.class);
         return ResultGenerator.genSuccessResult(result);
     }
-    @RequestMapping(value = "/test2",method = RequestMethod.GET)
-    public String test2(HttpServletRequest request, Model model){
-        model.addAttribute("name","nihaoa");
+
+    @RequestMapping(value = "/test2", method = RequestMethod.GET)
+    public String test2(HttpServletRequest request, Model model) {
+        model.addAttribute("name", "nihaoa");
         System.out.println(request.getSession().getId());
         return "front/login";
     }

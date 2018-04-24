@@ -193,10 +193,8 @@ public class ShopNavigationController {
         String shopId = jsonObject.getString("shopId");
         int isBackgroundSystem = jsonObject.getInteger("isBackgroundSystem");
         return ResultGenerator.genSuccessResult(
-                shopNavigationService.selectShopNavigationShopId(shopId,isBackgroundSystem));
+                shopNavigationService.selectShopNavigationShopId(shopId, isBackgroundSystem));
     }
-
-
 
 
 }

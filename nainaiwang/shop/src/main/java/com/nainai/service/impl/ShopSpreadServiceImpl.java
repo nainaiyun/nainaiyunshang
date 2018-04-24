@@ -24,6 +24,7 @@ import java.util.Optional;
 public class ShopSpreadServiceImpl implements ShopSpreadService {
     @Autowired
     private ShopSpreadMapper shopSpreadMapper;
+
     @Override
     public int insertShopSpread(ShopSpread shopSpread) {
         return shopSpreadMapper.insert(shopSpread);
@@ -43,20 +44,20 @@ public class ShopSpreadServiceImpl implements ShopSpreadService {
     public JSONObject selectShopSpreadeId(String id) {
         JSONObject shopSpreadJsonObject = new JSONObject();
         Optional<ShopSpread> shopSpread = Optional.ofNullable(shopSpreadMapper.selectByPrimaryKey(id));
-        shopSpread.ifPresent(e -> shopSpreadJsonObject.put("shopSpread",e));
+        shopSpread.ifPresent(e -> shopSpreadJsonObject.put("shopSpread", e));
         return shopSpreadJsonObject;
     }
 
     @Override
-    public JSONObject selectShopSpreadAndProNameShopId(String shopId,int isBackgroundSystem) {
+    public JSONObject selectShopSpreadAndProNameShopId(String shopId, int isBackgroundSystem) {
         JSONObject jsonObject = new JSONObject();
-        Optional<List<Map<String,String>>> optionalMaps;
+        Optional<List<Map<String, String>>> optionalMaps;
         if (isBackgroundSystem == 1) {
             optionalMaps = Optional.ofNullable(shopSpreadMapper.selectShopSpreadAndProNameShopIdBS(shopId));
         } else {
             optionalMaps = Optional.ofNullable(shopSpreadMapper.selectShopSpreadAndProNameShopId(shopId));
         }
-        optionalMaps.ifPresent(e -> jsonObject.put("shopSpreads",e));
+        optionalMaps.ifPresent(e -> jsonObject.put("shopSpreads", e));
         return jsonObject;
     }
 
@@ -64,18 +65,18 @@ public class ShopSpreadServiceImpl implements ShopSpreadService {
     public JSONObject selectShopSpreadAll() {
         JSONObject jsonObject = new JSONObject();
         Optional<List<ShopSpread>> shopSpreads = Optional.ofNullable(shopSpreadMapper.selectShopSpreadAll());
-        shopSpreads.ifPresent(e -> jsonObject.put("shopSpreads",e));
+        shopSpreads.ifPresent(e -> jsonObject.put("shopSpreads", e));
         return jsonObject;
     }
 
     @Override
     public JSONObject selectShopSpreadAllPage(int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum,pageSize);
+        PageHelper.startPage(pageNum, pageSize);
         JSONObject jsonObject = new JSONObject();
         Optional<List<ShopSpread>> shopSpreads = Optional.ofNullable(shopSpreadMapper.selectShopSpreadAll());
-        shopSpreads.ifPresent(e -> jsonObject.put("shopSpreads",e));
-        long count = PageHelper.count(()->shopSpreadMapper.selectShopSpreadAll());
-        jsonObject.put("count",count);
+        shopSpreads.ifPresent(e -> jsonObject.put("shopSpreads", e));
+        long count = PageHelper.count(() -> shopSpreadMapper.selectShopSpreadAll());
+        jsonObject.put("count", count);
         return jsonObject;
     }
 }

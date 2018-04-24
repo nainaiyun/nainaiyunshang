@@ -52,7 +52,7 @@ public class ShopNoticeServiceImpl implements ShopNoticeService {
     @Override
     public JSONObject selectShopNoticeNameShopIdPage(int pageNum, int pageSize, String shopId, int isBackgroundSystem) {
         JSONObject jsonObject = new JSONObject();
-        Optional<List<Map<String,String>>> optional;
+        Optional<List<Map<String, String>>> optional;
         long count;
         if (isBackgroundSystem == 1) {
             optional = Optional.ofNullable(shopNoticeMapper.selectShopNoticeNameShopIdBS(shopId));

@@ -21,7 +21,7 @@ import java.util.Optional;
  * Copyright (C) 2018. nainai All Rights Received
  */
 @Service(value = "shopNewsService")
-public class ShopNewsServiceImpl implements ShopNewsService{
+public class ShopNewsServiceImpl implements ShopNewsService {
     @Autowired
     private ShopNewsMapper shopNewsMapper;
 
@@ -44,36 +44,36 @@ public class ShopNewsServiceImpl implements ShopNewsService{
     public JSONObject selectShopNewsId(String id) {
         JSONObject jsonObject = new JSONObject();
         Optional<ShopNews> optionalShopNews = Optional.ofNullable(shopNewsMapper.selectByPrimaryKey(id));
-        optionalShopNews.ifPresent(e->jsonObject.put("shopNews",e));
+        optionalShopNews.ifPresent(e -> jsonObject.put("shopNews", e));
         return jsonObject;
     }
 
     @Override
-    public JSONObject selectShopNewsShopIdPage(int pageNum, int pageSize, String shopId,int isBackgroundSystem) {
-        PageHelper.startPage(pageNum,pageSize);
+    public JSONObject selectShopNewsShopIdPage(int pageNum, int pageSize, String shopId, int isBackgroundSystem) {
+        PageHelper.startPage(pageNum, pageSize);
         JSONObject jsonObject = new JSONObject();
         Optional<List<Map<String, String>>> optionalShopNews;
         long count;
         if (isBackgroundSystem == 1) {
             optionalShopNews = Optional.ofNullable(shopNewsMapper.selectShopNewsShopIdBS(shopId));
-            count = PageHelper.count(()->shopNewsMapper.selectShopNewsShopIdBS(shopId));
+            count = PageHelper.count(() -> shopNewsMapper.selectShopNewsShopIdBS(shopId));
         } else {
             optionalShopNews = Optional.ofNullable(shopNewsMapper.selectShopNewsShopId(shopId));
-            count = PageHelper.count(()->shopNewsMapper.selectShopNewsShopId(shopId));
+            count = PageHelper.count(() -> shopNewsMapper.selectShopNewsShopId(shopId));
         }
-        optionalShopNews.ifPresent(e->jsonObject.put("shopNewss",e));
-        jsonObject.put("count",count);
+        optionalShopNews.ifPresent(e -> jsonObject.put("shopNewss", e));
+        jsonObject.put("count", count);
         return jsonObject;
     }
 
     @Override
     public JSONObject selectShopNewsAllPage(int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum,pageSize);
+        PageHelper.startPage(pageNum, pageSize);
         JSONObject jsonObject = new JSONObject();
         Optional<List<ShopNews>> optionalShopNews = Optional.ofNullable(shopNewsMapper.selectShopNewsAll());
-        optionalShopNews.ifPresent(e->jsonObject.put("shopNewss",e));
-        long count = PageHelper.count(()->shopNewsMapper.selectShopNewsAll());
-        jsonObject.put("count",count);
+        optionalShopNews.ifPresent(e -> jsonObject.put("shopNewss", e));
+        long count = PageHelper.count(() -> shopNewsMapper.selectShopNewsAll());
+        jsonObject.put("count", count);
         return jsonObject;
     }
 }

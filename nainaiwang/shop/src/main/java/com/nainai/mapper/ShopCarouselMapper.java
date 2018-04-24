@@ -42,7 +42,7 @@ public interface ShopCarouselMapper {
     List<ShopCarousel> selectShopCarouselShopId(String shopId);
 
     @Select(" select c.*,p.name 'products_name' from shop_carousel c left join products p on c.products_id =p.id where c.shop_id=#{shopId} order by sort,create_time asc")
-    List<Map<String,String>> selectShopCarouselShopIdBS(String shopId);
+    List<Map<String, String>> selectShopCarouselShopIdBS(String shopId);
 
     /**
      * 查找所有ShopCarousel

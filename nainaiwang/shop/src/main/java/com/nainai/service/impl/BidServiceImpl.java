@@ -29,59 +29,59 @@ public class BidServiceImpl implements BidService {
     private BidMapper bidMapper;
 
     @Override
-    @CachePut(key = "#bid.id",cacheNames = "Bid")
+    @CachePut(key = "#bid.id", cacheNames = "Bid")
     public int insertBid(Bid bid) {
         return bidMapper.insert(bid);
     }
 
     @Override
-    @CachePut(key = "#Bid.id",cacheNames = "Bid")
+    @CachePut(key = "#Bid.id", cacheNames = "Bid")
     public int updateBidIdSelective(Bid bid) {
         return bidMapper.updateByPrimaryKeySelective(bid);
     }
 
     @Override
-    @CacheEvict(cacheNames="Bid", key="#id")
+    @CacheEvict(cacheNames = "Bid", key = "#id")
     public int deleteBidId(Integer id) {
         return bidMapper.deleteByPrimaryKey(id);
     }
 
     @Override
-    @Cacheable(cacheNames = "Bid" ,unless="#result == null")
+    @Cacheable(cacheNames = "Bid", unless = "#result == null")
     public JSONObject selectBidId(Integer id) {
         JSONObject bidJsonObject = new JSONObject();
         Optional<Bid> bid = Optional.ofNullable(bidMapper.selectByPrimaryKey(id));
-        bid.ifPresent(e -> bidJsonObject.put("bid",e));
+        bid.ifPresent(e -> bidJsonObject.put("bid", e));
         return bidJsonObject;
     }
 
     @Override
-    @Cacheable(cacheNames = "Bid" ,unless="#result == null")
+    @Cacheable(cacheNames = "Bid", unless = "#result == null")
     public JSONObject selectBidUserId(Integer userId) {
         JSONObject bidJsonObject = new JSONObject();
         Optional<List<Bid>> bids = Optional.ofNullable(bidMapper.selectBidUserId(userId));
-        bids.ifPresent(e->bidJsonObject.put("bid",e));
+        bids.ifPresent(e -> bidJsonObject.put("bid", e));
         return bidJsonObject;
     }
 
     @Override
-    @Cacheable(cacheNames = "Bid" ,unless="#result == null")
+    @Cacheable(cacheNames = "Bid", unless = "#result == null")
     public JSONObject selectBidAll() {
         JSONObject bidjsonObject = new JSONObject();
         Optional<List<Bid>> bids = Optional.ofNullable(bidMapper.selectBidAll());
-        bids.ifPresent(e->bidjsonObject.put("bids",e));
+        bids.ifPresent(e -> bidjsonObject.put("bids", e));
         return bidjsonObject;
     }
 
     @Override
-    @Cacheable(cacheNames = "Bid" ,key = "#pageNum+':'+#pageSize",unless="#result == null")
+    @Cacheable(cacheNames = "Bid", key = "#pageNum+':'+#pageSize", unless = "#result == null")
     public JSONObject selectBidAllPage(int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         JSONObject bidjsonObject = new JSONObject();
         Optional<List<Bid>> bids = Optional.ofNullable(bidMapper.selectBidAll());
-        bids.ifPresent(e->bidjsonObject.put("bids",e));
-        long count = PageHelper.count(()->bidMapper.selectBidAll());
-        bidjsonObject.put("count",count);
+        bids.ifPresent(e -> bidjsonObject.put("bids", e));
+        long count = PageHelper.count(() -> bidMapper.selectBidAll());
+        bidjsonObject.put("count", count);
         return bidjsonObject;
     }
 }

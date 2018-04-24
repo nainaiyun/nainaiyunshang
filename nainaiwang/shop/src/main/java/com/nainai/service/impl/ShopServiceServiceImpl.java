@@ -23,6 +23,7 @@ import java.util.Optional;
 public class ShopServiceServiceImpl implements ShopServiceService {
     @Autowired
     private ShopServiceMapper shopServiceMapper;
+
     @Override
     public int insertShopService(ShopService shopService) {
         return shopServiceMapper.insert(shopService);
@@ -42,7 +43,7 @@ public class ShopServiceServiceImpl implements ShopServiceService {
     public JSONObject selectShopServiceId(String id) {
         JSONObject shopServiceJsonObject = new JSONObject();
         Optional<ShopService> shopService = Optional.ofNullable(shopServiceMapper.selectByPrimaryKey(id));
-        shopService.ifPresent(e -> shopServiceJsonObject.put("shopService",e));
+        shopService.ifPresent(e -> shopServiceJsonObject.put("shopService", e));
         return shopServiceJsonObject;
     }
 
@@ -51,7 +52,7 @@ public class ShopServiceServiceImpl implements ShopServiceService {
         JSONObject jsonObject = new JSONObject();
         Optional<List<ShopService>> optional = Optional.ofNullable(
                 shopServiceMapper.selectShopServiceShopId(shopId));
-        optional.ifPresent(e -> jsonObject.put("shopServices",e));
+        optional.ifPresent(e -> jsonObject.put("shopServices", e));
         return jsonObject;
     }
 
@@ -59,18 +60,18 @@ public class ShopServiceServiceImpl implements ShopServiceService {
     public JSONObject selectShopServiceAll() {
         JSONObject shopServicesJsonObject = new JSONObject();
         Optional<List<ShopService>> shopServices = Optional.ofNullable(shopServiceMapper.selectShopServiceAll());
-        shopServices.ifPresent(e -> shopServicesJsonObject.put("shopServices",e));
+        shopServices.ifPresent(e -> shopServicesJsonObject.put("shopServices", e));
         return shopServicesJsonObject;
     }
 
     @Override
     public JSONObject selectShopServiceAllPage(int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum,pageSize);
+        PageHelper.startPage(pageNum, pageSize);
         JSONObject shopServicesJsonObject = new JSONObject();
         Optional<List<ShopService>> shopServices = Optional.ofNullable(shopServiceMapper.selectShopServiceAll());
-        shopServices.ifPresent(e -> shopServicesJsonObject.put("shopServices",e));
-        long count = PageHelper.count(()->shopServiceMapper.selectShopServiceAll());
-        shopServicesJsonObject.put("count",count);
+        shopServices.ifPresent(e -> shopServicesJsonObject.put("shopServices", e));
+        long count = PageHelper.count(() -> shopServiceMapper.selectShopServiceAll());
+        shopServicesJsonObject.put("count", count);
         return shopServicesJsonObject;
     }
 }

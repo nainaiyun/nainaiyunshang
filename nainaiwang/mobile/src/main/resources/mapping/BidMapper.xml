@@ -1,58 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.nainai.mapper.BidMapper">
-    <resultMap id="BaseResultMap" type="com.nainai.domain.Bid">
-        <id column="id" jdbcType="INTEGER" property="id"/>
-        <result column="shop_id" jdbcType="VARCHAR" property="shopId"/>
-        <result column="no" jdbcType="VARCHAR" property="no"/>
-        <result column="mode" jdbcType="VARCHAR" property="mode"/>
-        <result column="user_id" jdbcType="INTEGER" property="userId"/>
-        <result column="yq_user" jdbcType="VARCHAR" property="yqUser"/>
-        <result column="doc" jdbcType="VARCHAR" property="doc"/>
-        <result column="top_cate" jdbcType="INTEGER" property="topCate"/>
-        <result column="pro_name" jdbcType="VARCHAR" property="proName"/>
-        <result column="pro_address" jdbcType="VARCHAR" property="proAddress"/>
-        <result column="begin_time" jdbcType="TIMESTAMP" property="beginTime"/>
-        <result column="end_time" jdbcType="TIMESTAMP" property="endTime"/>
-        <result column="open_time" jdbcType="TIMESTAMP" property="openTime"/>
-        <result column="bid_require" jdbcType="VARCHAR" property="bidRequire"/>
-        <result column="pro_brief" jdbcType="VARCHAR" property="proBrief"/>
-        <result column="bid_content" jdbcType="VARCHAR" property="bidContent"/>
-        <result column="pack_type" jdbcType="INTEGER" property="packType"/>
-        <result column="eq" jdbcType="VARCHAR" property="eq"/>
-        <result column="doc_begin" jdbcType="DATE" property="docBegin"/>
-        <result column="doc_price" jdbcType="DECIMAL" property="docPrice"/>
-        <result column="supply_bail" jdbcType="DECIMAL" property="supplyBail"/>
-        <result column="open_way" jdbcType="INTEGER" property="openWay"/>
-        <result column="pay_way" jdbcType="VARCHAR" property="payWay"/>
-        <result column="other" jdbcType="VARCHAR" property="other"/>
-        <result column="bid_person" jdbcType="VARCHAR" property="bidPerson"/>
-        <result column="cont_person" jdbcType="VARCHAR" property="contPerson"/>
-        <result column="cont_address" jdbcType="VARCHAR" property="contAddress"/>
-        <result column="cont_email" jdbcType="VARCHAR" property="contEmail"/>
-        <result column="cont_phone" jdbcType="VARCHAR" property="contPhone"/>
-        <result column="cont_tax" jdbcType="VARCHAR" property="contTax"/>
-        <result column="agent" jdbcType="VARCHAR" property="agent"/>
-        <result column="agent_person" jdbcType="VARCHAR" property="agentPerson"/>
-        <result column="agent_address" jdbcType="VARCHAR" property="agentAddress"/>
-        <result column="agent_email" jdbcType="VARCHAR" property="agentEmail"/>
-        <result column="agent_phone" jdbcType="VARCHAR" property="agentPhone"/>
-        <result column="agent_tax" jdbcType="VARCHAR" property="agentTax"/>
-        <result column="bail" jdbcType="DECIMAL" property="bail"/>
-        <result column="bail_pay_way" jdbcType="VARCHAR" property="bailPayWay"/>
-        <result column="bail_is_refund" jdbcType="INTEGER" property="bailIsRefund"/>
-        <result column="status" jdbcType="INTEGER" property="status"/>
-        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
-        <result column="admin" jdbcType="INTEGER" property="admin"/>
-        <result column="admin_message" jdbcType="VARCHAR" property="adminMessage"/>
+<mapper namespace="com.nainai.mobile.mapper.BidMapper">
+    <resultMap id="BaseResultMap" type="com.nainai.mobile.domain.Bid">
+        <constructor>
+            <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="no" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="mode" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="user_id" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="yq_user" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="doc" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="top_cate" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="pro_name" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="pro_address" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="begin_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+            <arg column="end_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+            <arg column="open_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+            <arg column="bid_require" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="pro_brief" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="bid_content" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="pack_type" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="eq" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="doc_begin" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+            <arg column="doc_price" javaType="java.math.BigDecimal" jdbcType="DECIMAL"/>
+            <arg column="supply_bail" javaType="java.math.BigDecimal" jdbcType="DECIMAL"/>
+            <arg column="open_way" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="pay_way" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="other" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="bid_person" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="cont_person" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="cont_address" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="cont_email" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="cont_phone" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="cont_tax" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="agent" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="agent_person" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="agent_address" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="agent_email" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="agent_phone" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="agent_tax" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="bail" javaType="java.math.BigDecimal" jdbcType="DECIMAL"/>
+            <arg column="bail_pay_way" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="bail_is_refund" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="status" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+            <arg column="admin" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="admin_message" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="shop_id" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        </constructor>
     </resultMap>
     <sql id="Base_Column_List">
-    id, shop_id, no, mode, user_id, yq_user, doc, top_cate, pro_name, pro_address, begin_time, 
+    id, no, mode, user_id, yq_user, doc, top_cate, pro_name, pro_address, begin_time, 
     end_time, open_time, bid_require, pro_brief, bid_content, pack_type, eq, doc_begin, 
     doc_price, supply_bail, open_way, pay_way, other, bid_person, cont_person, cont_address, 
     cont_email, cont_phone, cont_tax, agent, agent_person, agent_address, agent_email, 
     agent_phone, agent_tax, bail, bail_pay_way, bail_is_refund, status, create_time, 
-    admin, admin_message
+    admin, admin_message, shop_id
   </sql>
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select
@@ -64,46 +66,43 @@
     delete from bid
     where id = #{id,jdbcType=INTEGER}
   </delete>
-    <insert id="insert" parameterType="com.nainai.domain.Bid">
-    insert into bid (id, shop_id, no, 
-      mode, user_id, yq_user, 
-      doc, top_cate, pro_name, 
-      pro_address, begin_time, end_time, 
-      open_time, bid_require, pro_brief, 
-      bid_content, pack_type, eq, 
-      doc_begin, doc_price, supply_bail, 
-      open_way, pay_way, other, 
-      bid_person, cont_person, cont_address, 
-      cont_email, cont_phone, cont_tax, 
-      agent, agent_person, agent_address, 
-      agent_email, agent_phone, agent_tax, 
-      bail, bail_pay_way, bail_is_refund, 
-      status, create_time, admin, 
-      admin_message)
-    values (#{id,jdbcType=INTEGER}, #{shopId,jdbcType=VARCHAR}, #{no,jdbcType=VARCHAR}, 
-      #{mode,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, #{yqUser,jdbcType=VARCHAR}, 
-      #{doc,jdbcType=VARCHAR}, #{topCate,jdbcType=INTEGER}, #{proName,jdbcType=VARCHAR}, 
-      #{proAddress,jdbcType=VARCHAR}, #{beginTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, 
-      #{openTime,jdbcType=TIMESTAMP}, #{bidRequire,jdbcType=VARCHAR}, #{proBrief,jdbcType=VARCHAR}, 
-      #{bidContent,jdbcType=VARCHAR}, #{packType,jdbcType=INTEGER}, #{eq,jdbcType=VARCHAR}, 
-      #{docBegin,jdbcType=DATE}, #{docPrice,jdbcType=DECIMAL}, #{supplyBail,jdbcType=DECIMAL}, 
-      #{openWay,jdbcType=INTEGER}, #{payWay,jdbcType=VARCHAR}, #{other,jdbcType=VARCHAR}, 
-      #{bidPerson,jdbcType=VARCHAR}, #{contPerson,jdbcType=VARCHAR}, #{contAddress,jdbcType=VARCHAR}, 
-      #{contEmail,jdbcType=VARCHAR}, #{contPhone,jdbcType=VARCHAR}, #{contTax,jdbcType=VARCHAR}, 
-      #{agent,jdbcType=VARCHAR}, #{agentPerson,jdbcType=VARCHAR}, #{agentAddress,jdbcType=VARCHAR}, 
-      #{agentEmail,jdbcType=VARCHAR}, #{agentPhone,jdbcType=VARCHAR}, #{agentTax,jdbcType=VARCHAR}, 
-      #{bail,jdbcType=DECIMAL}, #{bailPayWay,jdbcType=VARCHAR}, #{bailIsRefund,jdbcType=INTEGER}, 
-      #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{admin,jdbcType=INTEGER}, 
-      #{adminMessage,jdbcType=VARCHAR})
+    <insert id="insert" parameterType="com.nainai.mobile.domain.Bid">
+    insert into bid (id, no, mode, 
+      user_id, yq_user, doc, 
+      top_cate, pro_name, pro_address, 
+      begin_time, end_time, open_time, 
+      bid_require, pro_brief, bid_content, 
+      pack_type, eq, doc_begin, 
+      doc_price, supply_bail, open_way, 
+      pay_way, other, bid_person, 
+      cont_person, cont_address, cont_email, 
+      cont_phone, cont_tax, agent, 
+      agent_person, agent_address, agent_email, 
+      agent_phone, agent_tax, bail, 
+      bail_pay_way, bail_is_refund, status, 
+      create_time, admin, admin_message, 
+      shop_id)
+    values (#{id,jdbcType=INTEGER}, #{no,jdbcType=VARCHAR}, #{mode,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=INTEGER}, #{yqUser,jdbcType=VARCHAR}, #{doc,jdbcType=VARCHAR}, 
+      #{topCate,jdbcType=INTEGER}, #{proName,jdbcType=VARCHAR}, #{proAddress,jdbcType=VARCHAR}, 
+      #{beginTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{openTime,jdbcType=TIMESTAMP}, 
+      #{bidRequire,jdbcType=VARCHAR}, #{proBrief,jdbcType=VARCHAR}, #{bidContent,jdbcType=VARCHAR}, 
+      #{packType,jdbcType=INTEGER}, #{eq,jdbcType=VARCHAR}, #{docBegin,jdbcType=TIMESTAMP}, 
+      #{docPrice,jdbcType=DECIMAL}, #{supplyBail,jdbcType=DECIMAL}, #{openWay,jdbcType=INTEGER}, 
+      #{payWay,jdbcType=VARCHAR}, #{other,jdbcType=VARCHAR}, #{bidPerson,jdbcType=VARCHAR}, 
+      #{contPerson,jdbcType=VARCHAR}, #{contAddress,jdbcType=VARCHAR}, #{contEmail,jdbcType=VARCHAR}, 
+      #{contPhone,jdbcType=VARCHAR}, #{contTax,jdbcType=VARCHAR}, #{agent,jdbcType=VARCHAR}, 
+      #{agentPerson,jdbcType=VARCHAR}, #{agentAddress,jdbcType=VARCHAR}, #{agentEmail,jdbcType=VARCHAR}, 
+      #{agentPhone,jdbcType=VARCHAR}, #{agentTax,jdbcType=VARCHAR}, #{bail,jdbcType=DECIMAL}, 
+      #{bailPayWay,jdbcType=VARCHAR}, #{bailIsRefund,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{admin,jdbcType=INTEGER}, #{adminMessage,jdbcType=VARCHAR}, 
+      #{shopId,jdbcType=VARCHAR})
   </insert>
-    <insert id="insertSelective" parameterType="com.nainai.domain.Bid">
+    <insert id="insertSelective" parameterType="com.nainai.mobile.domain.Bid">
         insert into bid
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
                 id,
-            </if>
-            <if test="shopId != null">
-                shop_id,
             </if>
             <if test="no != null">
                 no,
@@ -228,13 +227,13 @@
             <if test="adminMessage != null">
                 admin_message,
             </if>
+            <if test="shopId != null">
+                shop_id,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">
                 #{id,jdbcType=INTEGER},
-            </if>
-            <if test="shopId != null">
-                #{shopId,jdbcType=VARCHAR},
             </if>
             <if test="no != null">
                 #{no,jdbcType=VARCHAR},
@@ -285,7 +284,7 @@
                 #{eq,jdbcType=VARCHAR},
             </if>
             <if test="docBegin != null">
-                #{docBegin,jdbcType=DATE},
+                #{docBegin,jdbcType=TIMESTAMP},
             </if>
             <if test="docPrice != null">
                 #{docPrice,jdbcType=DECIMAL},
@@ -359,14 +358,14 @@
             <if test="adminMessage != null">
                 #{adminMessage,jdbcType=VARCHAR},
             </if>
+            <if test="shopId != null">
+                #{shopId,jdbcType=VARCHAR},
+            </if>
         </trim>
     </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.nainai.domain.Bid">
+    <update id="updateByPrimaryKeySelective" parameterType="com.nainai.mobile.domain.Bid">
         update bid
         <set>
-            <if test="shopId != null">
-                shop_id = #{shopId,jdbcType=VARCHAR},
-            </if>
             <if test="no != null">
                 no = #{no,jdbcType=VARCHAR},
             </if>
@@ -416,7 +415,7 @@
                 eq = #{eq,jdbcType=VARCHAR},
             </if>
             <if test="docBegin != null">
-                doc_begin = #{docBegin,jdbcType=DATE},
+                doc_begin = #{docBegin,jdbcType=TIMESTAMP},
             </if>
             <if test="docPrice != null">
                 doc_price = #{docPrice,jdbcType=DECIMAL},
@@ -490,13 +489,15 @@
             <if test="adminMessage != null">
                 admin_message = #{adminMessage,jdbcType=VARCHAR},
             </if>
+            <if test="shopId != null">
+                shop_id = #{shopId,jdbcType=VARCHAR},
+            </if>
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.nainai.domain.Bid">
+    <update id="updateByPrimaryKey" parameterType="com.nainai.mobile.domain.Bid">
     update bid
-    set shop_id = #{shopId,jdbcType=VARCHAR},
-      no = #{no,jdbcType=VARCHAR},
+    set no = #{no,jdbcType=VARCHAR},
       mode = #{mode,jdbcType=VARCHAR},
       user_id = #{userId,jdbcType=INTEGER},
       yq_user = #{yqUser,jdbcType=VARCHAR},
@@ -512,7 +513,7 @@
       bid_content = #{bidContent,jdbcType=VARCHAR},
       pack_type = #{packType,jdbcType=INTEGER},
       eq = #{eq,jdbcType=VARCHAR},
-      doc_begin = #{docBegin,jdbcType=DATE},
+      doc_begin = #{docBegin,jdbcType=TIMESTAMP},
       doc_price = #{docPrice,jdbcType=DECIMAL},
       supply_bail = #{supplyBail,jdbcType=DECIMAL},
       open_way = #{openWay,jdbcType=INTEGER},
@@ -536,7 +537,8 @@
       status = #{status,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       admin = #{admin,jdbcType=INTEGER},
-      admin_message = #{adminMessage,jdbcType=VARCHAR}
+      admin_message = #{adminMessage,jdbcType=VARCHAR},
+      shop_id = #{shopId,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

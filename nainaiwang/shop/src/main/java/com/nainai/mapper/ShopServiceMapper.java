@@ -22,6 +22,7 @@ public interface ShopServiceMapper {
 
     /**
      * 根据shopId查找店铺客服
+     *
      * @param shopId
      * @return
      */
@@ -39,6 +40,7 @@ public interface ShopServiceMapper {
 
     /**
      * 查找所有店铺客服
+     *
      * @return
      */
     @Select("select * from shop_service order by create_time asc")
@@ -52,8 +54,10 @@ public interface ShopServiceMapper {
             @Result(column = "update_time", property = "updateTime")
     })
     List<ShopService> selectShopServiceAll();
+
     /**
      * 根据店铺id与名称模糊查询店铺客服
+     *
      * @param shopId
      * @param name
      * @return

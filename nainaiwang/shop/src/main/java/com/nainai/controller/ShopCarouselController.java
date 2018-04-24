@@ -177,8 +177,9 @@ public class ShopCarouselController {
     public Result selectShopCarouselAllPage(@RequestBody JSONObject jsonObject) {
         int pageNum = jsonObject.getInteger("pageNum");
         int pageSize = jsonObject.getInteger("pageSize");
-        return ResultGenerator.genSuccessResult(shopCarouselService.selectShopCarouselAllPage(pageNum,pageSize));
+        return ResultGenerator.genSuccessResult(shopCarouselService.selectShopCarouselAllPage(pageNum, pageSize));
     }
+
     /**
      * 根据id查询轮播图信息
      *
@@ -194,6 +195,7 @@ public class ShopCarouselController {
         String id = jsonObject.getString("id");
         return ResultGenerator.genSuccessResult(shopCarouselService.selectShopCarouselId(id));
     }
+
     /**
      * 查询店铺下的所有轮播图信息
      *
@@ -209,7 +211,7 @@ public class ShopCarouselController {
     public Result selectShopCarouselShopId(@RequestBody JSONObject jsonObject) {
         String shopId = jsonObject.getString("shopId");
         int isBackgroundSystem = jsonObject.getInteger("isBackgroundSystem");
-        return ResultGenerator.genSuccessResult(shopCarouselService.selectShopCarouselShopId(shopId,isBackgroundSystem));
+        return ResultGenerator.genSuccessResult(shopCarouselService.selectShopCarouselShopId(shopId, isBackgroundSystem));
     }
 
 }

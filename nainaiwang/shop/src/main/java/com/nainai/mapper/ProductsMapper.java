@@ -130,10 +130,11 @@ public interface ProductsMapper {
 
     /**
      * 根据店铺编号查询商品信息
+     *
      * @param shopId
      * @return
      */
     @Select("select * from products a left join product_offer b on  a.id=b.product_id where a.shop_id =#{shopId}")
-    List<Map<String,String>> selectProductsandOfferByShopId(String shopId);
+    List<Map<String, String>> selectProductsandOfferByShopId(String shopId);
 
 }

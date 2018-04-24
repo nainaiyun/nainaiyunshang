@@ -90,24 +90,27 @@ public interface ProductOfferMapper {
 
     /**
      * 查询商品的报盘id及商品名称
+     *
      * @param shopId
      * @return
      */
     @Select("select o.id,p.name from product_offer o left join products p " +
             " on o.product_id = p.id where o.shop_id= #{shopId} and status=1 order by apply_time asc ")
-    List<Map<String,String>> selectProductOfferProNameByShopId(String shopId);
+    List<Map<String, String>> selectProductOfferProNameByShopId(String shopId);
 
     /**
      * 查询商品的报盘及商品信息
+     *
      * @param shopId
      * @return
      */
     @Select("select id,pro_name from product_offer where shop_id= #{shopId}")
-    List<Map<String,String>> selectProductAndOffer(String shopId);
+    List<Map<String, String>> selectProductAndOffer(String shopId);
 
 
     /**
      * 查询商品的报盘信息以及报盘所属信息
+     *
      * @param shopId
      * @return
      */
@@ -119,10 +122,11 @@ public interface ProductOfferMapper {
             " left join shop_navigation n on o.navigation_id =n.id " +
             "    left join shop_module m on o.module_id = m.id " +
             "    where o.shop_id =#{shopId} and status=1 ")
-    List<Map<String,String>> selectProductOfferAndSubordinateByShopId(String shopId);
+    List<Map<String, String>> selectProductOfferAndSubordinateByShopId(String shopId);
 
     /**
      * 根据条件查询商品列表
+     *
      * @param shopId
      * @param proName
      * @param classifyId
@@ -134,11 +138,12 @@ public interface ProductOfferMapper {
             " o.shop_id=#{0} " +
             "and p.name like  CONCAT('%',#{1},'%') " +
             "and o.classify_id like CONCAT('%',#{2},'%') and status=1 order by create_time asc")
-    List<Map<String,String>> selectProductOfferListingByClassifyId(String shopId, String proName, String classifyId);
+    List<Map<String, String>> selectProductOfferListingByClassifyId(String shopId, String proName, String classifyId);
 
 
     /**
      * 根据条件查询商品列表
+     *
      * @param shopId
      * @param proName
      * @param moduleId
@@ -150,10 +155,11 @@ public interface ProductOfferMapper {
             " o.shop_id=#{0} " +
             "and p.name like  CONCAT('%',#{1},'%') " +
             "and o.module_id like CONCAT('%',#{2},'%') and status=1  order by create_time asc")
-    List<Map<String,String>> selectProductOfferListingByModuleId(String shopId, String proName, String moduleId);
+    List<Map<String, String>> selectProductOfferListingByModuleId(String shopId, String proName, String moduleId);
 
     /**
      * 根据条件查询商品列表
+     *
      * @param shopId
      * @param proName
      * @param navigationId
@@ -165,17 +171,17 @@ public interface ProductOfferMapper {
             " o.shop_id=#{0} " +
             "and p.name like  CONCAT('%',#{1},'%') " +
             "and o.navigation_id like CONCAT('%',#{2},'%') and status=1 order by create_time asc")
-    List<Map<String,String>> selectProductOfferListingByNavigationId(String shopId, String proName, String navigationId);
+    List<Map<String, String>> selectProductOfferListingByNavigationId(String shopId, String proName, String navigationId);
 
     @Select("select o.shop_id,p.id'product_id',o.id'offer_id',p.name'product_name'," +
             "p.note'product_note' ,p.img,p.unit ,p.currency,o.price from product_offer o" +
             " left join products p on o.product_id = p.id where" +
             " o.shop_id=#{0} " +
             "and p.name like  CONCAT('%',#{1},'%') and status=1 order by create_time asc")
-    List<Map<String,String>> selectProductOfferListingByShopId(String shopId, String proName);
+    List<Map<String, String>> selectProductOfferListingByShopId(String shopId, String proName);
 
 
     @Select("select product_id from product_offer where id=#{offerId}")
-    Map<String,Integer> selectProductIdByOfferId(Integer offerId);
+    Map<String, Integer> selectProductIdByOfferId(Integer offerId);
 
 }

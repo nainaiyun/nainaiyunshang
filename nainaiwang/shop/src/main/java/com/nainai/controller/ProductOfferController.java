@@ -119,6 +119,6 @@ public class ProductOfferController {
         String moduleId = jsonObject.getString("moduleId");
         String classifyId = jsonObject.getString("classifyId");
         String navigationId = jsonObject.getString("navigationId");
-        return ResultGenerator.genSuccessResult(productOfferService.selectProductOfferListingByShopId(shopId,proName,classifyId,navigationId,moduleId));
+        return ResultGenerator.genSuccessResult(productOfferService.selectProductOfferListingByShopId(shopId, proName, classifyId, navigationId, moduleId));
     }
 }

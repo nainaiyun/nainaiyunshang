@@ -1,7 +1,9 @@
 package com.nainai.mobile.common;
+
 /**
  * Created by haopeng yan on 2018/1/4 17:35.
  * 响应码枚举，参照HTTP状态码语义定义
+ *
  * @author haopeng yan
  * @version 1.0
  * @since 1.0

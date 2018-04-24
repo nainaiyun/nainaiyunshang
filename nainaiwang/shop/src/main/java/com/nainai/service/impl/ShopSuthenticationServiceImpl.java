@@ -43,7 +43,7 @@ public class ShopSuthenticationServiceImpl implements ShopSuthenticationService 
     public JSONObject selectShopSuthenticationId(String id) {
         JSONObject shopSuthenticationJsonObject = new JSONObject();
         Optional<ShopSuthentication> shopSuthentication = Optional.ofNullable(shopSuthenticationMapper.selectByPrimaryKey(id));
-        shopSuthentication.ifPresent(e -> shopSuthenticationJsonObject.put("shopSuthentication",e));
+        shopSuthentication.ifPresent(e -> shopSuthenticationJsonObject.put("shopSuthentication", e));
         return shopSuthenticationJsonObject;
     }
 
@@ -51,7 +51,7 @@ public class ShopSuthenticationServiceImpl implements ShopSuthenticationService 
     public JSONObject selectShopSuthenticationShopId(String shopId) {
         JSONObject shopSuthenticationsJsonObject = new JSONObject();
         Optional<List<ShopSuthentication>> shopSuthentications = Optional.ofNullable(shopSuthenticationMapper.selectShopSuthenticationShopId(shopId));
-        shopSuthentications.ifPresent(e -> shopSuthenticationsJsonObject.put("shopSuthentications",e));
+        shopSuthentications.ifPresent(e -> shopSuthenticationsJsonObject.put("shopSuthentications", e));
         return shopSuthenticationsJsonObject;
     }
 
@@ -59,19 +59,19 @@ public class ShopSuthenticationServiceImpl implements ShopSuthenticationService 
     public JSONObject selectShopSuthenticationAll() {
         JSONObject shopSuthenticationsJsonObject = new JSONObject();
         Optional<List<ShopSuthentication>> shopSuthentications = Optional.ofNullable(shopSuthenticationMapper.selectShopSuthenticationAll());
-        shopSuthentications.ifPresent(e -> shopSuthenticationsJsonObject.put("shopSuthentications",e));
+        shopSuthentications.ifPresent(e -> shopSuthenticationsJsonObject.put("shopSuthentications", e));
         return shopSuthenticationsJsonObject;
     }
 
     @Override
     public JSONObject selectShopSuthenticationAllPage(int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum,pageSize);
+        PageHelper.startPage(pageNum, pageSize);
         JSONObject shopSuthenticationsJsonObject = new JSONObject();
         Optional<List<ShopSuthentication>> shopSuthentications = Optional.ofNullable(shopSuthenticationMapper.selectShopSuthenticationAll());
-        shopSuthentications.ifPresent(e -> shopSuthenticationsJsonObject.put("shopSuthentications",e));
+        shopSuthentications.ifPresent(e -> shopSuthenticationsJsonObject.put("shopSuthentications", e));
 
-        long count = PageHelper.count(()->shopSuthenticationMapper.selectShopSuthenticationAll());
-        shopSuthenticationsJsonObject.put("count",count);
+        long count = PageHelper.count(() -> shopSuthenticationMapper.selectShopSuthenticationAll());
+        shopSuthenticationsJsonObject.put("count", count);
         return shopSuthenticationsJsonObject;
     }
 }

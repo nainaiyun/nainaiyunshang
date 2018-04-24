@@ -50,8 +50,8 @@ public class ShopBrowseController {
         Integer monthlyBrowsing = (Integer) jsonObject1.getJSONObject("shopBrowses").get("monthlyBrowsing");
 
         shopBrowse.setId(id);
-        shopBrowse.setTotalBrowsing(totalBrowsing+1);
-        shopBrowse.setMonthlyBrowsing(monthlyBrowsing+1);
+        shopBrowse.setTotalBrowsing(totalBrowsing + 1);
+        shopBrowse.setMonthlyBrowsing(monthlyBrowsing + 1);
         shopBrowse.setUpdateTime(TimeUtil.getDate());
         return ResultGenerator.genSuccessResult(shopBrowseService.updateShopBrowseIdSelective(shopBrowse));
     }

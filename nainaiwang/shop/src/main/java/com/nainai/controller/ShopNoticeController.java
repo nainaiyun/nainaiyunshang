@@ -103,7 +103,7 @@ public class ShopNoticeController {
     public Result selectShopNoticeAllPage(@RequestBody JSONObject jsonObject) {
         int pageNum = jsonObject.getInteger("pageNum");
         int pageSize = jsonObject.getInteger("pageSize");
-        return ResultGenerator.genSuccessResult(shopNoticeService.selectShopNoticeAllPage(pageNum,pageSize));
+        return ResultGenerator.genSuccessResult(shopNoticeService.selectShopNoticeAllPage(pageNum, pageSize));
     }
 
     /**
@@ -125,7 +125,7 @@ public class ShopNoticeController {
         int isBackgroundSystem = jsonObject.getInteger("isBackgroundSystem");
         int pageNum = jsonObject.getInteger("pageNum");
         int pageSize = jsonObject.getInteger("pageSize");
-        return ResultGenerator.genSuccessResult(shopNoticeService.selectShopNoticeNameShopIdPage(pageNum,pageSize,shopId,isBackgroundSystem));
+        return ResultGenerator.genSuccessResult(shopNoticeService.selectShopNoticeNameShopIdPage(pageNum, pageSize, shopId, isBackgroundSystem));
     }
 
     /**

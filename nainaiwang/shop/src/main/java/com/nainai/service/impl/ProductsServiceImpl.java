@@ -24,6 +24,7 @@ import java.util.Optional;
 public class ProductsServiceImpl implements ProductsService {
     @Autowired
     private ProductsMapper productsMapper;
+
     @Override
     public int insertProducts(Products products) {
         return productsMapper.insert(products);
@@ -43,7 +44,7 @@ public class ProductsServiceImpl implements ProductsService {
     public JSONObject selectProductsId(Integer id) {
         JSONObject productsJsonObject = new JSONObject();
         Optional<Products> product = Optional.ofNullable(productsMapper.selectByPrimaryKey(id));
-        product.ifPresent(e->productsJsonObject.put("product",e));
+        product.ifPresent(e -> productsJsonObject.put("product", e));
         return productsJsonObject;
     }
 
@@ -51,7 +52,7 @@ public class ProductsServiceImpl implements ProductsService {
     public JSONObject selectProductsUserId(Integer userId) {
         JSONObject productsJsonObject = new JSONObject();
         Optional<List<Products>> products = Optional.ofNullable(productsMapper.selectProductsUserId(userId));
-        products.ifPresent(e->productsJsonObject.put("products",e));
+        products.ifPresent(e -> productsJsonObject.put("products", e));
         return productsJsonObject;
     }
 
@@ -59,7 +60,7 @@ public class ProductsServiceImpl implements ProductsService {
     public JSONObject selectProductsAll() {
         JSONObject productsJsonObject = new JSONObject();
         Optional<List<Products>> products = Optional.ofNullable(productsMapper.selectProductsAll());
-        products.ifPresent(e->productsJsonObject.put("products",e));
+        products.ifPresent(e -> productsJsonObject.put("products", e));
         return productsJsonObject;
     }
 
@@ -68,20 +69,20 @@ public class ProductsServiceImpl implements ProductsService {
         PageHelper.startPage(pageNum, pageSize);
         JSONObject productsJsonObject = new JSONObject();
         Optional<List<Products>> products = Optional.ofNullable(productsMapper.selectProductsAll());
-        products.ifPresent(e->productsJsonObject.put("products",e));
-        long count = PageHelper.count(()->productsMapper.selectProductsAll());
-        productsJsonObject.put("count",count);
+        products.ifPresent(e -> productsJsonObject.put("products", e));
+        long count = PageHelper.count(() -> productsMapper.selectProductsAll());
+        productsJsonObject.put("count", count);
         return productsJsonObject;
     }
 
     @Override
-    public JSONObject selectProductsandOfferByShopIdPage(int pageNum,int pageSize,String shopId) {
+    public JSONObject selectProductsandOfferByShopIdPage(int pageNum, int pageSize, String shopId) {
         PageHelper.startPage(pageNum, pageSize);
         JSONObject productsJsonObject = new JSONObject();
-        Optional<List<Map<String,String>>> products = Optional.ofNullable(productsMapper.selectProductsandOfferByShopId(shopId));
-        products.ifPresent(e->productsJsonObject.put("products",e));
-        long count = PageHelper.count(()->productsMapper.selectProductsandOfferByShopId(shopId));
-        productsJsonObject.put("count",count);
+        Optional<List<Map<String, String>>> products = Optional.ofNullable(productsMapper.selectProductsandOfferByShopId(shopId));
+        products.ifPresent(e -> productsJsonObject.put("products", e));
+        long count = PageHelper.count(() -> productsMapper.selectProductsandOfferByShopId(shopId));
+        productsJsonObject.put("count", count);
         return productsJsonObject;
     }
 

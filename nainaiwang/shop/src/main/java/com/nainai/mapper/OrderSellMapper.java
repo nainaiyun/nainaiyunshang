@@ -184,29 +184,32 @@ public interface OrderSellMapper {
 
     /**
      * 本月销售总额
+     *
      * @param shopId
      * @return
      */
     @Select("select sum(amount)'sumAmount' from order_sell where date_format(create_time,'%Y-%m')=" +
             " date_format(now(),'%Y-%m')  and shop_id=#{shopId} ")
-    Map<String ,String > selectAmount(String shopId);
+    Map<String, String> selectAmount(String shopId);
 
     /**
      * 本月支付金额
+     *
      * @param shopId
      * @return
      */
     @Select("select sum(amount) monthAmount from order_sell where date_format(create_time,'%Y-%m')=" +
             " date_format(now(),'%Y-%m')  and shop_id=#{0} and contract_status=#{1}")
-    Map<String ,String > selectPayAmount(String shopId, int contractStatus);
+    Map<String, String> selectPayAmount(String shopId, int contractStatus);
 
 
     /**
      * 本月支付买家数
+     *
      * @param shopId
      * @return
      */
     @Select("select count(id) countId from order_sell where date_format(create_time,'%Y-%m')=" +
             " date_format(now(),'%Y-%m')  and shop_id=#{0} and contract_status=#{1}")
-    Map<String ,String > selectPayCount(String shopId, int contractStatus);
+    Map<String, String> selectPayCount(String shopId, int contractStatus);
 }

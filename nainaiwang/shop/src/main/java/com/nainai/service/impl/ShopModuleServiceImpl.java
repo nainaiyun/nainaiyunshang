@@ -20,7 +20,7 @@ import java.util.Optional;
  * Copyright (C) 2018. nainai All Rights Received
  */
 @Service(value = "shopModuleService")
-public class ShopModuleServiceImpl implements ShopModuleService{
+public class ShopModuleServiceImpl implements ShopModuleService {
     @Autowired
     private ShopModuleMapper shopModuleMapper;
 
@@ -43,20 +43,20 @@ public class ShopModuleServiceImpl implements ShopModuleService{
     public JSONObject selectShopModuleId(String id) {
         JSONObject jsonObject = new JSONObject();
         Optional<ShopModule> optional = Optional.ofNullable(shopModuleMapper.selectByPrimaryKey(id));
-        optional.ifPresent(e -> jsonObject.put("shopModule",e));
+        optional.ifPresent(e -> jsonObject.put("shopModule", e));
         return jsonObject;
     }
 
     @Override
-    public JSONObject selectShopModuleShopId(String shopId,int isBackgroundSystem) {
+    public JSONObject selectShopModuleShopId(String shopId, int isBackgroundSystem) {
         JSONObject jsonObject = new JSONObject();
         Optional<List<ShopModule>> optional;
-        if (isBackgroundSystem==1){
-            optional= Optional.ofNullable(shopModuleMapper.selectShopModuleShopIdBS(shopId));
-        }else {
-            optional= Optional.ofNullable(shopModuleMapper.selectShopModuleShopId(shopId));
+        if (isBackgroundSystem == 1) {
+            optional = Optional.ofNullable(shopModuleMapper.selectShopModuleShopIdBS(shopId));
+        } else {
+            optional = Optional.ofNullable(shopModuleMapper.selectShopModuleShopId(shopId));
         }
-        optional.ifPresent(e -> jsonObject.put("shopModules",e));
+        optional.ifPresent(e -> jsonObject.put("shopModules", e));
         return jsonObject;
     }
 
@@ -64,18 +64,18 @@ public class ShopModuleServiceImpl implements ShopModuleService{
     public JSONObject selectShopModuleAll() {
         JSONObject jsonObject = new JSONObject();
         Optional<List<ShopModule>> optional = Optional.ofNullable(shopModuleMapper.selectShopModuleAll());
-        optional.ifPresent(e -> jsonObject.put("shopModules",e));
+        optional.ifPresent(e -> jsonObject.put("shopModules", e));
         return jsonObject;
     }
 
     @Override
     public JSONObject selectShopModuleAllPage(int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum,pageSize);
+        PageHelper.startPage(pageNum, pageSize);
         JSONObject jsonObject = new JSONObject();
         Optional<List<ShopModule>> optional = Optional.ofNullable(shopModuleMapper.selectShopModuleAll());
-        optional.ifPresent(e -> jsonObject.put("shopModules",e));
-        long count = PageHelper.count(()->shopModuleMapper.selectShopModuleAll());
-        jsonObject.put("count",count);
+        optional.ifPresent(e -> jsonObject.put("shopModules", e));
+        long count = PageHelper.count(() -> shopModuleMapper.selectShopModuleAll());
+        jsonObject.put("count", count);
         return jsonObject;
     }
 }

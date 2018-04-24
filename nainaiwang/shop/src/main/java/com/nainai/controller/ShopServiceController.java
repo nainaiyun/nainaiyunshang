@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ShopServiceController {
     @Autowired
     private ShopServiceService shopServiceService;
+
     /**
      * 添加客服信息至某个店铺
      *
@@ -132,6 +133,7 @@ public class ShopServiceController {
 
     /**
      * 根据id删除客服信息
+     *
      * @param jsonObject
      * @return result
      */
@@ -159,7 +161,7 @@ public class ShopServiceController {
     public Result selectShopServiceAllPage(@RequestBody JSONObject jsonObject) {
         int pageNum = jsonObject.getInteger("pageNum");
         int pageSize = jsonObject.getInteger("pageSize");
-        return ResultGenerator.genSuccessResult(shopServiceService.selectShopServiceAllPage(pageNum,pageSize));
+        return ResultGenerator.genSuccessResult(shopServiceService.selectShopServiceAllPage(pageNum, pageSize));
     }
 
     /**
@@ -177,6 +179,7 @@ public class ShopServiceController {
         String id = jsonObject.getString("id");
         return ResultGenerator.genSuccessResult(shopServiceService.selectShopServiceId(id));
     }
+
     /**
      * 查询店铺下的所有客服信息
      *

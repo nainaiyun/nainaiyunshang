@@ -1,4 +1,5 @@
 package com.nainai.filter;
+
 import com.nainai.common.Constant;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -26,7 +27,7 @@ public class LoginFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         // 不过滤url
-        String[] notFilter = new String[]{"/login", "/logout", "/css","/js","/error","/front/*"};
+        String[] notFilter = new String[]{"/login", "/logout", "/css", "/js", "/error", "/front/*"};
 
         // 获取uri
         String url = request.getRequestURI();
@@ -56,7 +57,7 @@ public class LoginFilter extends OncePerRequestFilter {
 
     /**
      * @param notFilter 允许url
-     * @param url       截获的uri
+     * @param url             截获的uri
      * @return false通过  true不通过
      *      
      */

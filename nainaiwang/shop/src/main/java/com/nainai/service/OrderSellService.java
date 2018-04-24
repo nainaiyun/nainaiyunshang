@@ -14,6 +14,7 @@ import com.nainai.domain.OrderSell;
 public interface OrderSellService {
     /**
      * 插入一条订单信息
+     *
      * @param orderSell
      * @return
      */
@@ -21,6 +22,7 @@ public interface OrderSellService {
 
     /**
      * 根据id修改订单信息全部字段
+     *
      * @param orderSell
      * @return
      */
@@ -28,6 +30,7 @@ public interface OrderSellService {
 
     /**
      * 根据id删除一条订单信息
+     *
      * @param id
      * @return
      */
@@ -35,6 +38,7 @@ public interface OrderSellService {
 
     /**
      * 根据id查询订单信息
+     *
      * @param id
      * @return
      */
@@ -42,6 +46,7 @@ public interface OrderSellService {
 
     /**
      * 根据用户编号查询该用户的所有订单信息
+     *
      * @param userId
      * @return
      */
@@ -49,12 +54,14 @@ public interface OrderSellService {
 
     /**
      * 查询所有的订单信息
+     *
      * @return
      */
     JSONObject selectOrderSellAll();
 
     /**
      * 分页查询所有的订单信息
+     *
      * @param pageNum
      * @param pageSize
      * @return
@@ -63,6 +70,7 @@ public interface OrderSellService {
 
     /**
      * 分页查询店铺下的订单信息
+     *
      * @param pageNum
      * @param pageSize
      * @param shopId

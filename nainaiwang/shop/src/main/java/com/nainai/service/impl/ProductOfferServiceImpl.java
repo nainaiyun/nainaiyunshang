@@ -22,7 +22,7 @@ import java.util.Optional;
  * Copyright (C) 2018. nainai All Rights Received
  */
 @Service(value = "productOfferService")
-public class ProductOfferServiceImpl implements ProductOfferService{
+public class ProductOfferServiceImpl implements ProductOfferService {
     @Autowired
     private ProductOfferMapper productOfferMapper;
 
@@ -45,61 +45,59 @@ public class ProductOfferServiceImpl implements ProductOfferService{
     public JSONObject selectProductOfferId(Integer id) {
         JSONObject productOfferJsonObject = new JSONObject();
         Optional<ProductOffer> optionalProductOffer = Optional.ofNullable(productOfferMapper.selectByPrimaryKey(id));
-        optionalProductOffer.ifPresent(e->productOfferJsonObject.put("productOffer",e));
+        optionalProductOffer.ifPresent(e -> productOfferJsonObject.put("productOffer", e));
         return productOfferJsonObject;
     }
 
     @Override
     public JSONObject selectProductOfferAllPage(int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum,pageSize);
+        PageHelper.startPage(pageNum, pageSize);
         JSONObject productOffersJsonObject = new JSONObject();
         Optional<List<ProductOffer>> optionalProductOffers = Optional.ofNullable(productOfferMapper.selectProductOfferAll());
-        optionalProductOffers.ifPresent(e->productOffersJsonObject.put("productOffers",e));
-        long count = PageHelper.count(()->productOfferMapper.selectProductOfferAll());
-        productOffersJsonObject.put("count",count);
+        optionalProductOffers.ifPresent(e -> productOffersJsonObject.put("productOffers", e));
+        long count = PageHelper.count(() -> productOfferMapper.selectProductOfferAll());
+        productOffersJsonObject.put("count", count);
         return productOffersJsonObject;
     }
 
     @Override
     public JSONObject selectProductOfferAndSubordinateByShopIdPage(int pageNum, int pageSize, String shopId) {
         JSONObject productOffersJsonObject = new JSONObject();
-        PageHelper.startPage(pageNum,pageSize);
-        Optional<List<Map<String,String>>> optionalProductOffers = Optional.ofNullable(productOfferMapper.selectProductOfferAndSubordinateByShopId(shopId));
-        optionalProductOffers.ifPresent(e->productOffersJsonObject.put("productOffers",e));
-        long count = PageHelper.count(()->productOfferMapper.selectProductOfferAndSubordinateByShopId(shopId));
-        productOffersJsonObject.put("count",count);
+        PageHelper.startPage(pageNum, pageSize);
+        Optional<List<Map<String, String>>> optionalProductOffers = Optional.ofNullable(productOfferMapper.selectProductOfferAndSubordinateByShopId(shopId));
+        optionalProductOffers.ifPresent(e -> productOffersJsonObject.put("productOffers", e));
+        long count = PageHelper.count(() -> productOfferMapper.selectProductOfferAndSubordinateByShopId(shopId));
+        productOffersJsonObject.put("count", count);
         return productOffersJsonObject;
     }
 
     @Override
     public JSONObject selectProductOfferProNameByShopId(String shopId) {
         JSONObject productOffersJsonObject = new JSONObject();
-        Optional<List<Map<String,String>>> optionalProductOffers = Optional.ofNullable(productOfferMapper.selectProductOfferProNameByShopId(shopId));
-        optionalProductOffers.ifPresent(e->productOffersJsonObject.put("productOffers",e));
+        Optional<List<Map<String, String>>> optionalProductOffers = Optional.ofNullable(productOfferMapper.selectProductOfferProNameByShopId(shopId));
+        optionalProductOffers.ifPresent(e -> productOffersJsonObject.put("productOffers", e));
         return productOffersJsonObject;
     }
 
     @Override
     public JSONObject selectProductOfferListingByShopId(String shopId, String proName, String classifyId, String navigationId, String moduleId) {
         JSONObject productOffersJsonObject = new JSONObject();
-        if (classifyId.length()>0){
-            Optional<List<Map<String,String>>> optionalProductOffers = Optional.ofNullable(
-                    productOfferMapper.selectProductOfferListingByClassifyId(shopId,proName,classifyId));
-            optionalProductOffers.ifPresent(e->productOffersJsonObject.put("productOffers",e));
-        } else
-        if (navigationId.length()>0){
-            Optional<List<Map<String,String>>> optionalProductOffers = Optional.ofNullable(
-                    productOfferMapper.selectProductOfferListingByNavigationId(shopId,proName,navigationId));
-            optionalProductOffers.ifPresent(e->productOffersJsonObject.put("productOffers",e));
-        } else
-        if (moduleId.length()>0){
-            Optional<List<Map<String,String>>> optionalProductOffers = Optional.ofNullable(
-                    productOfferMapper.selectProductOfferListingByModuleId(shopId,proName,moduleId));
-            optionalProductOffers.ifPresent(e->productOffersJsonObject.put("productOffers",e));
-        }else {
-            Optional<List<Map<String,String>>> optionalProductOffers = Optional.ofNullable(
-                    productOfferMapper.selectProductOfferListingByShopId(shopId,proName));
-            optionalProductOffers.ifPresent(e->productOffersJsonObject.put("productOffers",e));
+        if (classifyId.length() > 0) {
+            Optional<List<Map<String, String>>> optionalProductOffers = Optional.ofNullable(
+                    productOfferMapper.selectProductOfferListingByClassifyId(shopId, proName, classifyId));
+            optionalProductOffers.ifPresent(e -> productOffersJsonObject.put("productOffers", e));
+        } else if (navigationId.length() > 0) {
+            Optional<List<Map<String, String>>> optionalProductOffers = Optional.ofNullable(
+                    productOfferMapper.selectProductOfferListingByNavigationId(shopId, proName, navigationId));
+            optionalProductOffers.ifPresent(e -> productOffersJsonObject.put("productOffers", e));
+        } else if (moduleId.length() > 0) {
+            Optional<List<Map<String, String>>> optionalProductOffers = Optional.ofNullable(
+                    productOfferMapper.selectProductOfferListingByModuleId(shopId, proName, moduleId));
+            optionalProductOffers.ifPresent(e -> productOffersJsonObject.put("productOffers", e));
+        } else {
+            Optional<List<Map<String, String>>> optionalProductOffers = Optional.ofNullable(
+                    productOfferMapper.selectProductOfferListingByShopId(shopId, proName));
+            optionalProductOffers.ifPresent(e -> productOffersJsonObject.put("productOffers", e));
         }
 
         return productOffersJsonObject;
@@ -112,7 +110,7 @@ public class ProductOfferServiceImpl implements ProductOfferService{
             return map;
         } else {
             Map<String, Integer> map2 = new HashMap<>(1);
-            map2.put("product_id",0);
+            map2.put("product_id", 0);
             return map2;
         }
     }

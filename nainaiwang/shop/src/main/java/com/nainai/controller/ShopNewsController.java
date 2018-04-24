@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ShopNewsController {
     @Autowired
     private ShopNewsService shopNewsService;
+
     /**
      * 添加资讯信息
      *
@@ -149,8 +150,9 @@ public class ShopNewsController {
         int isBackgroundSystem = jsonObject.getInteger("isBackgroundSystem");
         int pageNum = jsonObject.getInteger("pageNum");
         int pageSize = jsonObject.getInteger("pageSize");
-        return ResultGenerator.genSuccessResult(shopNewsService.selectShopNewsShopIdPage(pageNum,pageSize,shopId,isBackgroundSystem));
+        return ResultGenerator.genSuccessResult(shopNewsService.selectShopNewsShopIdPage(pageNum, pageSize, shopId, isBackgroundSystem));
     }
+
     /**
      * 根据资讯id查询资讯详情
      *

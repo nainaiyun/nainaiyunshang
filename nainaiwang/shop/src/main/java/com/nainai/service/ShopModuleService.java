@@ -13,7 +13,6 @@ import com.nainai.domain.ShopModule;
  */
 public interface ShopModuleService {
     /**
-     * 
      * @param shopModule
      * @return
      */

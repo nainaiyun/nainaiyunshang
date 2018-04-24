@@ -11,7 +11,7 @@ import com.nainai.domain.ShopSpread;
  * @since 1.0
  * Copyright (C) 2018. nainai All Rights Received
  */
-public interface ShopSpreadService  {
+public interface ShopSpreadService {
 
     int insertShopSpread(ShopSpread shopSpread);
 

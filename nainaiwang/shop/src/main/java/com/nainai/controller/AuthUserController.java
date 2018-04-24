@@ -55,7 +55,7 @@ public class AuthUserController {
                     //密码不匹配
                     return new ResponseEntity(HttpStatus.BAD_REQUEST);
                 }
-                if (user.getStatus()==1) {
+                if (user.getStatus() == 1) {
                     //锁定 423
                     return new ResponseEntity(HttpStatus.LOCKED);
                 }
@@ -76,9 +76,9 @@ public class AuthUserController {
                 addAttribute("key", "keyVal");
 
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("id",user.getUsername());
-        jsonObject.put("@class","org.apereo.cas.authentication.principal.SimplePrincipal");
-        jsonObject.put("attributes",null);
+        jsonObject.put("id", user.getUsername());
+        jsonObject.put("@class", "org.apereo.cas.authentication.principal.SimplePrincipal");
+        jsonObject.put("attributes", null);
         System.out.println(admin);
         return jsonObject;
     }
@@ -118,13 +118,14 @@ public class AuthUserController {
             this.password = password;
         }
     }
+
     /**
      * 加密解密算法 执行一次加密，两次解密
      */
-    public static String convertMD5(String inStr){
+    public static String convertMD5(String inStr) {
 
         char[] a = inStr.toCharArray();
-        for (int i = 0; i < a.length; i++){
+        for (int i = 0; i < a.length; i++) {
             a[i] = (char) (a[i] ^ 't');
         }
         String s = new String(a);

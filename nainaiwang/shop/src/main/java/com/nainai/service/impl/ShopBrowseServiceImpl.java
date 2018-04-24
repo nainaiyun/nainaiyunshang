@@ -43,35 +43,35 @@ public class ShopBrowseServiceImpl implements ShopBrowseService {
     @Override
     public JSONObject selectShopBrowseId(String id) {
         JSONObject shopBrowseJsonObject = new JSONObject();
-        Optional<ShopBrowse> shopBrowse= Optional.ofNullable(shopBrowseMapper.selectByPrimaryKey(id));
-        shopBrowse.ifPresent(e->shopBrowseJsonObject.put("shopBrowse",e));
+        Optional<ShopBrowse> shopBrowse = Optional.ofNullable(shopBrowseMapper.selectByPrimaryKey(id));
+        shopBrowse.ifPresent(e -> shopBrowseJsonObject.put("shopBrowse", e));
         return shopBrowseJsonObject;
     }
 
     @Override
     public JSONObject selectShopBrowseShopId(String shopId) {
         JSONObject shopBrowseJsonObject = new JSONObject();
-        Optional<ShopBrowse> shopBrowses= Optional.ofNullable(shopBrowseMapper.selectShopBrowseShopId(shopId));
-        shopBrowses.ifPresent(e->shopBrowseJsonObject.put("shopBrowses",e));
+        Optional<ShopBrowse> shopBrowses = Optional.ofNullable(shopBrowseMapper.selectShopBrowseShopId(shopId));
+        shopBrowses.ifPresent(e -> shopBrowseJsonObject.put("shopBrowses", e));
         return shopBrowseJsonObject;
     }
 
     @Override
     public JSONObject selectShopBrowseAll() {
         JSONObject shopBrowseJsonObject = new JSONObject();
-        Optional<List<ShopBrowse>> shopBrowses= Optional.ofNullable(shopBrowseMapper.selectShopBrowseAll());
-        shopBrowses.ifPresent(e->shopBrowseJsonObject.put("shopBrowses",e));
+        Optional<List<ShopBrowse>> shopBrowses = Optional.ofNullable(shopBrowseMapper.selectShopBrowseAll());
+        shopBrowses.ifPresent(e -> shopBrowseJsonObject.put("shopBrowses", e));
         return shopBrowseJsonObject;
     }
 
     @Override
     public JSONObject selectShopBrowseAllPage(int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum,pageSize);
+        PageHelper.startPage(pageNum, pageSize);
         JSONObject shopBrowseJsonObject = new JSONObject();
-        Optional<List<ShopBrowse>> shopBrowses= Optional.ofNullable(shopBrowseMapper.selectShopBrowseAll());
-        shopBrowses.ifPresent(e->shopBrowseJsonObject.put("shopBrowses",e));
-        long count = PageHelper.count(()->shopBrowseMapper.selectShopBrowseAll());
-        shopBrowseJsonObject.put("count",count);
+        Optional<List<ShopBrowse>> shopBrowses = Optional.ofNullable(shopBrowseMapper.selectShopBrowseAll());
+        shopBrowses.ifPresent(e -> shopBrowseJsonObject.put("shopBrowses", e));
+        long count = PageHelper.count(() -> shopBrowseMapper.selectShopBrowseAll());
+        shopBrowseJsonObject.put("count", count);
         return shopBrowseJsonObject;
     }
 }

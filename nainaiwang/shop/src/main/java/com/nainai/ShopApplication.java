@@ -32,7 +32,7 @@ import org.springframework.data.redis.cache.RedisCacheManager;
 @Import(FdfsClientConfig.class)
 //@EnableCasClient
 public class ShopApplication {
-	public static void main(String[] args) {
-		SpringApplication.run(ShopApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ShopApplication.class, args);
+    }
 }

@@ -20,7 +20,7 @@ import java.util.Optional;
  * Copyright (C) 2018. nainai All Rights Received
  */
 @Service(value = "shopStyleService")
-public class ShopStyleServiceImpl implements ShopStyleService{
+public class ShopStyleServiceImpl implements ShopStyleService {
 
     @Autowired
     private ShopStyleMapper shopStyleMapper;
@@ -44,7 +44,7 @@ public class ShopStyleServiceImpl implements ShopStyleService{
     public JSONObject selectShopStyleId(String id) {
         JSONObject shopStyleJsonObject = new JSONObject();
         Optional<ShopStyle> shopStyle = Optional.ofNullable(shopStyleMapper.selectByPrimaryKey(id));
-        shopStyle.ifPresent(e -> shopStyleJsonObject.put("shopStyle",e));
+        shopStyle.ifPresent(e -> shopStyleJsonObject.put("shopStyle", e));
         return shopStyleJsonObject;
     }
 
@@ -52,7 +52,7 @@ public class ShopStyleServiceImpl implements ShopStyleService{
     public JSONObject selectShopStyleShopId(String shopId) {
         JSONObject shopStylesJsonObject = new JSONObject();
         Optional<List<ShopStyle>> shopStyles = Optional.ofNullable(shopStyleMapper.selectShopStyleShopId(shopId));
-        shopStyles.ifPresent(e -> shopStylesJsonObject.put("shopStyles",e));
+        shopStyles.ifPresent(e -> shopStylesJsonObject.put("shopStyles", e));
         return shopStylesJsonObject;
     }
 
@@ -60,20 +60,20 @@ public class ShopStyleServiceImpl implements ShopStyleService{
     public JSONObject selectShopStyleAll() {
         JSONObject shopStylesJsonObject = new JSONObject();
         Optional<List<ShopStyle>> shopStyles = Optional.ofNullable(shopStyleMapper.selectShopStyleAll());
-        shopStyles.ifPresent(e -> shopStylesJsonObject.put("shopStyles",e));
+        shopStyles.ifPresent(e -> shopStylesJsonObject.put("shopStyles", e));
         return shopStylesJsonObject;
     }
 
     @Override
     public JSONObject selectShopStyleAllPage(int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum,pageSize);
+        PageHelper.startPage(pageNum, pageSize);
 
         JSONObject shopStylesJsonObject = new JSONObject();
         Optional<List<ShopStyle>> shopStyles = Optional.ofNullable(shopStyleMapper.selectShopStyleAll());
-        shopStyles.ifPresent(e -> shopStylesJsonObject.put("shopStyles",e));
+        shopStyles.ifPresent(e -> shopStylesJsonObject.put("shopStyles", e));
 
-        long count = PageHelper.count(()->shopStyleMapper.selectShopStyleAll());
-        shopStylesJsonObject.put("count",count);
+        long count = PageHelper.count(() -> shopStyleMapper.selectShopStyleAll());
+        shopStylesJsonObject.put("count", count);
         return shopStylesJsonObject;
     }
 }

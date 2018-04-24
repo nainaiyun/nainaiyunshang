@@ -69,29 +69,28 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
     }
 
     /**统一异常处理
-    @Override
-    public void configureHandlerExceptionResolvers(List<HandlerExceptionResolver> exceptionResolvers) {
-        exceptionResolvers.add((request, response, handler, ex) -> {
-            Result result = new Result();
-            if (ex instanceof BusinessException) {
-                result.setCode(ResultCode.FAIL).setMessage(((BusinessException) ex).getErrMsg());
-                LOGGER.info(((BusinessException) ex).getErrMsg());
-                return null;
-            }
-            responseResult(response, result);
-            return new ModelAndView();
-        });
-    }
+     @Override public void configureHandlerExceptionResolvers(List<HandlerExceptionResolver> exceptionResolvers) {
+     exceptionResolvers.add((request, response, handler, ex) -> {
+     Result result = new Result();
+     if (ex instanceof BusinessException) {
+     result.setCode(ResultCode.FAIL).setMessage(((BusinessException) ex).getErrMsg());
+     LOGGER.info(((BusinessException) ex).getErrMsg());
+     return null;
+     }
+     responseResult(response, result);
+     return new ModelAndView();
+     });
+     }
 
-    private void responseResult(HttpServletResponse response, Result result) {
-        response.setCharacterEncoding("UTF-8");
-        response.setHeader("Content-type", "application/json;charset=UTF-8");
-        response.setStatus(200);
-        try {
-            response.getWriter().write(JSON.toJSONString(result));
-        } catch (IOException ex) {
-            LOGGER.error(ex.getMessage());
-        }
-    }
-    */
+     private void responseResult(HttpServletResponse response, Result result) {
+     response.setCharacterEncoding("UTF-8");
+     response.setHeader("Content-type", "application/json;charset=UTF-8");
+     response.setStatus(200);
+     try {
+     response.getWriter().write(JSON.toJSONString(result));
+     } catch (IOException ex) {
+     LOGGER.error(ex.getMessage());
+     }
+     }
+     */
 }

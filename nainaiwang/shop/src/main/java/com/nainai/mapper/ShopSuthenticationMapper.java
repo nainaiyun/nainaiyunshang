@@ -22,6 +22,7 @@ public interface ShopSuthenticationMapper {
 
     /**
      * 根据shopId查找店铺认证信息
+     *
      * @param shopId
      * @return
      */
@@ -42,6 +43,7 @@ public interface ShopSuthenticationMapper {
 
     /**
      * 查找所有铺认证信息
+     *
      * @return
      */
     @Select("select * from shop_suthentication ")
@@ -61,6 +63,7 @@ public interface ShopSuthenticationMapper {
 
     /**
      * 根据店铺id与名称模糊查询铺认证信息
+     *
      * @param shopId
      * @param name
      * @return

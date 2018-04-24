@@ -61,7 +61,7 @@ public class ShopModuleController {
         shopModule.setShopId(shopId);
         shopModule.setName(name);
         shopModule.setPicturePath(picture);
-        shopModule.setIsShow(isShow==true?1:0);
+        shopModule.setIsShow(isShow == true ? 1 : 0);
         shopModule.setSort(sort);
         shopModule.setRemarks(remarks);
         shopModule.setCreateTime(TimeUtil.getDate());
@@ -95,7 +95,7 @@ public class ShopModuleController {
         String name = jsonObject.getString("name");
         String picture = jsonObject.getString("picture");
         boolean isShow = jsonObject.getBoolean("isShow");
-        int isShowNum = isShow==true?1:0;
+        int isShowNum = isShow == true ? 1 : 0;
         Integer sort = jsonObject.getInteger("sort");
         String remarks = jsonObject.getString("remarks");
 
@@ -113,63 +113,69 @@ public class ShopModuleController {
 
     /**
      * 根据模块编号删除模块
+     *
      * @param jsonObject
      * @return
      */
-    @ApiOperation(value="根据模块编号删除该店铺下的模块", notes="根据模块编号删除该店铺下的模块")
+    @ApiOperation(value = "根据模块编号删除该店铺下的模块", notes = "根据模块编号删除该店铺下的模块")
     @ApiImplicitParams({
             @ApiImplicitParam(dataType = "String", name = "id", value = "模块编号")
     })
-    @RequestMapping(value = "/deleteShopModuleId",method = RequestMethod.DELETE)
-    public Result deleteShopModuleId(@RequestBody JSONObject jsonObject){
+    @RequestMapping(value = "/deleteShopModuleId", method = RequestMethod.DELETE)
+    public Result deleteShopModuleId(@RequestBody JSONObject jsonObject) {
         String id = jsonObject.getString("id");
         return ResultGenerator.genSuccessResult(shopModuleService.deleteShopModuleId(id));
     }
 
     /**
      * 根据编号查询该模块信息
+     *
      * @param jsonObject
      * @return result
      */
-    @ApiOperation(value="根据编号查询该店铺下的模块", notes="根据编号查询该店铺下的所有模块")
+    @ApiOperation(value = "根据编号查询该店铺下的模块", notes = "根据编号查询该店铺下的所有模块")
     @ApiImplicitParams({
             @ApiImplicitParam(dataType = "String", name = "id", value = "模块编号")
     })
-    @RequestMapping(value = "/selectShopModuleId",method = RequestMethod.POST)
-    public Result selectShopModuleId(@RequestBody JSONObject jsonObject){
+    @RequestMapping(value = "/selectShopModuleId", method = RequestMethod.POST)
+    public Result selectShopModuleId(@RequestBody JSONObject jsonObject) {
         String id = jsonObject.getString("id");
         return ResultGenerator.genSuccessResult(shopModuleService.selectShopModuleId(id));
     }
+
     /**
      * 根据店铺编号查询该店铺下的模块
+     *
      * @param jsonObject
      * @return result
      */
-    @ApiOperation(value="根据店铺编号查询该店铺下的模块", notes="根据店铺编号查询该店铺下的所有模块")
+    @ApiOperation(value = "根据店铺编号查询该店铺下的模块", notes = "根据店铺编号查询该店铺下的所有模块")
     @ApiImplicitParams({
             @ApiImplicitParam(dataType = "String", name = "shopId", value = "店铺编号"),
             @ApiImplicitParam(dataType = "Integer", name = "isBackgroundSystem", value = "是否后台系统")
     })
-    @RequestMapping(value = "/selectShopModuleShopId",method = RequestMethod.POST)
-    public Result selectShopModuleShopId(@RequestBody JSONObject jsonObject){
+    @RequestMapping(value = "/selectShopModuleShopId", method = RequestMethod.POST)
+    public Result selectShopModuleShopId(@RequestBody JSONObject jsonObject) {
         String shopId = jsonObject.getString("shopId");
         int isBackgroundSystem = jsonObject.getInteger("isBackgroundSystem");
-        return ResultGenerator.genSuccessResult(shopModuleService.selectShopModuleShopId(shopId,isBackgroundSystem));
+        return ResultGenerator.genSuccessResult(shopModuleService.selectShopModuleShopId(shopId, isBackgroundSystem));
     }
+
     /**
      * 查询所有的模块信息
+     *
      * @return result
      */
-    @ApiOperation(value="查询所有的模块信息", notes="查询所有的模块信息")
+    @ApiOperation(value = "查询所有的模块信息", notes = "查询所有的模块信息")
     @ApiImplicitParams({
             @ApiImplicitParam(dataType = "String", name = "shopId", value = "第几页"),
             @ApiImplicitParam(dataType = "String", name = "shopId", value = "每页显示量")
     })
-    @RequestMapping(value = "/selectShopModuleAllPage",method = RequestMethod.POST)
-    public Result selectShopModuleAllPage(@RequestBody JSONObject jsonObject){
+    @RequestMapping(value = "/selectShopModuleAllPage", method = RequestMethod.POST)
+    public Result selectShopModuleAllPage(@RequestBody JSONObject jsonObject) {
         int pageNum = jsonObject.getInteger("pageNum");
         int pageSize = jsonObject.getInteger("pageSize");
-        return ResultGenerator.genSuccessResult(shopModuleService.selectShopModuleAllPage(pageNum,pageSize));
+        return ResultGenerator.genSuccessResult(shopModuleService.selectShopModuleAllPage(pageNum, pageSize));
     }
 
 }

@@ -131,9 +131,10 @@ public class UserController implements Serializable {
     })
     @RequestMapping(value = "/selectIsLogin", method = RequestMethod.POST)
     public Result selectIsLogin(@RequestBody JSONObject jsonObject) {
-        String username= jsonObject.getString("username");
+        String username = jsonObject.getString("username");
         return ResultGenerator.genSuccessResult(userService.isLogin(username));
     }
+
     /**
      * 根据用户名判断是否登录
      *
@@ -146,7 +147,7 @@ public class UserController implements Serializable {
     })
     @RequestMapping(value = "/selectUsernameBySessionId", method = RequestMethod.POST)
     public Result selectUsernameBySessionId(@RequestBody JSONObject jsonObject) {
-        String sd= jsonObject.getString("sd");
+        String sd = jsonObject.getString("sd");
         return ResultGenerator.genSuccessResult(userService.selectUsernameBySessionId(sd));
     }
 

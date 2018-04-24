@@ -49,20 +49,20 @@ public class ShopNavigationServiceImpl implements ShopNavigationService {
     }
 
     @Override
-    public JSONArray selectShopNavigationShopId(String shopId,int isBackgroundSystem) {
+    public JSONArray selectShopNavigationShopId(String shopId, int isBackgroundSystem) {
         JSONObject shopNavigationJsonObject = new JSONObject();
         JSONArray shopNavigationJsonArray = new JSONArray();
         StringBuffer stringBuffer = new StringBuffer();
         stringBuffer.append("[");
 
-        Optional<List<ShopNavigation>> shopNavigationParents ;
+        Optional<List<ShopNavigation>> shopNavigationParents;
         Optional<List<ShopNavigation>> shopNavigationSons;
-        if (isBackgroundSystem ==1){
+        if (isBackgroundSystem == 1) {
             shopNavigationParents = Optional.ofNullable(
                     shopNavigationMapper.selectShopNavigationParentShopIdBS(shopId));
             shopNavigationSons = Optional.ofNullable(
                     shopNavigationMapper.selectShopNavigationSonShopIdBS(shopId));
-        }else {
+        } else {
             shopNavigationParents = Optional.ofNullable(
                     shopNavigationMapper.selectShopNavigationParentShopId(shopId));
             shopNavigationSons = Optional.ofNullable(
@@ -88,10 +88,10 @@ public class ShopNavigationServiceImpl implements ShopNavigationService {
         String str = stringBuffer.substring(0, stringBuffer.length() - 1);
         str += ("]");
 
-        if (str.length()>2) {
+        if (str.length() > 2) {
             JSONArray myJsonArray = JSONArray.parseArray(str);
             return myJsonArray;
-        }else {
+        } else {
             JSONArray myJsonArray = JSONArray.parseArray("[]");
             return myJsonArray;
 
@@ -113,8 +113,8 @@ public class ShopNavigationServiceImpl implements ShopNavigationService {
         JSONObject shopNavigationJsonObject = new JSONObject();
         Optional<List<ShopNavigation>> shopNavigations = Optional.ofNullable(shopNavigationMapper.selectShopNavigationAll());
         shopNavigations.ifPresent(e -> shopNavigationJsonObject.put("shopNavigations", e));
-        long count = PageHelper.count(()->shopNavigationMapper.selectShopNavigationAll());
-        shopNavigationJsonObject.put("count",count);
+        long count = PageHelper.count(() -> shopNavigationMapper.selectShopNavigationAll());
+        shopNavigationJsonObject.put("count", count);
         return shopNavigationJsonObject;
     }
 

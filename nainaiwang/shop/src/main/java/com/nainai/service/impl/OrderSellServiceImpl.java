@@ -20,7 +20,7 @@ import java.util.Optional;
  * Copyright (C) 2018. nainai All Rights Received
  */
 @Service(value = "orderSellService")
-public class OrderSellServiceImpl implements OrderSellService{
+public class OrderSellServiceImpl implements OrderSellService {
     @Autowired
     private OrderSellMapper orderSellMapper;
 
@@ -43,23 +43,23 @@ public class OrderSellServiceImpl implements OrderSellService{
     public JSONObject selectOrderSellId(Integer id) {
         JSONObject orderSellJsonObject = new JSONObject();
         Optional<OrderSell> orderSell = Optional.ofNullable(orderSellMapper.selectByPrimaryKey(id));
-        orderSell.ifPresent(e -> orderSellJsonObject.put("orderSell",e));
+        orderSell.ifPresent(e -> orderSellJsonObject.put("orderSell", e));
         return orderSellJsonObject;
     }
 
     @Override
     public JSONObject selectOrderSellUserId(Integer userId) {
         JSONObject orderSellJsonObject = new JSONObject();
-        Optional <List<OrderSell>> orderSells = Optional.ofNullable(orderSellMapper.selectOrderSellUserId(userId));
-        orderSells.ifPresent(e -> orderSellJsonObject.put("orderSells",e));
+        Optional<List<OrderSell>> orderSells = Optional.ofNullable(orderSellMapper.selectOrderSellUserId(userId));
+        orderSells.ifPresent(e -> orderSellJsonObject.put("orderSells", e));
         return orderSellJsonObject;
     }
 
     @Override
     public JSONObject selectOrderSellAll() {
         JSONObject orderSellJsonObject = new JSONObject();
-        Optional <List<OrderSell>> orderSells = Optional.ofNullable(orderSellMapper.selectOrderSellAll());
-        orderSells.ifPresent(e -> orderSellJsonObject.put("orderSells",e));
+        Optional<List<OrderSell>> orderSells = Optional.ofNullable(orderSellMapper.selectOrderSellAll());
+        orderSells.ifPresent(e -> orderSellJsonObject.put("orderSells", e));
         return orderSellJsonObject;
     }
 
@@ -67,10 +67,10 @@ public class OrderSellServiceImpl implements OrderSellService{
     public JSONObject selectOrderSellAllPage(int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         JSONObject orderSellJsonObject = new JSONObject();
-        Optional <List<OrderSell>> orderSells = Optional.ofNullable(orderSellMapper.selectOrderSellAll());
-        orderSells.ifPresent(e -> orderSellJsonObject.put("orderSells",e));
-        long count = PageHelper.count(()->orderSellMapper.selectOrderSellAll());
-        orderSellJsonObject.put("count",count);
+        Optional<List<OrderSell>> orderSells = Optional.ofNullable(orderSellMapper.selectOrderSellAll());
+        orderSells.ifPresent(e -> orderSellJsonObject.put("orderSells", e));
+        long count = PageHelper.count(() -> orderSellMapper.selectOrderSellAll());
+        orderSellJsonObject.put("count", count);
         return orderSellJsonObject;
 
     }
@@ -79,10 +79,10 @@ public class OrderSellServiceImpl implements OrderSellService{
     public JSONObject selectOrderSellByShopIdPage(int pageNum, int pageSize, String shopId) {
         PageHelper.startPage(pageNum, pageSize);
         JSONObject orderSellJsonObject = new JSONObject();
-        Optional <List<OrderSell>> orderSells = Optional.ofNullable(orderSellMapper.selectOrderSellByShopIdPage(shopId));
-        orderSells.ifPresent(e -> orderSellJsonObject.put("orderSells",e));
-        long count = PageHelper.count(()->orderSellMapper.selectOrderSellByShopIdPage(shopId));
-        orderSellJsonObject.put("count",count);
+        Optional<List<OrderSell>> orderSells = Optional.ofNullable(orderSellMapper.selectOrderSellByShopIdPage(shopId));
+        orderSells.ifPresent(e -> orderSellJsonObject.put("orderSells", e));
+        long count = PageHelper.count(() -> orderSellMapper.selectOrderSellByShopIdPage(shopId));
+        orderSellJsonObject.put("count", count);
         return orderSellJsonObject;
     }
 
@@ -90,28 +90,28 @@ public class OrderSellServiceImpl implements OrderSellService{
     public JSONObject selectOrderSellByShopIdAndStatusPage(int pageNum, int pageSize, String shopId, int contractStatus) {
         PageHelper.startPage(pageNum, pageSize);
         JSONObject orderSellJsonObject = new JSONObject();
-        Optional <List<OrderSell>> orderSells = Optional.ofNullable(orderSellMapper.selectOrderSellByShopIdAndStatusPage(shopId,contractStatus));
-        orderSells.ifPresent(e -> orderSellJsonObject.put("orderSells",e));
-        long count = PageHelper.count(()->orderSellMapper.selectOrderSellByShopIdAndStatusPage(shopId,contractStatus));
-        orderSellJsonObject.put("count",count);
+        Optional<List<OrderSell>> orderSells = Optional.ofNullable(orderSellMapper.selectOrderSellByShopIdAndStatusPage(shopId, contractStatus));
+        orderSells.ifPresent(e -> orderSellJsonObject.put("orderSells", e));
+        long count = PageHelper.count(() -> orderSellMapper.selectOrderSellByShopIdAndStatusPage(shopId, contractStatus));
+        orderSellJsonObject.put("count", count);
         return orderSellJsonObject;
     }
 
     @Override
     public JSONObject selectOrderSellCount(String shopId) {
         JSONObject jsonObject = new JSONObject();
-            long count0 = PageHelper.count(()->orderSellMapper.selectOrderSellByShopIdAndStatusPage(shopId, 0));
-            long count1 = PageHelper.count(()->orderSellMapper.selectOrderSellByShopIdAndStatusPage(shopId, 4));
-            long count2 = PageHelper.count(()->orderSellMapper.selectOrderSellByShopIdAndStatusPage(shopId, 5));
-            long count3 = PageHelper.count(()->orderSellMapper.selectOrderSellByShopIdAndStatusPage(shopId, 6));
-            long count4 = PageHelper.count(()->orderSellMapper.selectOrderSellByShopIdAndStatusPage(shopId, 8));
-            long count5 = PageHelper.count(()->orderSellMapper.selectOrderSellByShopIdAndStatusPage(shopId, 9));
-            jsonObject.put("count0",count0);
-            jsonObject.put("count1",count1);
-            jsonObject.put("count2",count2);
-            jsonObject.put("count3",count3);
-            jsonObject.put("count4",count4);
-            jsonObject.put("count5",count5);
+        long count0 = PageHelper.count(() -> orderSellMapper.selectOrderSellByShopIdAndStatusPage(shopId, 0));
+        long count1 = PageHelper.count(() -> orderSellMapper.selectOrderSellByShopIdAndStatusPage(shopId, 4));
+        long count2 = PageHelper.count(() -> orderSellMapper.selectOrderSellByShopIdAndStatusPage(shopId, 5));
+        long count3 = PageHelper.count(() -> orderSellMapper.selectOrderSellByShopIdAndStatusPage(shopId, 6));
+        long count4 = PageHelper.count(() -> orderSellMapper.selectOrderSellByShopIdAndStatusPage(shopId, 8));
+        long count5 = PageHelper.count(() -> orderSellMapper.selectOrderSellByShopIdAndStatusPage(shopId, 9));
+        jsonObject.put("count0", count0);
+        jsonObject.put("count1", count1);
+        jsonObject.put("count2", count2);
+        jsonObject.put("count3", count3);
+        jsonObject.put("count4", count4);
+        jsonObject.put("count5", count5);
         return jsonObject;
     }
 }

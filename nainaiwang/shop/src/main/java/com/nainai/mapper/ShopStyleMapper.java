@@ -22,6 +22,7 @@ public interface ShopStyleMapper {
 
     /**
      * 根据shopId查找店铺风格
+     *
      * @param shopId
      * @return
      */
@@ -35,6 +36,7 @@ public interface ShopStyleMapper {
 
     /**
      * 查找所有店铺风格
+     *
      * @return
      */
     @Select("select * from shop_style ")
@@ -47,6 +49,7 @@ public interface ShopStyleMapper {
 
     /**
      * 根据店铺id与名称模糊查询店铺风格
+     *
      * @param shopId
      * @param name
      * @return

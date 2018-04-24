@@ -20,7 +20,7 @@ import java.util.Map;
 @RequestMapping(value = "/admin/v1")
 public class QuickRun {
     @RequestMapping(value = "/first", method = RequestMethod.GET)
-    public Map<String, Object> firstResp (HttpServletRequest request){
+    public Map<String, Object> firstResp(HttpServletRequest request) {
         Map<String, Object> map = new HashMap<>();
         request.getSession().setAttribute("request Url", request.getRequestURL());
         map.put("request Url", request.getRequestURL());
@@ -28,7 +28,7 @@ public class QuickRun {
     }
 
     @RequestMapping(value = "/sessions", method = RequestMethod.GET)
-    public Object sessions (HttpServletRequest request){
+    public Object sessions(HttpServletRequest request) {
         Map<String, Object> map = new HashMap<>();
         map.put("sessionId", request.getSession().getId());
         System.out.println(request.getSession().getId());

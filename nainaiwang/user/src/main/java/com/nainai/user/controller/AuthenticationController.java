@@ -27,7 +27,7 @@ public class AuthenticationController {
     @ApiImplicitParams({
             @ApiImplicitParam(dataType = "String", name = "username", value = "用户名")
     })
-    @RequestMapping(value="/company",method = RequestMethod.POST)
+    @RequestMapping(value = "/company", method = RequestMethod.POST)
     public Result test(@RequestBody JSONObject jsonObject) {
         String username = jsonObject.getString("username");
         return ResultGenerator.genSuccessResult(username);
@@ -37,7 +37,7 @@ public class AuthenticationController {
     @ApiImplicitParams({
             @ApiImplicitParam(dataType = "String", name = "username", value = "用户名")
     })
-    @RequestMapping(value="/personal",method = RequestMethod.POST)
+    @RequestMapping(value = "/personal", method = RequestMethod.POST)
     public Result personal(@RequestBody JSONObject jsonObject) {
         String username = jsonObject.getString("username");
         return ResultGenerator.genSuccessResult(username);

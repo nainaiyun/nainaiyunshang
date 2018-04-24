@@ -71,6 +71,6 @@ public interface ShopInfoMapper {
             @Result(column = "create_time", property = "createTime"),
             @Result(column = "update_time", property = "updateTime")
     })
-    List<ShopInfo> selectShopInfoName(String name) ;
+    List<ShopInfo> selectShopInfoName(String name);
 
 }

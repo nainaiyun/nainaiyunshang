@@ -52,7 +52,7 @@ public class ShopCarouselServiceImpl implements ShopCarouselService {
     public JSONObject selectShopCarouselShopId(String shopId, int isBackgroundSystem) {
         JSONObject shopCarouselsJsonObject = new JSONObject();
         Optional<List<ShopCarousel>> shopCarousels;
-        Optional<List<Map<String,String>>> shopCarousels2;
+        Optional<List<Map<String, String>>> shopCarousels2;
         if (isBackgroundSystem == 1) {
             shopCarousels2 = Optional.ofNullable(shopCarouselMapper.selectShopCarouselShopIdBS(shopId));
             shopCarousels2.ifPresent(e -> shopCarouselsJsonObject.put("shopCarousels", e));

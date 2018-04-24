@@ -25,6 +25,7 @@ public class MD5Util {
 
     /**
      * Description 根据键值进行加密
+     *
      * @param data
      * @param key  加密键byte数组
      * @return
@@ -38,6 +39,7 @@ public class MD5Util {
 
     /**
      * Description 根据键值进行解密
+     *
      * @param data
      * @param key  加密键byte数组
      * @return
@@ -50,12 +52,13 @@ public class MD5Util {
             return null;
         BASE64Decoder decoder = new BASE64Decoder();
         byte[] buf = decoder.decodeBuffer(data);
-        byte[] bt = decrypt(buf,key.getBytes());
+        byte[] bt = decrypt(buf, key.getBytes());
         return new String(bt);
     }
 
     /**
      * Description 根据键值进行加密
+     *
      * @param data
      * @param key  加密键byte数组
      * @return
@@ -84,6 +87,7 @@ public class MD5Util {
 
     /**
      * Description 根据键值进行解密
+     *
      * @param data
      * @param key  加密键byte数组
      * @return
@@ -112,6 +116,7 @@ public class MD5Util {
 
     /**
      * Description 获取字符串MD5值
+     *
      * @param sourceStr
      */
     private static String MD5(String sourceStr) {
@@ -145,7 +150,7 @@ public class MD5Util {
         String data = "{devType:\"1\",Sys:\"01\",Name:\"张三\",PoId:\"000002\",TarPho:\"15527609770\",Desc:\"张三偷窃\"}";
         String key = "12345678";//秘钥
         String encode = encrypt(data, key);
-        System.err.println(1+":"+encode);
+        System.err.println(1 + ":" + encode);
         String dcode = decrypt(encode, key);
         System.err.println(dcode);
         System.err.println(MD5("123"));

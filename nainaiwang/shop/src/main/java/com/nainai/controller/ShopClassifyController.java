@@ -66,6 +66,7 @@ public class ShopClassifyController {
         shopClassify.setUpdateTime(TimeUtil.getDate());
         return ResultGenerator.genSuccessResult(shopClassifyService.insertShopClassify(shopClassify));
     }
+
     /**
      * 修改分类信息
      *
@@ -102,6 +103,7 @@ public class ShopClassifyController {
 
         return ResultGenerator.genSuccessResult(shopClassifyService.updateByPrimaryKeySelective(shopClassify));
     }
+
     /**
      * 根据id删除分类信息
      *
@@ -117,6 +119,7 @@ public class ShopClassifyController {
         String id = jsonObject.getString("id");
         return ResultGenerator.genSuccessResult(shopClassifyService.deleteShopClassifyId(id));
     }
+
     /**
      * 查询店铺下的所有分类信息
      *
@@ -132,7 +135,7 @@ public class ShopClassifyController {
     public Result selectShopClassifyByShopId(@RequestBody JSONObject jsonObject) {
         String shopId = jsonObject.getString("shopId");
         int isBackgroundSystem = jsonObject.getInteger("isBackgroundSystem");
-        return ResultGenerator.genSuccessResult(shopClassifyService.selectShopClassifyByShopId(shopId,isBackgroundSystem));
+        return ResultGenerator.genSuccessResult(shopClassifyService.selectShopClassifyByShopId(shopId, isBackgroundSystem));
     }
 
     /**
@@ -146,7 +149,7 @@ public class ShopClassifyController {
             @ApiImplicitParam(dataType = "String", name = "id", value = "分类编号")
 
     })
-    @RequestMapping(value = "/selectShopClassifyId", method = RequestMethod.POST )
+    @RequestMapping(value = "/selectShopClassifyId", method = RequestMethod.POST)
     public Result selectShopClassifyId(@RequestBody JSONObject jsonObject) {
         String id = jsonObject.getString("id");
         return ResultGenerator.genSuccessResult(shopClassifyService.selectShopClassifyId(id));
@@ -167,7 +170,7 @@ public class ShopClassifyController {
     public Result selectShopClassifyAllPage(@RequestBody JSONObject jsonObject) {
         int pageNum = jsonObject.getInteger("pageNum");
         int pageSize = jsonObject.getInteger("pageSize");
-        return ResultGenerator.genSuccessResult(shopClassifyService.selectShopClassifyAllPage(pageNum,pageSize));
+        return ResultGenerator.genSuccessResult(shopClassifyService.selectShopClassifyAllPage(pageNum, pageSize));
     }
 
 }

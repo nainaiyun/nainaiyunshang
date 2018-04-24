@@ -21,6 +21,7 @@ public interface ShopNewsMapper {
 
     /**
      * 根据shopId查找店铺资讯
+     *
      * @param shopId
      * @return
      */
@@ -30,6 +31,7 @@ public interface ShopNewsMapper {
 
     /**
      * 根据shopId查找店铺资讯:后台系统
+     *
      * @param shopId
      * @return
      */
@@ -39,6 +41,7 @@ public interface ShopNewsMapper {
 
     /**
      * 查找所有店铺资讯
+     *
      * @return
      */
     @Select("select * from shop_news ")
@@ -46,6 +49,7 @@ public interface ShopNewsMapper {
 
     /**
      * 根据店铺id与名称模糊查询店铺资讯
+     *
      * @param shopId
      * @param name
      * @return

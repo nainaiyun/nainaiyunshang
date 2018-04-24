@@ -1,4 +1,4 @@
-package com.nainai.common;
+package com.nainai.mobile.common;
 
 /**
  * Created by haopeng yan on 2018/3/8 11:40.

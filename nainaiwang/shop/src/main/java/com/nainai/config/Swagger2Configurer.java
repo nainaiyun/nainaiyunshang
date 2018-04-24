@@ -14,6 +14,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 /**
  * Created by haopeng yan on 2018/1/4 16:35.
  * Swagger2自动生成RESTful API文档配置类
+ *
  * @author haopeng yan
  * @version 1.0
  * @since 1.0

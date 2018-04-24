@@ -22,6 +22,7 @@ public interface ShopClassifyMapper {
 
     /**
      * 根据shopId查找分类信息
+     *
      * @param shopId
      * @return
      */
@@ -36,6 +37,7 @@ public interface ShopClassifyMapper {
 
     /**
      * 根据shopId查找分类信息：后台系统
+     *
      * @param shopId
      * @return
      */
@@ -47,8 +49,10 @@ public interface ShopClassifyMapper {
             @Result(column = "update_time", property = "updateTime")
     })
     List<ShopClassify> selectShopClassifyByShopIdBS(String shopId);
+
     /**
      * 查找所有分类信息
+     *
      * @return
      */
     @Select("select * from shop_classify order by create_time desc ")
@@ -56,6 +60,7 @@ public interface ShopClassifyMapper {
 
     /**
      * 根据店铺id与名称模糊查询分类信息
+     *
      * @param shopId
      * @param name
      * @return

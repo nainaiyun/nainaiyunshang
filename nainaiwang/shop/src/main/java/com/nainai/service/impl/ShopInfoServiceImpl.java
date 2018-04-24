@@ -97,8 +97,6 @@ public class ShopInfoServiceImpl implements ShopInfoService {
     }
 
 
-
-
     @Override
     public JSONObject selectShopInfoUserId(Integer userId) {
         JSONObject shopInfoJsonObject = new JSONObject();
@@ -123,8 +121,8 @@ public class ShopInfoServiceImpl implements ShopInfoService {
         Optional<List<ShopInfo>> shopInfos = Optional.ofNullable(shopInfoMapper.selectShopInfoAll());
         shopInfos.ifPresent(e -> shopInfoJsonObject.put("shopInfos", e));
 
-        long count = PageHelper.count(()->shopInfoMapper.selectShopInfoAll());
-        shopInfoJsonObject.put("count",count);
+        long count = PageHelper.count(() -> shopInfoMapper.selectShopInfoAll());
+        shopInfoJsonObject.put("count", count);
         return shopInfoJsonObject;
     }
 
@@ -146,17 +144,17 @@ public class ShopInfoServiceImpl implements ShopInfoService {
                     }
             );
         });
-        if (stringBuffer.length()>0){
+        if (stringBuffer.length() > 0) {
             stringBufferTo.append(stringBuffer.substring(0, stringBuffer.length() - 1));
         }
         stringBufferTo.append("]");
-        
+
         JSONArray myJsonArray = JSONArray.parseArray(stringBufferTo.toString());
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("selectShopnfoAndSpread",myJsonArray);
+        jsonObject.put("selectShopnfoAndSpread", myJsonArray);
 
-        long count = PageHelper.count(()->shopInfoMapper.selectShopInfoName(name));
-        jsonObject.put("count",count);
+        long count = PageHelper.count(() -> shopInfoMapper.selectShopInfoName(name));
+        jsonObject.put("count", count);
 
         return jsonObject;
     }
@@ -168,26 +166,26 @@ public class ShopInfoServiceImpl implements ShopInfoService {
         Map map = new HashMap(10);
         Optional<ShopInfo> optionalShopInfo = Optional.ofNullable(shopInfoMapper.selectByPrimaryKey(id));
 
-        optionalShopInfo.ifPresent(e->{
-            Optional<Map<String ,String>> optionalMap = Optional.ofNullable(userMapper.selectAccount(e.getUserId()));
-            optionalMap.ifPresent(f->jsonObject.put("money",f));
+        optionalShopInfo.ifPresent(e -> {
+            Optional<Map<String, String>> optionalMap = Optional.ofNullable(userMapper.selectAccount(e.getUserId()));
+            optionalMap.ifPresent(f -> jsonObject.put("money", f));
         });
 
         /*获取本月订单总额*/
-        Optional<Map<String,String>> optionalMap = Optional.ofNullable(orderSellMapper.selectAmount(id));
-        optionalMap.ifPresent(e->jsonObject.put("orderAll",e));
+        Optional<Map<String, String>> optionalMap = Optional.ofNullable(orderSellMapper.selectAmount(id));
+        optionalMap.ifPresent(e -> jsonObject.put("orderAll", e));
 
         /*获取本月支付订单总额*/
-        Optional<Map<String,String>> optionalPayMap = Optional.ofNullable(orderSellMapper.selectPayAmount(id,8));
-        optionalPayMap.ifPresent(e->jsonObject.put("orderPay",e));
+        Optional<Map<String, String>> optionalPayMap = Optional.ofNullable(orderSellMapper.selectPayAmount(id, 8));
+        optionalPayMap.ifPresent(e -> jsonObject.put("orderPay", e));
 
         /*获取本月支付买家数量*/
-        Optional<Map<String,String>> optionalPayCountMap = Optional.ofNullable(orderSellMapper.selectPayCount(id,8));
-        optionalPayCountMap.ifPresent(e->jsonObject.put("orderCount",e));
+        Optional<Map<String, String>> optionalPayCountMap = Optional.ofNullable(orderSellMapper.selectPayCount(id, 8));
+        optionalPayCountMap.ifPresent(e -> jsonObject.put("orderCount", e));
 
         /*获取店铺浏览量*/
         Optional<ShopBrowse> optionalShopBrowse = Optional.ofNullable(shopBrowseMapper.selectShopBrowseShopId(id));
-        optionalShopBrowse.ifPresent(e->jsonObject.put("optionalShopBrowse",e));
+        optionalShopBrowse.ifPresent(e -> jsonObject.put("optionalShopBrowse", e));
 
         return jsonObject;
     }

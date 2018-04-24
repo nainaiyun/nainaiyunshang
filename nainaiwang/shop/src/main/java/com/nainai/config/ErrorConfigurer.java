@@ -16,15 +16,15 @@ import org.springframework.http.HttpStatus;
  * Copyright (C) 2018. nainai All Rights Received
  */
 @Configuration
-public class ErrorConfigurer  {
+public class ErrorConfigurer {
     @Bean
-    public EmbeddedServletContainerCustomizer containerCustomizer(){
-        return  new EmbeddedServletContainerCustomizer() {
+    public EmbeddedServletContainerCustomizer containerCustomizer() {
+        return new EmbeddedServletContainerCustomizer() {
             @Override
             public void customize(ConfigurableEmbeddedServletContainer container) {
-                container.addErrorPages(new ErrorPage(HttpStatus.BAD_REQUEST,"/400"));
-                container.addErrorPages(new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR,"/500"));
-                container.addErrorPages(new ErrorPage(HttpStatus.NOT_FOUND,"/404"));
+                container.addErrorPages(new ErrorPage(HttpStatus.BAD_REQUEST, "/400"));
+                container.addErrorPages(new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/500"));
+                container.addErrorPages(new ErrorPage(HttpStatus.NOT_FOUND, "/404"));
             }
         };
     }

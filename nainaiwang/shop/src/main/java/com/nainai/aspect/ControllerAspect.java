@@ -17,6 +17,7 @@ import java.io.InputStreamReader;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Map;
+
 /**
  * Created by haopeng yan on 2018/1/4 17:35.
  *
@@ -36,7 +37,7 @@ public class ControllerAspect {
     }
 
     @Before("log()")
-    public void doBefore(){
+    public void doBefore() {
         ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = requestAttributes.getRequest();
         JSONObject logInfos = new JSONObject();
