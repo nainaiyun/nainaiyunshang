@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nainai.mobile.mapper.ProductsMapper">
+    <resultMap id="BaseResultMap" type="com.nainai.mobile.domain.Products">
+        <constructor>
+            <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="user_id" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="shop_id" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="classify_id" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="module_id" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="navigation_id" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="name" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="market_id" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="cate_id" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="attribute" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="unit" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="produce_area" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="currency" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="quantity" javaType="java.math.BigDecimal" jdbcType="DECIMAL"/>
+            <arg column="freeze" javaType="java.math.BigDecimal" jdbcType="DECIMAL"/>
+            <arg column="sell" javaType="java.math.BigDecimal" jdbcType="DECIMAL"/>
+            <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+            <arg column="sort" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="note" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="img" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, user_id, shop_id, classify_id, module_id, navigation_id, name, market_id, cate_id, 
+    attribute, unit, produce_area, currency, quantity, freeze, sell, create_time, sort, 
+    note, img
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from products
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from products
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.nainai.mobile.domain.Products">
+    insert into products (id, user_id, shop_id, 
+      classify_id, module_id, navigation_id, 
+      name, market_id, cate_id, 
+      attribute, unit, produce_area, 
+      currency, quantity, freeze, 
+      sell, create_time, sort, 
+      note, img)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{shopId,jdbcType=VARCHAR}, 
+      #{classifyId,jdbcType=VARCHAR}, #{moduleId,jdbcType=VARCHAR}, #{navigationId,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{marketId,jdbcType=INTEGER}, #{cateId,jdbcType=INTEGER}, 
+      #{attribute,jdbcType=VARCHAR}, #{unit,jdbcType=VARCHAR}, #{produceArea,jdbcType=VARCHAR}, 
+      #{currency,jdbcType=INTEGER}, #{quantity,jdbcType=DECIMAL}, #{freeze,jdbcType=DECIMAL}, 
+      #{sell,jdbcType=DECIMAL}, #{createTime,jdbcType=TIMESTAMP}, #{sort,jdbcType=INTEGER}, 
+      #{note,jdbcType=VARCHAR}, #{img,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.nainai.mobile.domain.Products">
+        insert into products
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="shopId != null">
+                shop_id,
+            </if>
+            <if test="classifyId != null">
+                classify_id,
+            </if>
+            <if test="moduleId != null">
+                module_id,
+            </if>
+            <if test="navigationId != null">
+                navigation_id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="marketId != null">
+                market_id,
+            </if>
+            <if test="cateId != null">
+                cate_id,
+            </if>
+            <if test="attribute != null">
+                attribute,
+            </if>
+            <if test="unit != null">
+                unit,
+            </if>
+            <if test="produceArea != null">
+                produce_area,
+            </if>
+            <if test="currency != null">
+                currency,
+            </if>
+            <if test="quantity != null">
+                quantity,
+            </if>
+            <if test="freeze != null">
+                freeze,
+            </if>
+            <if test="sell != null">
+                sell,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="sort != null">
+                sort,
+            </if>
+            <if test="note != null">
+                note,
+            </if>
+            <if test="img != null">
+                img,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="shopId != null">
+                #{shopId,jdbcType=VARCHAR},
+            </if>
+            <if test="classifyId != null">
+                #{classifyId,jdbcType=VARCHAR},
+            </if>
+            <if test="moduleId != null">
+                #{moduleId,jdbcType=VARCHAR},
+            </if>
+            <if test="navigationId != null">
+                #{navigationId,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="marketId != null">
+                #{marketId,jdbcType=INTEGER},
+            </if>
+            <if test="cateId != null">
+                #{cateId,jdbcType=INTEGER},
+            </if>
+            <if test="attribute != null">
+                #{attribute,jdbcType=VARCHAR},
+            </if>
+            <if test="unit != null">
+                #{unit,jdbcType=VARCHAR},
+            </if>
+            <if test="produceArea != null">
+                #{produceArea,jdbcType=VARCHAR},
+            </if>
+            <if test="currency != null">
+                #{currency,jdbcType=INTEGER},
+            </if>
+            <if test="quantity != null">
+                #{quantity,jdbcType=DECIMAL},
+            </if>
+            <if test="freeze != null">
+                #{freeze,jdbcType=DECIMAL},
+            </if>
+            <if test="sell != null">
+                #{sell,jdbcType=DECIMAL},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="sort != null">
+                #{sort,jdbcType=INTEGER},
+            </if>
+            <if test="note != null">
+                #{note,jdbcType=VARCHAR},
+            </if>
+            <if test="img != null">
+                #{img,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.nainai.mobile.domain.Products">
+        update products
+        <set>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="shopId != null">
+                shop_id = #{shopId,jdbcType=VARCHAR},
+            </if>
+            <if test="classifyId != null">
+                classify_id = #{classifyId,jdbcType=VARCHAR},
+            </if>
+            <if test="moduleId != null">
+                module_id = #{moduleId,jdbcType=VARCHAR},
+            </if>
+            <if test="navigationId != null">
+                navigation_id = #{navigationId,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="marketId != null">
+                market_id = #{marketId,jdbcType=INTEGER},
+            </if>
+            <if test="cateId != null">
+                cate_id = #{cateId,jdbcType=INTEGER},
+            </if>
+            <if test="attribute != null">
+                attribute = #{attribute,jdbcType=VARCHAR},
+            </if>
+            <if test="unit != null">
+                unit = #{unit,jdbcType=VARCHAR},
+            </if>
+            <if test="produceArea != null">
+                produce_area = #{produceArea,jdbcType=VARCHAR},
+            </if>
+            <if test="currency != null">
+                currency = #{currency,jdbcType=INTEGER},
+            </if>
+            <if test="quantity != null">
+                quantity = #{quantity,jdbcType=DECIMAL},
+            </if>
+            <if test="freeze != null">
+                freeze = #{freeze,jdbcType=DECIMAL},
+            </if>
+            <if test="sell != null">
+                sell = #{sell,jdbcType=DECIMAL},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="sort != null">
+                sort = #{sort,jdbcType=INTEGER},
+            </if>
+            <if test="note != null">
+                note = #{note,jdbcType=VARCHAR},
+            </if>
+            <if test="img != null">
+                img = #{img,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.nainai.mobile.domain.Products">
+    update products
+    set user_id = #{userId,jdbcType=INTEGER},
+      shop_id = #{shopId,jdbcType=VARCHAR},
+      classify_id = #{classifyId,jdbcType=VARCHAR},
+      module_id = #{moduleId,jdbcType=VARCHAR},
+      navigation_id = #{navigationId,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      market_id = #{marketId,jdbcType=INTEGER},
+      cate_id = #{cateId,jdbcType=INTEGER},
+      attribute = #{attribute,jdbcType=VARCHAR},
+      unit = #{unit,jdbcType=VARCHAR},
+      produce_area = #{produceArea,jdbcType=VARCHAR},
+      currency = #{currency,jdbcType=INTEGER},
+      quantity = #{quantity,jdbcType=DECIMAL},
+      freeze = #{freeze,jdbcType=DECIMAL},
+      sell = #{sell,jdbcType=DECIMAL},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      sort = #{sort,jdbcType=INTEGER},
+      note = #{note,jdbcType=VARCHAR},
+      img = #{img,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
