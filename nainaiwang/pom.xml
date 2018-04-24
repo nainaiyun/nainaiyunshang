@@ -24,6 +24,7 @@
         <module>shop</module>
         <module>user</module>
         <module>mobile</module>
+        <module>smallprogram</module>
     </modules>
 
     <properties>
