@@ -1,54 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.nainai.mobile.mapper.BidMapper">
-    <resultMap id="BaseResultMap" type="com.nainai.mobile.domain.Bid">
-        <constructor>
-            <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER"/>
-            <arg column="no" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <arg column="mode" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <arg column="user_id" javaType="java.lang.Integer" jdbcType="INTEGER"/>
-            <arg column="yq_user" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <arg column="doc" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <arg column="top_cate" javaType="java.lang.Integer" jdbcType="INTEGER"/>
-            <arg column="pro_name" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <arg column="pro_address" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <arg column="begin_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
-            <arg column="end_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
-            <arg column="open_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
-            <arg column="bid_require" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <arg column="pro_brief" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <arg column="bid_content" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <arg column="pack_type" javaType="java.lang.Integer" jdbcType="INTEGER"/>
-            <arg column="eq" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <arg column="doc_begin" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
-            <arg column="doc_price" javaType="java.math.BigDecimal" jdbcType="DECIMAL"/>
-            <arg column="supply_bail" javaType="java.math.BigDecimal" jdbcType="DECIMAL"/>
-            <arg column="open_way" javaType="java.lang.Integer" jdbcType="INTEGER"/>
-            <arg column="pay_way" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <arg column="other" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <arg column="bid_person" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <arg column="cont_person" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <arg column="cont_address" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <arg column="cont_email" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <arg column="cont_phone" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <arg column="cont_tax" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <arg column="agent" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <arg column="agent_person" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <arg column="agent_address" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <arg column="agent_email" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <arg column="agent_phone" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <arg column="agent_tax" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <arg column="bail" javaType="java.math.BigDecimal" jdbcType="DECIMAL"/>
-            <arg column="bail_pay_way" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <arg column="bail_is_refund" javaType="java.lang.Integer" jdbcType="INTEGER"/>
-            <arg column="status" javaType="java.lang.Integer" jdbcType="INTEGER"/>
-            <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
-            <arg column="admin" javaType="java.lang.Integer" jdbcType="INTEGER"/>
-            <arg column="admin_message" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <arg column="shop_id" javaType="java.lang.String" jdbcType="VARCHAR"/>
-        </constructor>
-    </resultMap>
-    <sql id="Base_Column_List">
+  <resultMap id="BaseResultMap" type="com.nainai.mobile.domain.Bid">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="mode" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="user_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="yq_user" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="doc" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="top_cate" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="pro_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="pro_address" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="begin_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="end_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="open_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="bid_require" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="pro_brief" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="bid_content" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="pack_type" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="eq" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="doc_begin" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="doc_price" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="supply_bail" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="open_way" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="pay_way" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="other" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="bid_person" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="cont_person" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="cont_address" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="cont_email" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="cont_phone" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="cont_tax" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="agent" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="agent_person" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="agent_address" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="agent_email" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="agent_phone" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="agent_tax" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="bail" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="bail_pay_way" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="bail_is_refund" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="status" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="admin" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="admin_message" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="shop_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
     id, no, mode, user_id, yq_user, doc, top_cate, pro_name, pro_address, begin_time, 
     end_time, open_time, bid_require, pro_brief, bid_content, pack_type, eq, doc_begin, 
     doc_price, supply_bail, open_way, pay_way, other, bid_person, cont_person, cont_address, 
@@ -56,17 +56,17 @@
     agent_phone, agent_tax, bail, bail_pay_way, bail_is_refund, status, create_time, 
     admin, admin_message, shop_id
   </sql>
-    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List"/>
-        from bid
-        where id = #{id,jdbcType=INTEGER}
-    </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bid
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from bid
     where id = #{id,jdbcType=INTEGER}
   </delete>
-    <insert id="insert" parameterType="com.nainai.mobile.domain.Bid">
+  <insert id="insert" parameterType="com.nainai.mobile.domain.Bid">
     insert into bid (id, no, mode, 
       user_id, yq_user, doc, 
       top_cate, pro_name, pro_address, 
@@ -98,404 +98,404 @@
       #{createTime,jdbcType=TIMESTAMP}, #{admin,jdbcType=INTEGER}, #{adminMessage,jdbcType=VARCHAR}, 
       #{shopId,jdbcType=VARCHAR})
   </insert>
-    <insert id="insertSelective" parameterType="com.nainai.mobile.domain.Bid">
-        insert into bid
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="id != null">
-                id,
-            </if>
-            <if test="no != null">
-                no,
-            </if>
-            <if test="mode != null">
-                mode,
-            </if>
-            <if test="userId != null">
-                user_id,
-            </if>
-            <if test="yqUser != null">
-                yq_user,
-            </if>
-            <if test="doc != null">
-                doc,
-            </if>
-            <if test="topCate != null">
-                top_cate,
-            </if>
-            <if test="proName != null">
-                pro_name,
-            </if>
-            <if test="proAddress != null">
-                pro_address,
-            </if>
-            <if test="beginTime != null">
-                begin_time,
-            </if>
-            <if test="endTime != null">
-                end_time,
-            </if>
-            <if test="openTime != null">
-                open_time,
-            </if>
-            <if test="bidRequire != null">
-                bid_require,
-            </if>
-            <if test="proBrief != null">
-                pro_brief,
-            </if>
-            <if test="bidContent != null">
-                bid_content,
-            </if>
-            <if test="packType != null">
-                pack_type,
-            </if>
-            <if test="eq != null">
-                eq,
-            </if>
-            <if test="docBegin != null">
-                doc_begin,
-            </if>
-            <if test="docPrice != null">
-                doc_price,
-            </if>
-            <if test="supplyBail != null">
-                supply_bail,
-            </if>
-            <if test="openWay != null">
-                open_way,
-            </if>
-            <if test="payWay != null">
-                pay_way,
-            </if>
-            <if test="other != null">
-                other,
-            </if>
-            <if test="bidPerson != null">
-                bid_person,
-            </if>
-            <if test="contPerson != null">
-                cont_person,
-            </if>
-            <if test="contAddress != null">
-                cont_address,
-            </if>
-            <if test="contEmail != null">
-                cont_email,
-            </if>
-            <if test="contPhone != null">
-                cont_phone,
-            </if>
-            <if test="contTax != null">
-                cont_tax,
-            </if>
-            <if test="agent != null">
-                agent,
-            </if>
-            <if test="agentPerson != null">
-                agent_person,
-            </if>
-            <if test="agentAddress != null">
-                agent_address,
-            </if>
-            <if test="agentEmail != null">
-                agent_email,
-            </if>
-            <if test="agentPhone != null">
-                agent_phone,
-            </if>
-            <if test="agentTax != null">
-                agent_tax,
-            </if>
-            <if test="bail != null">
-                bail,
-            </if>
-            <if test="bailPayWay != null">
-                bail_pay_way,
-            </if>
-            <if test="bailIsRefund != null">
-                bail_is_refund,
-            </if>
-            <if test="status != null">
-                status,
-            </if>
-            <if test="createTime != null">
-                create_time,
-            </if>
-            <if test="admin != null">
-                admin,
-            </if>
-            <if test="adminMessage != null">
-                admin_message,
-            </if>
-            <if test="shopId != null">
-                shop_id,
-            </if>
-        </trim>
-        <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="id != null">
-                #{id,jdbcType=INTEGER},
-            </if>
-            <if test="no != null">
-                #{no,jdbcType=VARCHAR},
-            </if>
-            <if test="mode != null">
-                #{mode,jdbcType=VARCHAR},
-            </if>
-            <if test="userId != null">
-                #{userId,jdbcType=INTEGER},
-            </if>
-            <if test="yqUser != null">
-                #{yqUser,jdbcType=VARCHAR},
-            </if>
-            <if test="doc != null">
-                #{doc,jdbcType=VARCHAR},
-            </if>
-            <if test="topCate != null">
-                #{topCate,jdbcType=INTEGER},
-            </if>
-            <if test="proName != null">
-                #{proName,jdbcType=VARCHAR},
-            </if>
-            <if test="proAddress != null">
-                #{proAddress,jdbcType=VARCHAR},
-            </if>
-            <if test="beginTime != null">
-                #{beginTime,jdbcType=TIMESTAMP},
-            </if>
-            <if test="endTime != null">
-                #{endTime,jdbcType=TIMESTAMP},
-            </if>
-            <if test="openTime != null">
-                #{openTime,jdbcType=TIMESTAMP},
-            </if>
-            <if test="bidRequire != null">
-                #{bidRequire,jdbcType=VARCHAR},
-            </if>
-            <if test="proBrief != null">
-                #{proBrief,jdbcType=VARCHAR},
-            </if>
-            <if test="bidContent != null">
-                #{bidContent,jdbcType=VARCHAR},
-            </if>
-            <if test="packType != null">
-                #{packType,jdbcType=INTEGER},
-            </if>
-            <if test="eq != null">
-                #{eq,jdbcType=VARCHAR},
-            </if>
-            <if test="docBegin != null">
-                #{docBegin,jdbcType=TIMESTAMP},
-            </if>
-            <if test="docPrice != null">
-                #{docPrice,jdbcType=DECIMAL},
-            </if>
-            <if test="supplyBail != null">
-                #{supplyBail,jdbcType=DECIMAL},
-            </if>
-            <if test="openWay != null">
-                #{openWay,jdbcType=INTEGER},
-            </if>
-            <if test="payWay != null">
-                #{payWay,jdbcType=VARCHAR},
-            </if>
-            <if test="other != null">
-                #{other,jdbcType=VARCHAR},
-            </if>
-            <if test="bidPerson != null">
-                #{bidPerson,jdbcType=VARCHAR},
-            </if>
-            <if test="contPerson != null">
-                #{contPerson,jdbcType=VARCHAR},
-            </if>
-            <if test="contAddress != null">
-                #{contAddress,jdbcType=VARCHAR},
-            </if>
-            <if test="contEmail != null">
-                #{contEmail,jdbcType=VARCHAR},
-            </if>
-            <if test="contPhone != null">
-                #{contPhone,jdbcType=VARCHAR},
-            </if>
-            <if test="contTax != null">
-                #{contTax,jdbcType=VARCHAR},
-            </if>
-            <if test="agent != null">
-                #{agent,jdbcType=VARCHAR},
-            </if>
-            <if test="agentPerson != null">
-                #{agentPerson,jdbcType=VARCHAR},
-            </if>
-            <if test="agentAddress != null">
-                #{agentAddress,jdbcType=VARCHAR},
-            </if>
-            <if test="agentEmail != null">
-                #{agentEmail,jdbcType=VARCHAR},
-            </if>
-            <if test="agentPhone != null">
-                #{agentPhone,jdbcType=VARCHAR},
-            </if>
-            <if test="agentTax != null">
-                #{agentTax,jdbcType=VARCHAR},
-            </if>
-            <if test="bail != null">
-                #{bail,jdbcType=DECIMAL},
-            </if>
-            <if test="bailPayWay != null">
-                #{bailPayWay,jdbcType=VARCHAR},
-            </if>
-            <if test="bailIsRefund != null">
-                #{bailIsRefund,jdbcType=INTEGER},
-            </if>
-            <if test="status != null">
-                #{status,jdbcType=INTEGER},
-            </if>
-            <if test="createTime != null">
-                #{createTime,jdbcType=TIMESTAMP},
-            </if>
-            <if test="admin != null">
-                #{admin,jdbcType=INTEGER},
-            </if>
-            <if test="adminMessage != null">
-                #{adminMessage,jdbcType=VARCHAR},
-            </if>
-            <if test="shopId != null">
-                #{shopId,jdbcType=VARCHAR},
-            </if>
-        </trim>
-    </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.nainai.mobile.domain.Bid">
-        update bid
-        <set>
-            <if test="no != null">
-                no = #{no,jdbcType=VARCHAR},
-            </if>
-            <if test="mode != null">
-                mode = #{mode,jdbcType=VARCHAR},
-            </if>
-            <if test="userId != null">
-                user_id = #{userId,jdbcType=INTEGER},
-            </if>
-            <if test="yqUser != null">
-                yq_user = #{yqUser,jdbcType=VARCHAR},
-            </if>
-            <if test="doc != null">
-                doc = #{doc,jdbcType=VARCHAR},
-            </if>
-            <if test="topCate != null">
-                top_cate = #{topCate,jdbcType=INTEGER},
-            </if>
-            <if test="proName != null">
-                pro_name = #{proName,jdbcType=VARCHAR},
-            </if>
-            <if test="proAddress != null">
-                pro_address = #{proAddress,jdbcType=VARCHAR},
-            </if>
-            <if test="beginTime != null">
-                begin_time = #{beginTime,jdbcType=TIMESTAMP},
-            </if>
-            <if test="endTime != null">
-                end_time = #{endTime,jdbcType=TIMESTAMP},
-            </if>
-            <if test="openTime != null">
-                open_time = #{openTime,jdbcType=TIMESTAMP},
-            </if>
-            <if test="bidRequire != null">
-                bid_require = #{bidRequire,jdbcType=VARCHAR},
-            </if>
-            <if test="proBrief != null">
-                pro_brief = #{proBrief,jdbcType=VARCHAR},
-            </if>
-            <if test="bidContent != null">
-                bid_content = #{bidContent,jdbcType=VARCHAR},
-            </if>
-            <if test="packType != null">
-                pack_type = #{packType,jdbcType=INTEGER},
-            </if>
-            <if test="eq != null">
-                eq = #{eq,jdbcType=VARCHAR},
-            </if>
-            <if test="docBegin != null">
-                doc_begin = #{docBegin,jdbcType=TIMESTAMP},
-            </if>
-            <if test="docPrice != null">
-                doc_price = #{docPrice,jdbcType=DECIMAL},
-            </if>
-            <if test="supplyBail != null">
-                supply_bail = #{supplyBail,jdbcType=DECIMAL},
-            </if>
-            <if test="openWay != null">
-                open_way = #{openWay,jdbcType=INTEGER},
-            </if>
-            <if test="payWay != null">
-                pay_way = #{payWay,jdbcType=VARCHAR},
-            </if>
-            <if test="other != null">
-                other = #{other,jdbcType=VARCHAR},
-            </if>
-            <if test="bidPerson != null">
-                bid_person = #{bidPerson,jdbcType=VARCHAR},
-            </if>
-            <if test="contPerson != null">
-                cont_person = #{contPerson,jdbcType=VARCHAR},
-            </if>
-            <if test="contAddress != null">
-                cont_address = #{contAddress,jdbcType=VARCHAR},
-            </if>
-            <if test="contEmail != null">
-                cont_email = #{contEmail,jdbcType=VARCHAR},
-            </if>
-            <if test="contPhone != null">
-                cont_phone = #{contPhone,jdbcType=VARCHAR},
-            </if>
-            <if test="contTax != null">
-                cont_tax = #{contTax,jdbcType=VARCHAR},
-            </if>
-            <if test="agent != null">
-                agent = #{agent,jdbcType=VARCHAR},
-            </if>
-            <if test="agentPerson != null">
-                agent_person = #{agentPerson,jdbcType=VARCHAR},
-            </if>
-            <if test="agentAddress != null">
-                agent_address = #{agentAddress,jdbcType=VARCHAR},
-            </if>
-            <if test="agentEmail != null">
-                agent_email = #{agentEmail,jdbcType=VARCHAR},
-            </if>
-            <if test="agentPhone != null">
-                agent_phone = #{agentPhone,jdbcType=VARCHAR},
-            </if>
-            <if test="agentTax != null">
-                agent_tax = #{agentTax,jdbcType=VARCHAR},
-            </if>
-            <if test="bail != null">
-                bail = #{bail,jdbcType=DECIMAL},
-            </if>
-            <if test="bailPayWay != null">
-                bail_pay_way = #{bailPayWay,jdbcType=VARCHAR},
-            </if>
-            <if test="bailIsRefund != null">
-                bail_is_refund = #{bailIsRefund,jdbcType=INTEGER},
-            </if>
-            <if test="status != null">
-                status = #{status,jdbcType=INTEGER},
-            </if>
-            <if test="createTime != null">
-                create_time = #{createTime,jdbcType=TIMESTAMP},
-            </if>
-            <if test="admin != null">
-                admin = #{admin,jdbcType=INTEGER},
-            </if>
-            <if test="adminMessage != null">
-                admin_message = #{adminMessage,jdbcType=VARCHAR},
-            </if>
-            <if test="shopId != null">
-                shop_id = #{shopId,jdbcType=VARCHAR},
-            </if>
-        </set>
-        where id = #{id,jdbcType=INTEGER}
-    </update>
-    <update id="updateByPrimaryKey" parameterType="com.nainai.mobile.domain.Bid">
+  <insert id="insertSelective" parameterType="com.nainai.mobile.domain.Bid">
+    insert into bid
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="no != null">
+        no,
+      </if>
+      <if test="mode != null">
+        mode,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="yqUser != null">
+        yq_user,
+      </if>
+      <if test="doc != null">
+        doc,
+      </if>
+      <if test="topCate != null">
+        top_cate,
+      </if>
+      <if test="proName != null">
+        pro_name,
+      </if>
+      <if test="proAddress != null">
+        pro_address,
+      </if>
+      <if test="beginTime != null">
+        begin_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="openTime != null">
+        open_time,
+      </if>
+      <if test="bidRequire != null">
+        bid_require,
+      </if>
+      <if test="proBrief != null">
+        pro_brief,
+      </if>
+      <if test="bidContent != null">
+        bid_content,
+      </if>
+      <if test="packType != null">
+        pack_type,
+      </if>
+      <if test="eq != null">
+        eq,
+      </if>
+      <if test="docBegin != null">
+        doc_begin,
+      </if>
+      <if test="docPrice != null">
+        doc_price,
+      </if>
+      <if test="supplyBail != null">
+        supply_bail,
+      </if>
+      <if test="openWay != null">
+        open_way,
+      </if>
+      <if test="payWay != null">
+        pay_way,
+      </if>
+      <if test="other != null">
+        other,
+      </if>
+      <if test="bidPerson != null">
+        bid_person,
+      </if>
+      <if test="contPerson != null">
+        cont_person,
+      </if>
+      <if test="contAddress != null">
+        cont_address,
+      </if>
+      <if test="contEmail != null">
+        cont_email,
+      </if>
+      <if test="contPhone != null">
+        cont_phone,
+      </if>
+      <if test="contTax != null">
+        cont_tax,
+      </if>
+      <if test="agent != null">
+        agent,
+      </if>
+      <if test="agentPerson != null">
+        agent_person,
+      </if>
+      <if test="agentAddress != null">
+        agent_address,
+      </if>
+      <if test="agentEmail != null">
+        agent_email,
+      </if>
+      <if test="agentPhone != null">
+        agent_phone,
+      </if>
+      <if test="agentTax != null">
+        agent_tax,
+      </if>
+      <if test="bail != null">
+        bail,
+      </if>
+      <if test="bailPayWay != null">
+        bail_pay_way,
+      </if>
+      <if test="bailIsRefund != null">
+        bail_is_refund,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="admin != null">
+        admin,
+      </if>
+      <if test="adminMessage != null">
+        admin_message,
+      </if>
+      <if test="shopId != null">
+        shop_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="no != null">
+        #{no,jdbcType=VARCHAR},
+      </if>
+      <if test="mode != null">
+        #{mode,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="yqUser != null">
+        #{yqUser,jdbcType=VARCHAR},
+      </if>
+      <if test="doc != null">
+        #{doc,jdbcType=VARCHAR},
+      </if>
+      <if test="topCate != null">
+        #{topCate,jdbcType=INTEGER},
+      </if>
+      <if test="proName != null">
+        #{proName,jdbcType=VARCHAR},
+      </if>
+      <if test="proAddress != null">
+        #{proAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="beginTime != null">
+        #{beginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="openTime != null">
+        #{openTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bidRequire != null">
+        #{bidRequire,jdbcType=VARCHAR},
+      </if>
+      <if test="proBrief != null">
+        #{proBrief,jdbcType=VARCHAR},
+      </if>
+      <if test="bidContent != null">
+        #{bidContent,jdbcType=VARCHAR},
+      </if>
+      <if test="packType != null">
+        #{packType,jdbcType=INTEGER},
+      </if>
+      <if test="eq != null">
+        #{eq,jdbcType=VARCHAR},
+      </if>
+      <if test="docBegin != null">
+        #{docBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="docPrice != null">
+        #{docPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="supplyBail != null">
+        #{supplyBail,jdbcType=DECIMAL},
+      </if>
+      <if test="openWay != null">
+        #{openWay,jdbcType=INTEGER},
+      </if>
+      <if test="payWay != null">
+        #{payWay,jdbcType=VARCHAR},
+      </if>
+      <if test="other != null">
+        #{other,jdbcType=VARCHAR},
+      </if>
+      <if test="bidPerson != null">
+        #{bidPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="contPerson != null">
+        #{contPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="contAddress != null">
+        #{contAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="contEmail != null">
+        #{contEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="contPhone != null">
+        #{contPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contTax != null">
+        #{contTax,jdbcType=VARCHAR},
+      </if>
+      <if test="agent != null">
+        #{agent,jdbcType=VARCHAR},
+      </if>
+      <if test="agentPerson != null">
+        #{agentPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="agentAddress != null">
+        #{agentAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="agentEmail != null">
+        #{agentEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="agentPhone != null">
+        #{agentPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="agentTax != null">
+        #{agentTax,jdbcType=VARCHAR},
+      </if>
+      <if test="bail != null">
+        #{bail,jdbcType=DECIMAL},
+      </if>
+      <if test="bailPayWay != null">
+        #{bailPayWay,jdbcType=VARCHAR},
+      </if>
+      <if test="bailIsRefund != null">
+        #{bailIsRefund,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="admin != null">
+        #{admin,jdbcType=INTEGER},
+      </if>
+      <if test="adminMessage != null">
+        #{adminMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.nainai.mobile.domain.Bid">
+    update bid
+    <set>
+      <if test="no != null">
+        no = #{no,jdbcType=VARCHAR},
+      </if>
+      <if test="mode != null">
+        mode = #{mode,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="yqUser != null">
+        yq_user = #{yqUser,jdbcType=VARCHAR},
+      </if>
+      <if test="doc != null">
+        doc = #{doc,jdbcType=VARCHAR},
+      </if>
+      <if test="topCate != null">
+        top_cate = #{topCate,jdbcType=INTEGER},
+      </if>
+      <if test="proName != null">
+        pro_name = #{proName,jdbcType=VARCHAR},
+      </if>
+      <if test="proAddress != null">
+        pro_address = #{proAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="beginTime != null">
+        begin_time = #{beginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="openTime != null">
+        open_time = #{openTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bidRequire != null">
+        bid_require = #{bidRequire,jdbcType=VARCHAR},
+      </if>
+      <if test="proBrief != null">
+        pro_brief = #{proBrief,jdbcType=VARCHAR},
+      </if>
+      <if test="bidContent != null">
+        bid_content = #{bidContent,jdbcType=VARCHAR},
+      </if>
+      <if test="packType != null">
+        pack_type = #{packType,jdbcType=INTEGER},
+      </if>
+      <if test="eq != null">
+        eq = #{eq,jdbcType=VARCHAR},
+      </if>
+      <if test="docBegin != null">
+        doc_begin = #{docBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="docPrice != null">
+        doc_price = #{docPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="supplyBail != null">
+        supply_bail = #{supplyBail,jdbcType=DECIMAL},
+      </if>
+      <if test="openWay != null">
+        open_way = #{openWay,jdbcType=INTEGER},
+      </if>
+      <if test="payWay != null">
+        pay_way = #{payWay,jdbcType=VARCHAR},
+      </if>
+      <if test="other != null">
+        other = #{other,jdbcType=VARCHAR},
+      </if>
+      <if test="bidPerson != null">
+        bid_person = #{bidPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="contPerson != null">
+        cont_person = #{contPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="contAddress != null">
+        cont_address = #{contAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="contEmail != null">
+        cont_email = #{contEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="contPhone != null">
+        cont_phone = #{contPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contTax != null">
+        cont_tax = #{contTax,jdbcType=VARCHAR},
+      </if>
+      <if test="agent != null">
+        agent = #{agent,jdbcType=VARCHAR},
+      </if>
+      <if test="agentPerson != null">
+        agent_person = #{agentPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="agentAddress != null">
+        agent_address = #{agentAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="agentEmail != null">
+        agent_email = #{agentEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="agentPhone != null">
+        agent_phone = #{agentPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="agentTax != null">
+        agent_tax = #{agentTax,jdbcType=VARCHAR},
+      </if>
+      <if test="bail != null">
+        bail = #{bail,jdbcType=DECIMAL},
+      </if>
+      <if test="bailPayWay != null">
+        bail_pay_way = #{bailPayWay,jdbcType=VARCHAR},
+      </if>
+      <if test="bailIsRefund != null">
+        bail_is_refund = #{bailIsRefund,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="admin != null">
+        admin = #{admin,jdbcType=INTEGER},
+      </if>
+      <if test="adminMessage != null">
+        admin_message = #{adminMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.nainai.mobile.domain.Bid">
     update bid
     set no = #{no,jdbcType=VARCHAR},
       mode = #{mode,jdbcType=VARCHAR},

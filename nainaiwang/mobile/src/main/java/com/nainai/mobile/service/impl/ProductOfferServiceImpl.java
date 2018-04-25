@@ -64,11 +64,11 @@ public class ProductOfferServiceImpl implements ProductOfferService {
     @Override
     public JSONObject selectAllProductOffer(Integer pageNum, Integer pageSize) {
         JSONObject jsonObject = new JSONObject();
-        PageHelper.startPage(pageNum, pageSize);
-        Optional<List<ProductOffer>> optional = Optional.ofNullable(productOfferMapper.selectAllProductOffer());
-        optional.ifPresent(e -> jsonObject.put("productOffer", e));
-        long count = PageHelper.count(() -> productOfferMapper.selectAllProductOffer());
-        jsonObject.put("count", count);
+//        PageHelper.startPage(pageNum, pageSize);
+//        Optional<List<ProductOffer>> optional = Optional.ofNullable(productOfferMapper.selectAllProductOffer());
+//        optional.ifPresent(e -> jsonObject.put("productOffer", e));
+//        long count = PageHelper.count(() -> productOfferMapper.selectAllProductOffer());
+//        jsonObject.put("count", count);
         return jsonObject;
     }
 }

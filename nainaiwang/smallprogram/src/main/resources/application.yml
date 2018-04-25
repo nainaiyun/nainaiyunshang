@@ -1,5 +1,5 @@
 server:
-    port: 8083
+    port: 8080
 #    ssl:
 #        key-store: keystore.p12
 #        key-store-password: 123456
@@ -7,7 +7,7 @@ server:
 #        server.ssl.keyAlias: tomcat
 spring:
     application:
-        name: mobile
+        name: smallprogram
     profiles:
         active: dev
     datasource:
@@ -50,9 +50,16 @@ spring:
 #mybatis配置
 mybatis:
     mapper-locations: classpath:mapping/*.xml
-    type-aliases-package: com.nainai.mobile.domain
+    type-aliases-package: com.nainai.smallprogram.domain
     configuration:
         call-setters-on-nulls: true
+logging:
+    level:
+        com:
+          nainai:
+            smallprogram:
+              mapper: debug
+
 
 
 
