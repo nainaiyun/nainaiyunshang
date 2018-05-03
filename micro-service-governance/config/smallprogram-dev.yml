@@ -12,7 +12,7 @@ eureka:
 
     #instance-id: ${spring.application.name}:${random.int}
 server:
-  port: 8080
+  port: 8088
 #server:
 #  port: ${random.int[10000,19999]}
 
