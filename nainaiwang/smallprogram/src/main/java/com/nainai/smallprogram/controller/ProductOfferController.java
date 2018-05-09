@@ -6,14 +6,12 @@ import com.nainai.smallprogram.common.Result;
 import com.nainai.smallprogram.common.ResultGenerator;
 import com.nainai.smallprogram.domain.ProductOffer;
 import com.nainai.smallprogram.service.ProductOfferService;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by haopeng yan on 2018/4/19
@@ -31,90 +29,82 @@ public class ProductOfferController {
     private ProductOfferService productOfferService;
 
     /**
-     * 查询当前店铺下的商品报盘列表信息
-     *
-     * @param jsonObject
+     * 分页查询查询报盘列表信息
+     * @param pageNum
+     * @param pageSize
+     * @param id
+     * @param marketId
+     * @param proName
+     * @param name
      * @return
      */
-    @ApiOperation(value = "查询当前店铺下的商品报盘列表信息", notes = "查询当前店铺下的商品报盘列表信息")
+    @ApiOperation(value = "查询报盘列表信息", notes = "查询报盘列表信息")
     @ApiImplicitParams({
-            @ApiImplicitParam(dataType = "String", name = "id", value = "报盘id"),
-            @ApiImplicitParam(dataType = "String", name = "proName", value = "报盘名称"),
-            @ApiImplicitParam(dataType = "String", name = "moduleId", value = "所属模块编号"),
-            @ApiImplicitParam(dataType = "String", name = "classifyId", value = "所属分类编号"),
-            @ApiImplicitParam(dataType = "String", name = "navigationId", value = "所属导航编号")
+            @ApiImplicitParam(paramType = "query",dataType = "Integer", name = "pageNum", value = "pageNum", required = true),
+            @ApiImplicitParam(paramType = "query",dataType = "Integer", name = "pageSize", value = "pageSize", required = true),
+            @ApiImplicitParam(paramType = "query",dataType = "Integer", name = "id", value = "id", required = true),
+            @ApiImplicitParam(paramType = "query",dataType = "Integer", name = "marketId", value = "marketId", required = true),
+            @ApiImplicitParam(paramType = "query",dataType = "String", name = "proName", value = "proName", required = true),
+            @ApiImplicitParam(paramType = "query",dataType = "String", name = "name", value = "name", required = true),
     })
-    @RequestMapping(value = "/selectProductOfferListingByShopId", method = RequestMethod.POST)
-    public Result selectProductOfferListingByShopId(@RequestBody JSONObject jsonObject) {
-        Integer id = jsonObject.getInteger("id");
-        productOfferService.selectByPrimaryKey(id);
-        return ResultGenerator.genSuccessResult(productOfferService.selectByPrimaryKey(1));
+    @RequestMapping(value = "/findProductOffer", method = RequestMethod.GET)
+    public Result findProductOffer(@RequestParam("pageNum") Integer pageNum,
+                                   @RequestParam("pageSize") Integer pageSize,
+                                   @RequestParam("id") Integer id,
+                                   @RequestParam("marketId") Integer marketId,
+                                   @RequestParam("proName") String proName,
+                                   @RequestParam("name") String name,
+                                   @RequestParam("note") String note
+                                   ) {
+        Map<String ,Object> map = new HashMap<>(10);
+        map.put("pageNum",pageNum);
+        map.put("pageSize",pageSize);
+        map.put("id",id);
+        map.put("marketId",marketId);
+        map.put("proName",proName);
+        map.put("name",name);
+        map.put("note",note);
+        return ResultGenerator.genSuccessResult(productOfferService.findProductOffer(map));
     }
 
     /**
-     * 分页查询当前店铺下的商品报盘列表信息
-     *
-     * @param jsonObject
+     * 查询报盘详情页信息
+     * @param id
      * @return
      */
-    @ApiOperation(value = "查询当前店铺下的商品报盘列表信息", notes = "查询当前店铺下的商品报盘列表信息")
+    @ApiOperation(value = "查询报盘详情页信息", notes = "查询报盘详情页信息")
     @ApiImplicitParams({
-            @ApiImplicitParam(dataType = "String", name = "shopId", value = "店铺编号"),
-            @ApiImplicitParam(dataType = "String", name = "proName", value = "报盘名称"),
-            @ApiImplicitParam(dataType = "String", name = "moduleId", value = "所属模块编号"),
-            @ApiImplicitParam(dataType = "String", name = "classifyId", value = "所属分类编号"),
-            @ApiImplicitParam(dataType = "String", name = "navigationId", value = "所属导航编号")
+            @ApiImplicitParam(paramType = "query",dataType = "Integer", name = "id", value = "id", required = true),
     })
-    @RequestMapping(value = "/selectAllByProductName", method = RequestMethod.POST)
-    public Result selectAllByProductName(@RequestBody JSONObject jsonObject) {
-        Integer pageNum = jsonObject.getInteger("pageNum");
-        Integer pageSize = jsonObject.getInteger("pageSize");
-        String productName = jsonObject.getString("productName");
-        return ResultGenerator.genSuccessResult(productOfferService.selectAllByProductName(pageNum, pageSize,productName));
+    @RequestMapping(value = "/findProductOfferDetails", method = RequestMethod.GET)
+    public Result findProductOfferDetails(@RequestParam("id") Integer id) {
+        Map<String ,Object> map = new HashMap<>(10);
+        map.put("id",id);
+        return ResultGenerator.genSuccessResult(productOfferService.findProductOfferDetails(map));
     }
 
     /**
-     * 分页查询当前店铺下的商品报盘列表信息
-     *
-     * @param jsonObject
+     * 查询报盘统计信息
+     * @param id
      * @return
      */
-    @ApiOperation(value = "查询当前店铺下的商品报盘列表信息", notes = "查询当前店铺下的商品报盘列表信息")
+    @ApiOperation(value = "查询报盘统计信息", notes = "查询报盘统计信息")
     @ApiImplicitParams({
-            @ApiImplicitParam(dataType = "String", name = "shopId", value = "店铺编号"),
-            @ApiImplicitParam(dataType = "String", name = "proName", value = "报盘名称"),
-            @ApiImplicitParam(dataType = "String", name = "moduleId", value = "所属模块编号"),
-            @ApiImplicitParam(dataType = "String", name = "classifyId", value = "所属分类编号"),
-            @ApiImplicitParam(dataType = "String", name = "navigationId", value = "所属导航编号")
+            @ApiImplicitParam(paramType = "query",dataType = "Integer", name = "pageNum", value = "pageNum", required = true),
+            @ApiImplicitParam(paramType = "query",dataType = "Integer", name = "pageSize", value = "pageSize", required = true),
+            @ApiImplicitParam(paramType = "query",dataType = "Integer", name = "id", value = "id", required = true),
     })
-    @RequestMapping(value = "/findProductOffer", method = RequestMethod.POST)
-    public Result findProductOffer(@RequestBody JSONObject jsonObject) {
-        ProductOffer productOffer= new ProductOffer();
-        productOffer.setProName("1");
-        return ResultGenerator.genSuccessResult(productOfferService.findProductOffer(productOffer));
+    @RequestMapping(value = "/findProductOfferStatistics", method = RequestMethod.GET)
+    public Result findProductOfferStatistics(@RequestParam("pageNum") Integer pageNum,
+                                             @RequestParam("pageSize") Integer pageSize,
+                                             @RequestParam("id") Integer id) {
+        Map<String ,Object> map = new HashMap<>(10);
+        map.put("pageNum",pageNum);
+        map.put("pageSize",pageSize);
+        map.put("id",id);
+        return ResultGenerator.genSuccessResult(productOfferService.findProductOfferStatistics(map));
     }
 
-    /**
-     * 分页查询当前店铺下的商品报盘列表信息
-     *
-     * @param jsonObject
-     * @return
-     */
-    @ApiOperation(value = "查询当前店铺下的商品报盘列表信息", notes = "查询当前店铺下的商品报盘列表信息")
-    @ApiImplicitParams({
-            @ApiImplicitParam(dataType = "String", name = "shopId", value = "店铺编号"),
-            @ApiImplicitParam(dataType = "String", name = "proName", value = "报盘名称"),
-            @ApiImplicitParam(dataType = "String", name = "moduleId", value = "所属模块编号"),
-            @ApiImplicitParam(dataType = "String", name = "classifyId", value = "所属分类编号"),
-            @ApiImplicitParam(dataType = "String", name = "navigationId", value = "所属导航编号")
-    })
-    @RequestMapping(value = "/findProductOffer2", method = RequestMethod.POST)
-    public Result findProductOffer2(@RequestBody JSONObject jsonObject) {
-        ProductOffer productOffer= new ProductOffer();
-        productOffer.setProName("1");
-        productOffer.setId(1);
-        return ResultGenerator.genSuccessResult(productOfferService.findProductOffer(productOffer));
-    }
 
 
 }

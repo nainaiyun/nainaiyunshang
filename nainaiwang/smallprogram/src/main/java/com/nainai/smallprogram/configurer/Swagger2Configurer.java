@@ -29,7 +29,7 @@ public class Swagger2Configurer {
                 .apiInfo(apiInfo())
                 .select()
                 /*为当前包路径*/
-                .apis(RequestHandlerSelectors.basePackage("com.nainai.mobile.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.nainai.smallprogram.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }

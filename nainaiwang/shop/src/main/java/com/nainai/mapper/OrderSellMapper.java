@@ -2,6 +2,7 @@ package com.nainai.mapper;
 
 import com.nainai.domain.OrderSell;
 import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 
@@ -64,7 +65,7 @@ public interface OrderSellMapper {
      * @return
      */
     @Select("select * from order_sell where user_id=#{userId} ")
-    @Results({
+    @Results(id = "orderSellResults",value = {
             @Result(column = "shop_id", property = "shopId"),
             @Result(column = "offer_no", property = "offerNo"),
             @Result(column = "offer_id", property = "offerId"),
@@ -98,88 +99,18 @@ public interface OrderSellMapper {
      * @return
      */
     @Select("select * from order_sell ")
-    @Results({
-            @Result(column = "shop_id", property = "shopId"),
-            @Result(column = "offer_no", property = "offerNo"),
-            @Result(column = "offer_id", property = "offerId"),
-            @Result(column = "order_no", property = "orderNo"),
-            @Result(column = "user_id", property = "userId"),
-            @Result(column = "pay_deposit", property = "payDeposit"),
-            @Result(column = "buyer_deposit_payment", property = "buyerDepositPayment"),
-            @Result(column = "pay_deposit_time", property = "payDepositTime"),
-            @Result(column = "buyer_deposit_clientid", property = "buyerDepositClientid"),
-            @Result(column = "pay_retainage", property = "payRetainage"),
-            @Result(column = "retainage_payment", property = "retainagePayment"),
-            @Result(column = "retainage_clientid", property = "retainageClientid"),
-            @Result(column = "contract_status", property = "contractStatus"),
-            @Result(column = "seller_deposit", property = "sellerDeposit"),
-            @Result(column = "seller_deposit_payment", property = "sellerDepositPayment"),
-            @Result(column = "seller_deposit_clientid", property = "sellerDepositClientid"),
-            @Result(column = "jiesuan_prove", property = "jiesuanProve"),
-            @Result(column = "reduce_amount", property = "reduceAmount"),
-            @Result(column = "reduce_remark", property = "reduceRemark"),
-            @Result(column = "create_time", property = "createTime"),
-            @Result(column = "end_time", property = "endTime"),
-            @Result(column = "is_lock", property = "isLock"),
-            @Result(column = "complate_prove", property = "complateProve")
-    })
+    @ResultMap("orderSellResults")
     List<OrderSell> selectOrderSellAll();
 
     @Select("select * from order_sell where shop_id=#{shopId} ")
-    @Results({
-            @Result(column = "shop_id", property = "shopId"),
-            @Result(column = "offer_no", property = "offerNo"),
-            @Result(column = "offer_id", property = "offerId"),
-            @Result(column = "order_no", property = "orderNo"),
-            @Result(column = "user_id", property = "userId"),
-            @Result(column = "pay_deposit", property = "payDeposit"),
-            @Result(column = "buyer_deposit_payment", property = "buyerDepositPayment"),
-            @Result(column = "pay_deposit_time", property = "payDepositTime"),
-            @Result(column = "buyer_deposit_clientid", property = "buyerDepositClientid"),
-            @Result(column = "pay_retainage", property = "payRetainage"),
-            @Result(column = "retainage_payment", property = "retainagePayment"),
-            @Result(column = "retainage_clientid", property = "retainageClientid"),
-            @Result(column = "contract_status", property = "contractStatus"),
-            @Result(column = "seller_deposit", property = "sellerDeposit"),
-            @Result(column = "seller_deposit_payment", property = "sellerDepositPayment"),
-            @Result(column = "seller_deposit_clientid", property = "sellerDepositClientid"),
-            @Result(column = "jiesuan_prove", property = "jiesuanProve"),
-            @Result(column = "reduce_amount", property = "reduceAmount"),
-            @Result(column = "reduce_remark", property = "reduceRemark"),
-            @Result(column = "create_time", property = "createTime"),
-            @Result(column = "end_time", property = "endTime"),
-            @Result(column = "is_lock", property = "isLock"),
-            @Result(column = "complate_prove", property = "complateProve")
-    })
+
+    @ResultMap("orderSellResults")
     List<OrderSell> selectOrderSellByShopIdPage(String shopId);
 
 
     @Select("select * from order_sell where shop_id=#{0} and contract_status=#{1}")
-    @Results({
-            @Result(column = "shop_id", property = "shopId"),
-            @Result(column = "offer_no", property = "offerNo"),
-            @Result(column = "offer_id", property = "offerId"),
-            @Result(column = "order_no", property = "orderNo"),
-            @Result(column = "user_id", property = "userId"),
-            @Result(column = "pay_deposit", property = "payDeposit"),
-            @Result(column = "buyer_deposit_payment", property = "buyerDepositPayment"),
-            @Result(column = "pay_deposit_time", property = "payDepositTime"),
-            @Result(column = "buyer_deposit_clientid", property = "buyerDepositClientid"),
-            @Result(column = "pay_retainage", property = "payRetainage"),
-            @Result(column = "retainage_payment", property = "retainagePayment"),
-            @Result(column = "retainage_clientid", property = "retainageClientid"),
-            @Result(column = "contract_status", property = "contractStatus"),
-            @Result(column = "seller_deposit", property = "sellerDeposit"),
-            @Result(column = "seller_deposit_payment", property = "sellerDepositPayment"),
-            @Result(column = "seller_deposit_clientid", property = "sellerDepositClientid"),
-            @Result(column = "jiesuan_prove", property = "jiesuanProve"),
-            @Result(column = "reduce_amount", property = "reduceAmount"),
-            @Result(column = "reduce_remark", property = "reduceRemark"),
-            @Result(column = "create_time", property = "createTime"),
-            @Result(column = "end_time", property = "endTime"),
-            @Result(column = "is_lock", property = "isLock"),
-            @Result(column = "complate_prove", property = "complateProve")
-    })
+
+    @ResultMap("orderSellResults")
     List<OrderSell> selectOrderSellByShopIdAndStatusPage(String shopId, int contractStatus);
 
     /**

@@ -12,8 +12,8 @@
     <description>eurekaserver</description>
 
     <parent>
-        <groupId>com.nainaiwang</groupId>
-        <artifactId>nainaiwang</artifactId>
+        <groupId>com.nainai</groupId>
+        <artifactId>micro-service-governance</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 

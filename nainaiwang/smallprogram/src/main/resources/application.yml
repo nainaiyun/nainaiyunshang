@@ -1,20 +1,29 @@
 server:
-    port: 8080
-#    ssl:
-#        key-store: keystore.p12
-#        key-store-password: 123456
-#        keyStoreType: PKCS12
+    ssl:
+#        key-store: classpath:1523941138772/1523941138772.pfx
+        key-store: classpath:shop.nainaiwang.com/1525751424482.pfx
+        key-store-password: 1525751424482
+#        key-store-type: RSA
+        keyStoreType: PKCS12
 #        server.ssl.keyAlias: tomcat
 spring:
-    application:
-        name: smallprogram
     profiles:
         active: dev
     datasource:
         name: nn
-        url: jdbc:mysql://localhost:3306/nn?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT&&zeroDateTimeBehavior=convertToNull
-        username: root
-        password: admin
+#        url: jdbc:mysql://47.98.220.94:3306/nn?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT&&zeroDateTimeBehavior=convertToNull
+#        url: jdbc:mysql://172.16.3.41:3306/nn?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT&&zeroDateTimeBehavior=convertToNull
+        url: jdbc:mysql://172.16.2.21:3306/nn?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT&&zeroDateTimeBehavior=convertToNull
+
+#        username: yhp_nnys
+#        password: yhp_nnys1.11
+
+        username: admin
+        password: admin1.11
+
+#        username: root
+#        password: 123456
+
         #druid数据源
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class-name: com.mysql.jdbc.Driver

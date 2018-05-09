@@ -8,21 +8,22 @@ spring:
         config:
             server:
                 git:
-                    uri: https://github.com/yanhaopeng/config.git
-                    searchPaths: shop/
+                    uri: https://github.com/nainaiyun/nainaiyunshang.git
+                    searchPaths: micro-service-governance/config/
+                bootstrap: true
                     #username: yanhaopeng
                     #password: 111111
             label: master
 
-security:
-    basic:
-        enabled: true
-    user:
-        name: yanhaopeng
-        password: 123456
-management:
-    security:
-        enabled: false
+#security:
+#    basic:
+#        enabled: true
+#    user:
+#        name: yanhaopeng
+#        password: 123456
+#management:
+#    security:
+#        enabled: false
 eureka:
     client:
         serviceUrl:
@@ -37,10 +38,10 @@ eureka:
 
 
 #\u6307\u5B9A\u65E5\u5FD7\u8F93\u51FA\u6587\u4EF6
-logging:
-   file: "logs/sso-config.log"
-info:
-   name : "\u914D\u7F6E\u4E2D\u5FC3"
+#logging:
+#   file: "logs/sso-config.log"
+#info:
+#   name : "\u914D\u7F6E\u4E2D\u5FC3"
 #
 #---
 #server:

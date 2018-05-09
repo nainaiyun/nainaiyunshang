@@ -1,17 +1,21 @@
-eureka:
-    client:
-        serviceUrl:
-            defaultZone: http://localhost:8761/eureka/
-server:
-    port: 8769
-spring:
-    application:
-        name: zuul
+
+# routes to url
 zuul:
-    routes:
-        api-a:
-            path: /api-a/**
-            serviceId: shop
-        api-b:
-            path: /api-b/**
-            serviceId: shop
+  routes:
+    #全局设置回话保持
+#    sensitive-headers: true
+    #路由转发
+    api-a:
+      path: /smallprogram/**
+      serviceId: smallprogram
+      #指定路由设置回话保持
+      sensitive-headers: true
+      custom-sensitive-headers: true
+
+    api-b:
+      path: /mobile/**
+      serviceId: mobile
+      sensitive-headers: true
+      custom-sensitive-headers: true
+  #让原本有问题的重定向操作得到正确的处理
+  add-host-header: true

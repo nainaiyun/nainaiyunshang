@@ -1,7 +1,11 @@
 package com.nainai.smallprogram.service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.nainai.smallprogram.domain.ProductAttribute;
 import com.nainai.smallprogram.domain.ProductOffer;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by haopeng yan on 2018/4/19
@@ -28,5 +32,12 @@ public interface ProductOfferService {
 
     JSONObject selectAllByProductName(Integer pageNum, Integer pageSize,String productName);
 
-    JSONObject findProductOffer(ProductOffer productOffer);
+    JSONObject findProductOffer(Map<String,Object> map);
+
+    JSONObject findProductOfferDetails(Map<String,Object> map);
+
+    JSONObject findProductOfferStatistics(Map<String,Object> map);
+
+    JSONObject findProductAttribute (String attrJson);
+
 }
