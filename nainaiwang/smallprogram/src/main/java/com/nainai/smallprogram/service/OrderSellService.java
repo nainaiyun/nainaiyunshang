@@ -1,7 +1,9 @@
 package com.nainai.smallprogram.service;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -15,4 +17,6 @@ import java.util.Map;
 public interface OrderSellService {
 
     JSONObject findorderSell(Map map);
+
+    JSONObject addorderSell(JSONArray jsonArray);
 }

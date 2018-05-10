@@ -105,6 +105,12 @@ public class ProductOfferServiceImpl implements ProductOfferService {
         return jsonObject;
     }
 
+
+    /**
+     * 查询报盘详情
+     * @param map
+     * @return
+     */
     @Override
     public JSONObject findProductOfferDetails(Map<String, Object> map) {
         JSONObject jsonObject = new JSONObject();
@@ -157,6 +163,11 @@ public class ProductOfferServiceImpl implements ProductOfferService {
         return jsonObject;
     }
 
+    /**
+     * 查询大盘列表
+     * @param map
+     * @return
+     */
     @Override
     public JSONObject findProductOfferStatistics(Map<String, Object> map) {
         JSONObject jsonObject = new JSONObject();
@@ -167,7 +178,7 @@ public class ProductOfferServiceImpl implements ProductOfferService {
         Integer pageNum = (Integer) map.get("pageNum");
         Integer pageSize = (Integer) map.get("pageSize");
         Page page = PageHelper.startPage(pageNum, pageSize);
-        Optional<List<Map<String, Object>>> optionalStringObjectMap = Optional.ofNullable(productOfferMapper.findAllProductOfferDetail());
+        Optional<List<Map<String, Object>>> optionalStringObjectMap = Optional.ofNullable(productOfferMapper.findProductOfferStatistics());
         Integer count = Integer.parseInt(String.valueOf(page.getTotal()));
         Integer size = page.size();
         jsonObject.put("count", count);

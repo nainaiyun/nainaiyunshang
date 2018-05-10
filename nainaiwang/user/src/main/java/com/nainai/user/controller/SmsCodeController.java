@@ -51,5 +51,4 @@ public class SmsCodeController {
         resultMap.put("tamp", currentTime);
         return ResultGenerator.genSuccessResult(resultMap);
     }
-
 }

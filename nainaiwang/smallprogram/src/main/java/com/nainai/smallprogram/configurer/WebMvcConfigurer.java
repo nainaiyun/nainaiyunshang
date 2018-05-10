@@ -49,10 +49,11 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
         FastJsonConfig config = new FastJsonConfig();
         //保留空的字段
         config.setSerializerFeatures(SerializerFeature.WriteMapNullValue,
-                /*String null -> ""*/
+                /**String null -> ""*/
                 SerializerFeature.WriteNullStringAsEmpty,
-                /*Number null -> 0*/
+                /**Number null -> 0*/
                 SerializerFeature.WriteNullNumberAsZero);
+
         converter.setFastJsonConfig(config);
         converter.setDefaultCharset(Charset.forName("UTF-8"));
         converters.add(converter);
