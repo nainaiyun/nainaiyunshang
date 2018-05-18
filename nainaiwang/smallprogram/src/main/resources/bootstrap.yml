@@ -13,4 +13,4 @@ spring:
 #          enabled: true
 
 server:
-  port: 443
+  port: 8081

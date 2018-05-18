@@ -1,50 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.nainai.user.mapper.UserMapper">
-    <resultMap id="BaseResultMap" type="com.nainai.user.domain.User">
-        <id column="id" jdbcType="INTEGER" property="id"/>
-        <result column="type" jdbcType="TINYINT" property="type"/>
-        <result column="username" jdbcType="VARCHAR" property="username"/>
-        <result column="true_name" jdbcType="VARCHAR" property="trueName"/>
-        <result column="password" jdbcType="VARCHAR" property="password"/>
-        <result column="credit" jdbcType="DECIMAL" property="credit"/>
-        <result column="mobile" jdbcType="VARCHAR" property="mobile"/>
-        <result column="email" jdbcType="VARCHAR" property="email"/>
-        <result column="head_photo" jdbcType="VARCHAR" property="headPhoto"/>
-        <result column="pid" jdbcType="INTEGER" property="pid"/>
-        <result column="roles" jdbcType="INTEGER" property="roles"/>
-        <result column="status" jdbcType="SMALLINT" property="status"/>
-        <result column="agent" jdbcType="INTEGER" property="agent"/>
-        <result column="agent_pass" jdbcType="VARCHAR" property="agentPass"/>
-        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
-        <result column="login_time" jdbcType="TIMESTAMP" property="loginTime"/>
-        <result column="session_id" jdbcType="VARCHAR" property="sessionId"/>
-        <result column="cert_status" jdbcType="INTEGER" property="certStatus"/>
-        <result column="gid" jdbcType="VARCHAR" property="gid"/>
-        <result column="pay_secret" jdbcType="VARCHAR" property="paySecret"/>
-        <result column="yewu" jdbcType="INTEGER" property="yewu"/>
-        <result column="login_ip" jdbcType="VARCHAR" property="loginIp"/>
-        <result column="user_no" jdbcType="VARCHAR" property="userNo"/>
-        <result column="vip" jdbcType="BIT" property="vip"/>
-        <result column="is_false" jdbcType="INTEGER" property="isFalse"/>
-        <result column="shop_id" jdbcType="VARCHAR" property="shopId"/>
-    </resultMap>
-    <sql id="Base_Column_List">
+  <resultMap id="BaseResultMap" type="com.nainai.user.domain.User">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="type" javaType="java.lang.Byte" jdbcType="TINYINT" />
+      <arg column="username" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="true_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="password" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="credit" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="mobile" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="email" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="head_photo" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="pid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="roles" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="status" javaType="java.lang.Short" jdbcType="SMALLINT" />
+      <arg column="agent" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="agent_pass" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="login_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="session_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="cert_status" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="gid" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="pay_secret" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="yewu" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="login_ip" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="user_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="vip" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="is_false" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="shop_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="wechat_account" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="open_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="union_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
     id, type, username, true_name, password, credit, mobile, email, head_photo, pid, 
     roles, status, agent, agent_pass, create_time, login_time, session_id, cert_status, 
-    gid, pay_secret, yewu, login_ip, user_no, vip, is_false, shop_id
+    gid, pay_secret, yewu, login_ip, user_no, vip, is_false, shop_id, wechat_account, 
+    open_id, union_id
   </sql>
-    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List"/>
-        from user
-        where id = #{id,jdbcType=INTEGER}
-    </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from user
     where id = #{id,jdbcType=INTEGER}
   </delete>
-    <insert id="insert" parameterType="com.nainai.user.domain.User">
+  <insert id="insert" parameterType="com.nainai.user.domain.User">
     insert into user (id, type, username, 
       true_name, password, credit, 
       mobile, email, head_photo, 
@@ -53,7 +59,8 @@
       login_time, session_id, cert_status, 
       gid, pay_secret, yewu, 
       login_ip, user_no, vip, is_false, 
-      shop_id)
+      shop_id, wechat_account, open_id, 
+      union_id)
     values (#{id,jdbcType=INTEGER}, #{type,jdbcType=TINYINT}, #{username,jdbcType=VARCHAR}, 
       #{trueName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{credit,jdbcType=DECIMAL}, 
       #{mobile,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{headPhoto,jdbcType=VARCHAR}, 
@@ -62,253 +69,281 @@
       #{loginTime,jdbcType=TIMESTAMP}, #{sessionId,jdbcType=VARCHAR}, #{certStatus,jdbcType=INTEGER}, 
       #{gid,jdbcType=VARCHAR}, #{paySecret,jdbcType=VARCHAR}, #{yewu,jdbcType=INTEGER}, 
       #{loginIp,jdbcType=VARCHAR}, #{userNo,jdbcType=VARCHAR}, #{vip,jdbcType=BIT}, #{isFalse,jdbcType=INTEGER}, 
-      #{shopId,jdbcType=VARCHAR})
+      #{shopId,jdbcType=VARCHAR}, #{wechatAccount,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR}, 
+      #{unionId,jdbcType=VARCHAR})
   </insert>
-    <insert id="insertSelective" parameterType="com.nainai.user.domain.User">
-        insert into user
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="id != null">
-                id,
-            </if>
-            <if test="type != null">
-                type,
-            </if>
-            <if test="username != null">
-                username,
-            </if>
-            <if test="trueName != null">
-                true_name,
-            </if>
-            <if test="password != null">
-                password,
-            </if>
-            <if test="credit != null">
-                credit,
-            </if>
-            <if test="mobile != null">
-                mobile,
-            </if>
-            <if test="email != null">
-                email,
-            </if>
-            <if test="headPhoto != null">
-                head_photo,
-            </if>
-            <if test="pid != null">
-                pid,
-            </if>
-            <if test="roles != null">
-                roles,
-            </if>
-            <if test="status != null">
-                status,
-            </if>
-            <if test="agent != null">
-                agent,
-            </if>
-            <if test="agentPass != null">
-                agent_pass,
-            </if>
-            <if test="createTime != null">
-                create_time,
-            </if>
-            <if test="loginTime != null">
-                login_time,
-            </if>
-            <if test="sessionId != null">
-                session_id,
-            </if>
-            <if test="certStatus != null">
-                cert_status,
-            </if>
-            <if test="gid != null">
-                gid,
-            </if>
-            <if test="paySecret != null">
-                pay_secret,
-            </if>
-            <if test="yewu != null">
-                yewu,
-            </if>
-            <if test="loginIp != null">
-                login_ip,
-            </if>
-            <if test="userNo != null">
-                user_no,
-            </if>
-            <if test="vip != null">
-                vip,
-            </if>
-            <if test="isFalse != null">
-                is_false,
-            </if>
-            <if test="shopId != null">
-                shop_id,
-            </if>
-        </trim>
-        <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="id != null">
-                #{id,jdbcType=INTEGER},
-            </if>
-            <if test="type != null">
-                #{type,jdbcType=TINYINT},
-            </if>
-            <if test="username != null">
-                #{username,jdbcType=VARCHAR},
-            </if>
-            <if test="trueName != null">
-                #{trueName,jdbcType=VARCHAR},
-            </if>
-            <if test="password != null">
-                #{password,jdbcType=VARCHAR},
-            </if>
-            <if test="credit != null">
-                #{credit,jdbcType=DECIMAL},
-            </if>
-            <if test="mobile != null">
-                #{mobile,jdbcType=VARCHAR},
-            </if>
-            <if test="email != null">
-                #{email,jdbcType=VARCHAR},
-            </if>
-            <if test="headPhoto != null">
-                #{headPhoto,jdbcType=VARCHAR},
-            </if>
-            <if test="pid != null">
-                #{pid,jdbcType=INTEGER},
-            </if>
-            <if test="roles != null">
-                #{roles,jdbcType=INTEGER},
-            </if>
-            <if test="status != null">
-                #{status,jdbcType=SMALLINT},
-            </if>
-            <if test="agent != null">
-                #{agent,jdbcType=INTEGER},
-            </if>
-            <if test="agentPass != null">
-                #{agentPass,jdbcType=VARCHAR},
-            </if>
-            <if test="createTime != null">
-                #{createTime,jdbcType=TIMESTAMP},
-            </if>
-            <if test="loginTime != null">
-                #{loginTime,jdbcType=TIMESTAMP},
-            </if>
-            <if test="sessionId != null">
-                #{sessionId,jdbcType=VARCHAR},
-            </if>
-            <if test="certStatus != null">
-                #{certStatus,jdbcType=INTEGER},
-            </if>
-            <if test="gid != null">
-                #{gid,jdbcType=VARCHAR},
-            </if>
-            <if test="paySecret != null">
-                #{paySecret,jdbcType=VARCHAR},
-            </if>
-            <if test="yewu != null">
-                #{yewu,jdbcType=INTEGER},
-            </if>
-            <if test="loginIp != null">
-                #{loginIp,jdbcType=VARCHAR},
-            </if>
-            <if test="userNo != null">
-                #{userNo,jdbcType=VARCHAR},
-            </if>
-            <if test="vip != null">
-                #{vip,jdbcType=BIT},
-            </if>
-            <if test="isFalse != null">
-                #{isFalse,jdbcType=INTEGER},
-            </if>
-            <if test="shopId != null">
-                #{shopId,jdbcType=VARCHAR},
-            </if>
-        </trim>
-    </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.nainai.user.domain.User">
-        update user
-        <set>
-            <if test="type != null">
-                type = #{type,jdbcType=TINYINT},
-            </if>
-            <if test="username != null">
-                username = #{username,jdbcType=VARCHAR},
-            </if>
-            <if test="trueName != null">
-                true_name = #{trueName,jdbcType=VARCHAR},
-            </if>
-            <if test="password != null">
-                password = #{password,jdbcType=VARCHAR},
-            </if>
-            <if test="credit != null">
-                credit = #{credit,jdbcType=DECIMAL},
-            </if>
-            <if test="mobile != null">
-                mobile = #{mobile,jdbcType=VARCHAR},
-            </if>
-            <if test="email != null">
-                email = #{email,jdbcType=VARCHAR},
-            </if>
-            <if test="headPhoto != null">
-                head_photo = #{headPhoto,jdbcType=VARCHAR},
-            </if>
-            <if test="pid != null">
-                pid = #{pid,jdbcType=INTEGER},
-            </if>
-            <if test="roles != null">
-                roles = #{roles,jdbcType=INTEGER},
-            </if>
-            <if test="status != null">
-                status = #{status,jdbcType=SMALLINT},
-            </if>
-            <if test="agent != null">
-                agent = #{agent,jdbcType=INTEGER},
-            </if>
-            <if test="agentPass != null">
-                agent_pass = #{agentPass,jdbcType=VARCHAR},
-            </if>
-            <if test="createTime != null">
-                create_time = #{createTime,jdbcType=TIMESTAMP},
-            </if>
-            <if test="loginTime != null">
-                login_time = #{loginTime,jdbcType=TIMESTAMP},
-            </if>
-            <if test="sessionId != null">
-                session_id = #{sessionId,jdbcType=VARCHAR},
-            </if>
-            <if test="certStatus != null">
-                cert_status = #{certStatus,jdbcType=INTEGER},
-            </if>
-            <if test="gid != null">
-                gid = #{gid,jdbcType=VARCHAR},
-            </if>
-            <if test="paySecret != null">
-                pay_secret = #{paySecret,jdbcType=VARCHAR},
-            </if>
-            <if test="yewu != null">
-                yewu = #{yewu,jdbcType=INTEGER},
-            </if>
-            <if test="loginIp != null">
-                login_ip = #{loginIp,jdbcType=VARCHAR},
-            </if>
-            <if test="userNo != null">
-                user_no = #{userNo,jdbcType=VARCHAR},
-            </if>
-            <if test="vip != null">
-                vip = #{vip,jdbcType=BIT},
-            </if>
-            <if test="isFalse != null">
-                is_false = #{isFalse,jdbcType=INTEGER},
-            </if>
-            <if test="shopId != null">
-                shop_id = #{shopId,jdbcType=VARCHAR},
-            </if>
-        </set>
-        where id = #{id,jdbcType=INTEGER}
-    </update>
-    <update id="updateByPrimaryKey" parameterType="com.nainai.user.domain.User">
+  <insert id="insertSelective" parameterType="com.nainai.user.domain.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="trueName != null">
+        true_name,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="credit != null">
+        credit,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="headPhoto != null">
+        head_photo,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="roles != null">
+        roles,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="agent != null">
+        agent,
+      </if>
+      <if test="agentPass != null">
+        agent_pass,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="loginTime != null">
+        login_time,
+      </if>
+      <if test="sessionId != null">
+        session_id,
+      </if>
+      <if test="certStatus != null">
+        cert_status,
+      </if>
+      <if test="gid != null">
+        gid,
+      </if>
+      <if test="paySecret != null">
+        pay_secret,
+      </if>
+      <if test="yewu != null">
+        yewu,
+      </if>
+      <if test="loginIp != null">
+        login_ip,
+      </if>
+      <if test="userNo != null">
+        user_no,
+      </if>
+      <if test="vip != null">
+        vip,
+      </if>
+      <if test="isFalse != null">
+        is_false,
+      </if>
+      <if test="shopId != null">
+        shop_id,
+      </if>
+      <if test="wechatAccount != null">
+        wechat_account,
+      </if>
+      <if test="openId != null">
+        open_id,
+      </if>
+      <if test="unionId != null">
+        union_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="trueName != null">
+        #{trueName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="credit != null">
+        #{credit,jdbcType=DECIMAL},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="headPhoto != null">
+        #{headPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="roles != null">
+        #{roles,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="agent != null">
+        #{agent,jdbcType=INTEGER},
+      </if>
+      <if test="agentPass != null">
+        #{agentPass,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginTime != null">
+        #{loginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sessionId != null">
+        #{sessionId,jdbcType=VARCHAR},
+      </if>
+      <if test="certStatus != null">
+        #{certStatus,jdbcType=INTEGER},
+      </if>
+      <if test="gid != null">
+        #{gid,jdbcType=VARCHAR},
+      </if>
+      <if test="paySecret != null">
+        #{paySecret,jdbcType=VARCHAR},
+      </if>
+      <if test="yewu != null">
+        #{yewu,jdbcType=INTEGER},
+      </if>
+      <if test="loginIp != null">
+        #{loginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="userNo != null">
+        #{userNo,jdbcType=VARCHAR},
+      </if>
+      <if test="vip != null">
+        #{vip,jdbcType=BIT},
+      </if>
+      <if test="isFalse != null">
+        #{isFalse,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatAccount != null">
+        #{wechatAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null">
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="unionId != null">
+        #{unionId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.nainai.user.domain.User">
+    update user
+    <set>
+      <if test="type != null">
+        type = #{type,jdbcType=TINYINT},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="trueName != null">
+        true_name = #{trueName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="credit != null">
+        credit = #{credit,jdbcType=DECIMAL},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="headPhoto != null">
+        head_photo = #{headPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="roles != null">
+        roles = #{roles,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="agent != null">
+        agent = #{agent,jdbcType=INTEGER},
+      </if>
+      <if test="agentPass != null">
+        agent_pass = #{agentPass,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginTime != null">
+        login_time = #{loginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sessionId != null">
+        session_id = #{sessionId,jdbcType=VARCHAR},
+      </if>
+      <if test="certStatus != null">
+        cert_status = #{certStatus,jdbcType=INTEGER},
+      </if>
+      <if test="gid != null">
+        gid = #{gid,jdbcType=VARCHAR},
+      </if>
+      <if test="paySecret != null">
+        pay_secret = #{paySecret,jdbcType=VARCHAR},
+      </if>
+      <if test="yewu != null">
+        yewu = #{yewu,jdbcType=INTEGER},
+      </if>
+      <if test="loginIp != null">
+        login_ip = #{loginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="userNo != null">
+        user_no = #{userNo,jdbcType=VARCHAR},
+      </if>
+      <if test="vip != null">
+        vip = #{vip,jdbcType=BIT},
+      </if>
+      <if test="isFalse != null">
+        is_false = #{isFalse,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatAccount != null">
+        wechat_account = #{wechatAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null">
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="unionId != null">
+        union_id = #{unionId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.nainai.user.domain.User">
     update user
     set type = #{type,jdbcType=TINYINT},
       username = #{username,jdbcType=VARCHAR},
@@ -334,7 +369,10 @@
       user_no = #{userNo,jdbcType=VARCHAR},
       vip = #{vip,jdbcType=BIT},
       is_false = #{isFalse,jdbcType=INTEGER},
-      shop_id = #{shopId,jdbcType=VARCHAR}
+      shop_id = #{shopId,jdbcType=VARCHAR},
+      wechat_account = #{wechatAccount,jdbcType=VARCHAR},
+      open_id = #{openId,jdbcType=VARCHAR},
+      union_id = #{unionId,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

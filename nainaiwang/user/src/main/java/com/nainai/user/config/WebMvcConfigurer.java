@@ -58,7 +58,8 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        String[] patterns = new String[]{"/smscode/*", "/register/*", "/login/*", "/*.html", "/swagger-resources/**"};
+        String[] patterns = new String[]{"/smscode/*", "/register/*", "/login/*", "/*.html",
+                "/swagger-resources/**","/wechat/*"};
         registry.addInterceptor(new SysInterceptor())
                 .addPathPatterns("/**")
                 .excludePathPatterns(patterns);

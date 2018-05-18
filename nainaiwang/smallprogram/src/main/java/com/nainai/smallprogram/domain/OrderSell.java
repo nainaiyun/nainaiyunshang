@@ -35,8 +35,9 @@ public class OrderSell {
     /**/private Date endTime;
     /**/private Integer isLock;
     /**/private String risk;
+    /**/private BigDecimal priceUnit;
 
-    public OrderSell(Integer id, String shopId, String offerNo, Integer offerId, Integer offerUserId, Integer mode, String orderNo, BigDecimal num, BigDecimal amount, Integer userId, BigDecimal payDeposit, String buyerDepositPayment, Date payDepositTime, String buyerDepositClientid, BigDecimal payRetainage, String retainagePayment, String retainageClientid, Integer payment, Integer contractStatus, BigDecimal sellerDeposit, String sellerDepositPayment, String sellerDepositClientid, String jiesuanProve, String proof, BigDecimal reduceAmount, String reduceRemark, Integer invoice, Date createTime, Date endTime, Integer isLock, String risk) {
+    public OrderSell(Integer id, String shopId, String offerNo, Integer offerId, Integer offerUserId, Integer mode, String orderNo, BigDecimal num, BigDecimal amount, Integer userId, BigDecimal payDeposit, String buyerDepositPayment, Date payDepositTime, String buyerDepositClientid, BigDecimal payRetainage, String retainagePayment, String retainageClientid, Integer payment, Integer contractStatus, BigDecimal sellerDeposit, String sellerDepositPayment, String sellerDepositClientid, String jiesuanProve, String proof, BigDecimal reduceAmount, String reduceRemark, Integer invoice, Date createTime, Date endTime, Integer isLock, String risk,BigDecimal priceUnit) {
         this.id = id;
         this.shopId = shopId;
         this.offerNo = offerNo;
@@ -68,6 +69,7 @@ public class OrderSell {
         this.endTime = endTime;
         this.isLock = isLock;
         this.risk = risk;
+        this.priceUnit=priceUnit;
     }
 
     public OrderSell() {
@@ -321,4 +323,13 @@ public class OrderSell {
     public void setRisk(String risk) {
         this.risk = risk == null ? null : risk.trim();
     }
+
+    public BigDecimal getPriceUnit() {
+        return priceUnit;
+    }
+
+    public void setPriceUnit(BigDecimal priceUnit) {
+        this.priceUnit = priceUnit;
+    }
+
 }

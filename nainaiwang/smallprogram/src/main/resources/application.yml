@@ -1,26 +1,26 @@
-server:
-    ssl:
-#        key-store: classpath:1523941138772/1523941138772.pfx
-        key-store: classpath:shop.nainaiwang.com/1525751424482.pfx
-        key-store-password: 1525751424482
-#        key-store-type: RSA
-        keyStoreType: PKCS12
-#        server.ssl.keyAlias: tomcat
+#server:
+#    ssl:
+##        key-store: classpath:1523941138772/1523941138772.pfx
+#        key-store: classpath:shop.nainaiwang.com/1525751424482.pfx
+#        key-store-password: 1525751424482
+##        key-store-type: RSA
+#        keyStoreType: PKCS12
+##        server.ssl.keyAlias: tomcat
 spring:
     profiles:
         active: dev
     datasource:
         name: nn
 #        url: jdbc:mysql://47.98.220.94:3306/nn?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT&&zeroDateTimeBehavior=convertToNull
-#        url: jdbc:mysql://172.16.3.41:3306/nn?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT&&zeroDateTimeBehavior=convertToNull
-        url: jdbc:mysql://172.16.2.21:3306/nn?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT&&zeroDateTimeBehavior=convertToNull
+        url: jdbc:mysql://172.16.3.41:3306/nn?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT&&zeroDateTimeBehavior=convertToNull
+#        url: jdbc:mysql://172.16.2.21:3306/nn?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT&&zeroDateTimeBehavior=convertToNull
 
-#        username: yhp_nnys
-#        password: yhp_nnys1.11
+        username: yhp_nnys
+        password: yhp_nnys1.11
 
-        username: admin
-        password: admin1.11
-
+#        username: admin
+#        password: admin1.11
+#
 #        username: root
 #        password: 123456
 
@@ -34,7 +34,7 @@ spring:
                 profile-enable: true
                 #exclusions: *.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*
             stat-view-servlet:
-                allow: 172.16.2.119,172.16.2.129
+                allow:
                 deny:
                 login-username: admin
                 login-password: 123456

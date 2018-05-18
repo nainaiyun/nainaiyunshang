@@ -38,6 +38,10 @@ public interface ProductOfferService {
 
     JSONObject findProductOfferStatistics(Map<String,Object> map);
 
+    JSONObject findProductOfferStatisticsNew(Map<String,Object> map);
+
     JSONObject findProductAttribute (String attrJson);
+
+    JSONObject findProductOfferNote(Map<String, Object> map);
 
 }

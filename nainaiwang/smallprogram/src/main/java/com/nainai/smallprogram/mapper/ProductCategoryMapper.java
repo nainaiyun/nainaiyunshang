@@ -43,6 +43,13 @@ public interface ProductCategoryMapper {
                 if(map.get("pid")!=null){
                     WHERE("pid = #{pid}");
                 }
+                if(map.get("status")!=null){
+                    WHERE("status = #{status}");
+                }
+                if(map.get("isDel")!=null){
+                    WHERE("is_del = #{isDel}");
+                }
+                ORDER_BY("sort asc");
             }}.toString();
         }
     }

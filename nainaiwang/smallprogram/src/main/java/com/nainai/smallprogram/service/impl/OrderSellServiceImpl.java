@@ -55,8 +55,28 @@ public class OrderSellServiceImpl implements OrderSellService {
     }
 
     @Override
+    public JSONObject findorderSellNew(Map map) {
+        JSONObject jsonObject = new JSONObject();
+        if (map.get("pageNum") == null && map.get("pageSize") == null) {
+            jsonObject.put("data", "数据太多请分页");
+            return jsonObject;
+        }
+        Integer pageNum = (Integer) map.get("pageNum");
+        Integer pageSize = (Integer) map.get("pageSize");
+        String termporaryName = (String) map.get("termporaryName");
+        Page page = PageHelper.startPage(pageNum, pageSize);
+        Optional<List<Map<String, Object>>> optionalMapList = Optional.ofNullable(orderSellMapper.findOrderSellNew(termporaryName));
+        optionalMapList.ifPresent(e -> jsonObject.put("a",e));
+        Integer count = Integer.parseInt(String.valueOf(page.getTotal()));
+        Integer size = page.size();
+        jsonObject.put("count", count);
+        jsonObject.put("size", size);
+        return jsonObject;
+    }
+
+    @Override
     public JSONObject addorderSell(JSONArray jsonArray) {
-        String url = "http://ceshi.nainaiwang.com/trade/createOrder";
+        String url = "http://ceshi.nainaiwang.com/java/createorder";
         org.springframework.http.HttpHeaders headers = new org.springframework.http.HttpHeaders();
         MediaType type = MediaType.parseMediaType("application/json; charset=UTF-8");
         headers.setContentType(type);

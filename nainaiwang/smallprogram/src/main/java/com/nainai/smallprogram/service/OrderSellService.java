@@ -18,5 +18,7 @@ public interface OrderSellService {
 
     JSONObject findorderSell(Map map);
 
+    JSONObject findorderSellNew(Map map);
+
     JSONObject addorderSell(JSONArray jsonArray);
 }

@@ -5,6 +5,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.nainai.smallprogram.common.Enum;
 import com.nainai.smallprogram.domain.ProductAttribute;
+import com.nainai.smallprogram.domain.ProductCategory;
 import com.nainai.smallprogram.domain.ProductOffer;
 import com.nainai.smallprogram.mapper.OrderSellMapper;
 import com.nainai.smallprogram.mapper.ProductAttributeMapper;
@@ -169,7 +170,61 @@ public class ProductOfferServiceImpl implements ProductOfferService {
      * @return
      */
     @Override
+    public JSONObject findProductOfferStatisticsNew(Map<String, Object> map) {
+        JSONObject jsonObject = new JSONObject();
+        if (map.get("pageNum") == null && map.get("pageSize") == null) {
+            jsonObject.put("data", "数据太多请分页");
+            return jsonObject;
+        }
+        Integer pageNum = (Integer) map.get("pageNum");
+        Integer pageSize = (Integer) map.get("pageSize");
+        Page page = PageHelper.startPage(pageNum, pageSize);
+        Optional<List<Map<String, Object>>> optionalStringObjectMap = Optional.ofNullable(productOfferMapper.findProductOfferStatisticsNew());
+        Integer count = Integer.parseInt(String.valueOf(page.getTotal()));
+        Integer size = page.size();
+        jsonObject.put("count", count);
+        jsonObject.put("size", size);
+
+        List list = new ArrayList();
+        optionalStringObjectMap.ifPresent(e -> {
+
+            for (Map item : e) {
+                /**查询商品属性*/
+                String attrJson = (String) item.get("attrJson");
+                JSONObject attrJsons =findProductAttribute(attrJson);
+                item.put("productAttribute",attrJsons);
+
+                /**查询与上一笔订单的差价*/
+                String termporaryName = (String) item.get("termporaryName");
+                Optional<List<Map<String, Object>>> optionalMapList = Optional.ofNullable(orderSellMapper.findOrderSellNew(termporaryName));
+                optionalMapList.ifPresent(g -> {
+                    if (g.size() >0){
+                        BigDecimal disparity = new BigDecimal(Double.toString(0.00));
+                        BigDecimal amount1 = (BigDecimal) g.get(0).get("price");
+                        if (g.size() >= 2) {
+                            BigDecimal amount2 = (BigDecimal) g.get(1).get("price");
+                                disparity = amount1.subtract(amount2);
+                        } else if (g.size() == 1) {
+                            disparity = amount1;
+                        }
+                        System.out.println("差价为：" + disparity);
+                        item.put("disparity", disparity);
+                    }else {
+                        System.out.println("差价为：" + 0);
+                        item.put("disparity", 0.00);
+                    }
+                });
+
+                list.add(item);
+            }
+            jsonObject.put("list", list);
+        });
+        return jsonObject;
+    }
+
+    @Override
     public JSONObject findProductOfferStatistics(Map<String, Object> map) {
+
         JSONObject jsonObject = new JSONObject();
         if (map.get("pageNum") == null && map.get("pageSize") == null) {
             jsonObject.put("data", "数据太多请分页");
@@ -186,7 +241,6 @@ public class ProductOfferServiceImpl implements ProductOfferService {
 
         List list = new ArrayList();
         optionalStringObjectMap.ifPresent(e -> {
-
             for (Map item : e) {
                 /**查询商品属性*/
                 String attrJson = (String) item.get("attrJson");
@@ -201,9 +255,9 @@ public class ProductOfferServiceImpl implements ProductOfferService {
                 Optional<List<Map<String, Object>>> optionalMapList = Optional.ofNullable(orderSellMapper.findOrderSell(map1));
                 optionalMapList.ifPresent(g -> {
                     BigDecimal disparity = new BigDecimal(Double.toString(0.00));
-                    BigDecimal amount1 = (BigDecimal) g.get(0).get("amount");
+                    BigDecimal amount1 = (BigDecimal) g.get(0).get("priceUnit");
                     if (g.size() == 2) {
-                        BigDecimal amount2 = (BigDecimal) g.get(1).get("amount");
+                        BigDecimal amount2 = (BigDecimal) g.get(1).get("priceUnit");
                         disparity = amount1.subtract(amount2);
                     } else if (g.size() == 1) {
                         disparity = amount1;
@@ -248,6 +302,46 @@ public class ProductOfferServiceImpl implements ProductOfferService {
         }
         return null;
     }
+
+    @Override
+    public JSONObject findProductOfferNote(Map<String, Object> map) {
+        JSONObject jsonObject = new JSONObject();
+        Optional<List<Map<String, Object>>> optional = null;
+        String name = (String) map.get("name");
+        String note = (String) map.get("note");
+//        String note2 = (String) map.get("note2");
+//        String name2 = note2;
+        System.out.println("----------------------------------");
+        System.out.println(name);
+//        System.out.println(name2);
+        System.out.println(note);
+//        System.out.println(note2);
+        if (map.get("pageNum") != null && map.get("pageSize") != null) {
+            Integer pageNum = (Integer) map.get("pageNum");
+            Integer pageSize = (Integer) map.get("pageSize");
+            Page page = PageHelper.startPage(pageNum, pageSize);
+            optional = Optional.ofNullable(productOfferMapper.findProductOfferNote(name,note));
+            Integer count = Integer.parseInt(String.valueOf(page.getTotal()));
+            Integer size = page.size();
+            jsonObject.put("count", count);
+            jsonObject.put("size", size);
+        } else {
+            optional = Optional.ofNullable(productOfferMapper.findProductOfferNote(name,note));
+        }
+        optional.ifPresent(e -> {
+            for (Map map1 : e) {
+                if (map1.get("img") != null) {
+                    String oldImg = (String) map1.get("img");
+                    String newImg = ImgUtil.oldImgTo(oldImg);
+                    System.out.println(newImg);
+                    map1.put("img", newImg);
+                }
+            }
+            jsonObject.put("productOffer", e);
+        });
+        return jsonObject;
+    }
+
 
 
 }

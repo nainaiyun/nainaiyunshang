@@ -66,4 +66,28 @@ public class UserServiceImpl implements UserService {
         user.ifPresent(e -> userJsonObject.put("user", e));
         return userJsonObject;
     }
+
+    @Override
+    public JSONObject bindingUser(String mobile, String code,String openId) {
+        JSONObject jsonObject = new JSONObject();
+        Optional<User> optionalUser = Optional.ofNullable(userMapper.selectUserByMobile(mobile));
+        optionalUser.ifPresent(e -> {
+            Integer id =e.getId();
+            if (id!=null){
+                User user = new User();
+                System.out.println(id);
+                user.setId(id);
+                user.setOpenId(openId);
+                int num =userMapper.updateByPrimaryKeySelective(user);
+                jsonObject.put("date",id);
+                jsonObject.put("status",num);
+            }else {
+                jsonObject.put("date",0);
+            }
+        });
+        if (!optionalUser.isPresent()){
+            jsonObject.put("date","该手机号码未注册");
+        }
+        return jsonObject;
+    }
 }

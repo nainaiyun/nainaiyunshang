@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -85,6 +87,28 @@ public class RegisterController {
         }
     }
 
+
+    @ApiOperation(value = "绑定手机号码", notes = "填写：用户名、手机号码、密码、短信验证码")
+    @ApiImplicitParams({
+            @ApiImplicitParam(dataType = "String", name = "username", value = "用户名")
+    })
+    @RequestMapping(value = "/bindingUser", method = RequestMethod.POST)
+    public Result bindingUser(@RequestBody JSONObject jsonObject, HttpServletRequest request) {
+        String mobile = jsonObject.getString("mobile");
+        String code = jsonObject.getString("code");
+        String openId = jsonObject.getString("openId");
+        HttpSession httpSession = request.getSession();
+        String sess = (String) httpSession.getAttribute(mobile + "001");
+        if (sess != null) {
+            if (code.equals(sess)) {
+                return ResultGenerator.genSuccessResult(userService.bindingUser(mobile, code, openId));
+            } else {
+                return ResultGenerator.genFailResult("验证码错误！");
+            }
+        } else {
+            return ResultGenerator.genFailResult("验证码已经过期！");
+        }
+    }
 
 
 }

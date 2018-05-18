@@ -3,6 +3,8 @@ package com.nainai.smallprogram.mapper;
 import com.nainai.smallprogram.domain.ProductOffer;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.jdbc.SQL;
+import org.apache.commons.lang3.*;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -72,6 +74,8 @@ public interface ProductOfferMapper {
             @Result(column = "offer_id", property = "offerId"),
             @Result(column = "price_vip", property = "priceVip"),
 
+            @Result(column = "termporary_name", property = "termporaryName")
+
     })
     @Select("select o.shop_id,p.id'product_id',o.id'offer_id',p.name'product_name'," +
             "p.note'product_note' ,p.img,p.unit ,p.currency,o.price " +
@@ -116,9 +120,16 @@ public interface ProductOfferMapper {
                 if (map.get("marketId") != null) {
                     WHERE("p.market_id =#{marketId}");
                 }
-                if (map.get("status") != null) {
-                    WHERE("p.status like  CONCAT('%',#{status},'%') ");
+                if (map.get("cateId") != null) {
+                    WHERE("p.cate_id =#{cateId}");
                 }
+                if (map.get("status") != null) {
+                    WHERE("o.status =#{status} ");
+                }
+                if (map.get("isDel") != null) {
+                    WHERE("o.is_del=#{isDel} ");
+                }
+
                 if (map.get("proName") != null) {
                     WHERE("o.pro_name like  CONCAT('%',#{proName},'%') ");
                 }
@@ -129,8 +140,6 @@ public interface ProductOfferMapper {
 
                     WHERE("p.note like  CONCAT('%',#{note},'%') ");
                 }
-
-
                 ORDER_BY("o.apply_time desc");
             }}.toString();
         }
@@ -185,8 +194,17 @@ public interface ProductOfferMapper {
      * @return
      */
     @ResultMap("ProductOfferResults")
-    @Select(" select o.id 'offer_id',s.id 'sell_id',p.id 'product_id',p.name 'product_name',p.attr_json," +
-            "p.unit,p.currency,sell,o.price,o.price_vip,sum(num) 'sum',max(amount) 'max',min(amount) 'min' ," +
+    @Select(" select o.id 'offer_id'," +
+            "s.id 'sell_id'," +
+            "p.id 'product_id'," +
+            "p.name 'product_name'," +
+            "p.attr_json," +
+            "p.unit," +
+            "p.currency," +
+            "sell," +
+            "o.price," +
+            "o.price_vip," +
+            "sum(num) 'sum',max(amount) 'max',min(amount) 'min' ," +
             " o.price_l,o.price_r " +
             " from product_offer o " +
             " inner join order_sell s " +
@@ -196,5 +214,36 @@ public interface ProductOfferMapper {
             " group by o.id " +
             " order by s.create_time asc ")
     List<Map<String, Object>> findProductOfferStatistics();
+
+
+    @ResultMap("ProductOfferResults")
+    @Select(" select o.id 'offer_id',p.id 'product_id',p.name 'product_name',p.attr_json,p.unit,p.currency,sell,o.price,o.price_vip,o.termporary_name,sum(o.sell_num) 'sum',max(o.price) 'max',min(o.price) 'min', o.apply_time \n" +
+            "            from product_offer o \n" +
+            "            ,products p \n" +
+            "            where p.id=o.product_id  and o.apply_time>'2017' and o.sub_mode =0 and o.is_del=0 and o.termporary_name !='' \n" +
+            "            group  by  o.termporary_name  order by o.apply_time desc")
+    List<Map<String, Object>> findProductOfferStatisticsNew();
+
+    @ResultMap("ProductOfferResults")
+    @Select(" SELECT o.id 'offer_id' , o.shop_id , o.price , p.id 'product_id' , p.name 'product_name' , p.note 'product_note' , p.img , p.unit , p.currency, p.note,o.price_vip " +
+            " FROM product_offer o\n" +
+            "LEFT OUTER JOIN products p\n" +
+            "on o.product_id = p.id\n" +
+            "WHERE ((p.name like CONCAT('%',#{ab},'%')) OR (p.note like CONCAT('%',#{ad},'%') ))\n" +
+            "and (date_format(expire_time,'%Y-%m-%d')> date_format(now(),'%Y-%m-%d') ) and is_del=0 and status =1 ORDER BY o.apply_time desc")
+    List<Map<String, Object>> findProductOfferNote(@Param("ab") String bc,
+                                                   @Param("ad") String bf);
+
+    @ResultMap("ProductOfferResults")
+    @Select(" SELECT o.id 'offer_id' , o.shop_id , o.price , p.id 'product_id' , p.name 'product_name' , p.note 'product_note' , p.img , p.unit , p.currency, p.note,o.price_vip " +
+            " FROM product_offer o\n" +
+            "LEFT OUTER JOIN products p\n" +
+            "on o.product_id = p.id\n" +
+            "WHERE ((p.name like CONCAT('%',#{ab},'%')and p.name like CONCAT('%',#{ac},'%')) OR (p.note like CONCAT('%',#{ad},'%') and p.note like CONCAT('%',#{ae},'%')))\n" +
+            "and (date_format(expire_time,'%Y-%m-%d')> date_format(now(),'%Y-%m-%d') ) and is_del=0 and status =1 ORDER BY o.apply_time desc")
+    List<Map<String, Object>> findProductOfferNote2(@Param("ab") String bc,
+                                                   @Param("ac") String bd,
+                                                   @Param("ad") String bf,
+                                                   @Param("ae") String bg);
 
 }

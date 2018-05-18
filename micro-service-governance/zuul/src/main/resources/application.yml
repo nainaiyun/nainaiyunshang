@@ -17,5 +17,21 @@ zuul:
       serviceId: mobile
       sensitive-headers: true
       custom-sensitive-headers: true
+
+    api-c:
+      path: /user/**
+      serviceId: user
+      sensitive-headers: true
+      custom-sensitive-headers: true
   #让原本有问题的重定向操作得到正确的处理
   add-host-header: true
+
+
+#server:
+#    ssl:
+##        key-store: classpath:1523941138772/1523941138772.pfx
+#        key-store: classpath:shop.nainaiwang.com/1525751424482.pfx
+#        key-store-password: 1525751424482
+##        key-store-type: RSA
+#        keyStoreType: PKCS12
+##        server.ssl.keyAlias: tomcat

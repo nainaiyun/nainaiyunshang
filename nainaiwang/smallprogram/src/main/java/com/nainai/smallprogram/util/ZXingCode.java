@@ -48,8 +48,8 @@ public class ZXingCode {
     public static void main(String[] args) throws WriterException {
         File logoFile = new File("/Users/yanhaopeng/1524814457006.png");
         File QrCodeFile = new File("/Users/yanhaopeng/05.png");
-        String url = "https://www.baidu.com/";
-        String note = "访问百度连接";
+        String url = "https://shop.nainaiwang.com/smallprogram/transaction.html";
+        String note = "大盘行情";
         drawLogoQRCode(logoFile, QrCodeFile, url, note);
     }
 

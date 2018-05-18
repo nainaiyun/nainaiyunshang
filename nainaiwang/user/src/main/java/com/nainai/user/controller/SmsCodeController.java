@@ -5,19 +5,26 @@ import com.nainai.user.common.Result;
 import com.nainai.user.common.ResultGenerator;
 import com.nainai.user.domain.User;
 import com.nainai.user.util.MD5Utils;
+import com.nainai.user.util.SmsCodeUtil;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import org.apache.commons.lang3.concurrent.BasicThreadFactory;
+import org.bouncycastle.crypto.prng.RandomGenerator;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by haopeng yan on 2018/4/16
@@ -30,25 +37,44 @@ import java.util.Random;
 @RestController
 @RequestMapping(value = "/smscode")
 public class SmsCodeController {
-    private static final String KEY = "abc123"; // KEY为自定义秘钥
 
     @ApiOperation(value = "发送短信随机码", notes = "发送短信随机码")
     @ApiImplicitParams({
             @ApiImplicitParam(dataType = "String", name = "mobile", value = "手机号码")
     })
     @RequestMapping(value = "/sendSmsCode", method = RequestMethod.POST)
-    public Result sendSmsCode(@RequestBody JSONObject jsonObject) {
-        String phoneNumber = jsonObject.getString("mobile");
-        Random randomNum = new Random(6);
-        SimpleDateFormat sf = new SimpleDateFormat("yyyyMMddHHmmss");
-        Calendar c = Calendar.getInstance();
-        c.add(Calendar.MINUTE, 5);
-        String currentTime = sf.format(c.getTime());// 生成5分钟后时间，用户校验是否过期
-        //sengMsg(); //此处执行发送短信验证码方法
-        String hash = MD5Utils.getPwd(KEY + "@" + currentTime + "@" + randomNum.nextInt());//生成MD5值
-        Map<String, Object> resultMap = new HashMap<>();
-        resultMap.put("hash", hash);
-        resultMap.put("tamp", currentTime);
-        return ResultGenerator.genSuccessResult(resultMap);
+    public Result sendSmsCode(@RequestBody JSONObject jsonObject, HttpServletRequest request) throws IOException {
+
+        String session = request.getSession().getId();
+        System.out.println("session"+session);
+        String mobile = jsonObject.getString("mobile");
+        String news = jsonObject.getString("news");
+        int num = (int)((Math.random()*9+1)*100000);
+        String code = Integer.toString(num);
+        System.out.println(code);
+        final HttpSession httpSession = request.getSession();
+        httpSession.setAttribute(mobile + "001", code);
+        String rp = null;
+        try {
+            rp =SmsCodeUtil.readContentFromPost(news,mobile, code);
+            System.out.println(rp);
+            ScheduledExecutorService executorService = new ScheduledThreadPoolExecutor(1,
+                    new BasicThreadFactory.Builder().namingPattern("example-schedule-pool-%d").daemon(true).build());
+            System.out.println("开始任务");
+            //延时3秒执行
+            executorService.schedule(new Runnable() {
+                @Override
+                public void run() {
+                    System.out.println("执行任务");
+                    httpSession.removeAttribute(mobile + "001");
+                    System.out.println(mobile + "001删除成功");
+                }
+            }, 15, TimeUnit.MINUTES);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ResultGenerator.genSuccessResult(rp);
+
     }
 }

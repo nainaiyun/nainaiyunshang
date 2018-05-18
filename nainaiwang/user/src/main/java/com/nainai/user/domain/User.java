@@ -56,6 +56,48 @@ public class User {
 
     private String shopId;
 
+    private String wechatAccount;
+
+    private String openId;
+
+    private String unionId;
+
+    public User(Integer id, Byte type, String username, String trueName, String password, BigDecimal credit, String mobile, String email, String headPhoto, Integer pid, Integer roles, Short status, Integer agent, String agentPass, Date createTime, Date loginTime, String sessionId, Integer certStatus, String gid, String paySecret, Integer yewu, String loginIp, String userNo, Boolean vip, Integer isFalse, String shopId, String wechatAccount, String openId, String unionId) {
+        this.id = id;
+        this.type = type;
+        this.username = username;
+        this.trueName = trueName;
+        this.password = password;
+        this.credit = credit;
+        this.mobile = mobile;
+        this.email = email;
+        this.headPhoto = headPhoto;
+        this.pid = pid;
+        this.roles = roles;
+        this.status = status;
+        this.agent = agent;
+        this.agentPass = agentPass;
+        this.createTime = createTime;
+        this.loginTime = loginTime;
+        this.sessionId = sessionId;
+        this.certStatus = certStatus;
+        this.gid = gid;
+        this.paySecret = paySecret;
+        this.yewu = yewu;
+        this.loginIp = loginIp;
+        this.userNo = userNo;
+        this.vip = vip;
+        this.isFalse = isFalse;
+        this.shopId = shopId;
+        this.wechatAccount = wechatAccount;
+        this.openId = openId;
+        this.unionId = unionId;
+    }
+
+    public User() {
+        super();
+    }
+
     public Integer getId() {
         return id;
     }
@@ -262,5 +304,29 @@ public class User {
 
     public void setShopId(String shopId) {
         this.shopId = shopId == null ? null : shopId.trim();
+    }
+
+    public String getWechatAccount() {
+        return wechatAccount;
+    }
+
+    public void setWechatAccount(String wechatAccount) {
+        this.wechatAccount = wechatAccount == null ? null : wechatAccount.trim();
+    }
+
+    public String getOpenId() {
+        return openId;
+    }
+
+    public void setOpenId(String openId) {
+        this.openId = openId == null ? null : openId.trim();
+    }
+
+    public String getUnionId() {
+        return unionId;
+    }
+
+    public void setUnionId(String unionId) {
+        this.unionId = unionId == null ? null : unionId.trim();
     }
 }

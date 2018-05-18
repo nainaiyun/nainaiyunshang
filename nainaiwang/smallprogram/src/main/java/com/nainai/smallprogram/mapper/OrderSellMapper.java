@@ -46,7 +46,10 @@ public interface OrderSellMapper {
             @Result(column = "create_time", property = "createTime"),
             @Result(column = "end_time", property = "endTime"),
             @Result(column = "is_lock", property = "isLock"),
-            @Result(column = "complate_prove", property = "complateProve")
+            @Result(column = "complate_prove", property = "complateProve"),
+            @Result(column = "price_unit",property = "priceUnit"),
+
+            @Result(column = "termporary_name",property = "termporaryName")
     })
     @SelectProvider(type = OrderSellMapper.FindOrderSellProvider.class, method = "findOrderSell")
     List<Map<String, Object>> findOrderSell(Map map);
@@ -60,6 +63,7 @@ public interface OrderSellMapper {
                 SELECT("order_no ");
                 SELECT("num ");
                 SELECT("amount ");
+                SELECT("price_unit");
                 SELECT("user_id ");
                 SELECT("pay_deposit ");
                 SELECT("create_time ");
@@ -76,5 +80,12 @@ public interface OrderSellMapper {
             }}.toString();
         }
     }
+
+    @Select("select id,shop_id,user_id, termporary_name,price,sell_num,apply_time \n" +
+            "            from \n" +
+            "            product_offer \n" +
+            "            where termporary_name= #{termporaryName}\n" +
+            "            group  by DATE_FORMAT(apply_time,'%y%m/%d')   order by apply_time desc")
+    List<Map<String, Object>> findOrderSellNew(String termporaryName);
 
 }

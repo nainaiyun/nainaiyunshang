@@ -29,6 +29,7 @@ import java.io.PrintWriter;
 public class SysInterceptor implements HandlerInterceptor {
     private static final Logger logger = LoggerFactory.getLogger(SysInterceptor.class);
 
+    @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
         if (handler instanceof HandlerMethod) {
@@ -79,7 +80,7 @@ public class SysInterceptor implements HandlerInterceptor {
             e.printStackTrace();
         }
     }
-
+    @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
                            ModelAndView modelAndView) throws Exception {
         if (response.getStatus() == 500) {
@@ -93,6 +94,7 @@ public class SysInterceptor implements HandlerInterceptor {
      * 该方法也是需要当前对应的Interceptor的preHandle方法的返回值为true时才会执行。该方法将在整个请求完成之后，也就是DispatcherServlet渲染了视图执行，
      * 这个方法的主要作用是用于清理资源的，当然这个方法也只能在当前这个Interceptor的preHandle方法的返回值为true时才会执行。
      */
+    @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
             throws Exception {
     }

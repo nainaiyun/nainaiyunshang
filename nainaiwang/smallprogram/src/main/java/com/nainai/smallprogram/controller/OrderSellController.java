@@ -62,6 +62,36 @@ public class OrderSellController {
     }
 
     /**
+     *
+     * @param pageNum
+     * @param pageSize
+     * @param id
+     * @param termporaryName
+     * @return
+     */
+    @ApiOperation(value = "查询订单列表详情", notes = "查询订单列表详情")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "query", dataType = "Integer", name = "pageNum", value = "pageNum", required = true),
+            @ApiImplicitParam(paramType = "query", dataType = "Integer", name = "pageSize", value = "pageSize", required = true),
+            @ApiImplicitParam(paramType = "query", dataType = "Integer", name = "id", value = "订单id", required = true),
+            @ApiImplicitParam(paramType = "query", dataType = "String", name = "offerId", value = "报盘id", required = true)
+    })
+    @RequestMapping(value = "/findorderSellNew", method = RequestMethod.GET)
+    public Result findorderSellNew(@RequestParam("pageNum") Integer pageNum,
+                                @RequestParam("pageSize") Integer pageSize,
+                                @RequestParam("id") Integer id,
+                                @RequestParam("termporaryName") String termporaryName) {
+        Map<String, Object> map = new HashMap<>(10);
+        map.put("pageNum", pageNum);
+        map.put("pageSize", pageSize);
+        map.put("id", id);
+        map.put("termporaryName", termporaryName);
+        for (Map.Entry<String, Object> entry : map.entrySet()) {
+            System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
+        }
+        return ResultGenerator.genSuccessResult(orderSellService.findorderSellNew(map));
+    }
+    /**
      * 新增订单
      * @param jsonArray
      * @return
@@ -73,17 +103,19 @@ public class OrderSellController {
     @RequestMapping(value = "/addorderSell", method = RequestMethod.PUT)
     public Result addorderSell(@RequestBody JSONArray jsonArray){
 
+
         List<Map<String, Object>> list = new ArrayList<>(1);
         if(jsonArray.size()>0){
             for(int i=0;i<jsonArray.size();i++){
                 Map<String ,Object> map = new HashMap<>(2);
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 map.put("id",jsonObject.getInteger("id"));
-                map.put("userId",jsonObject.getFloat("userId"));
+                map.put("openId",jsonObject.getFloat("openId"));
                 map.put("num",jsonObject.getFloat("num"));
                 list.add(map);
             }
         }
+
         return ResultGenerator.genSuccessResult(orderSellService.addorderSell(jsonArray));
     }
 

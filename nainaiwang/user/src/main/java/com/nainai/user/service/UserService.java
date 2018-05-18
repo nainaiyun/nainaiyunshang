@@ -32,4 +32,6 @@ public interface UserService {
 
     JSONObject selectUserId(Integer id);
 
+    JSONObject bindingUser (String mobile,String code,String openId);
+
 }

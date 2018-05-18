@@ -52,6 +52,9 @@ public class ProductOfferController {
                                    @RequestParam("pageSize") Integer pageSize,
                                    @RequestParam("id") Integer id,
                                    @RequestParam("marketId") Integer marketId,
+                                   @RequestParam("cateId") Integer cateId,
+                                   @RequestParam("status") Integer status,
+                                   @RequestParam("isDel") Integer isDel,
                                    @RequestParam("proName") String proName,
                                    @RequestParam("name") String name,
                                    @RequestParam("note") String note
@@ -61,6 +64,9 @@ public class ProductOfferController {
         map.put("pageSize",pageSize);
         map.put("id",id);
         map.put("marketId",marketId);
+        map.put("cateId",cateId);
+        map.put("status",status);
+        map.put("isDel",isDel);
         map.put("proName",proName);
         map.put("name",name);
         map.put("note",note);
@@ -105,6 +111,57 @@ public class ProductOfferController {
         return ResultGenerator.genSuccessResult(productOfferService.findProductOfferStatistics(map));
     }
 
+    /**
+     * 查询报盘统计信息
+     * @param id
+     * @return
+     */
+    @ApiOperation(value = "查询报盘统计信息", notes = "查询报盘统计信息")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "query",dataType = "Integer", name = "pageNum", value = "pageNum", required = true),
+            @ApiImplicitParam(paramType = "query",dataType = "Integer", name = "pageSize", value = "pageSize", required = true),
+            @ApiImplicitParam(paramType = "query",dataType = "Integer", name = "id", value = "id", required = true),
+    })
+    @RequestMapping(value = "/findProductOfferStatisticsNew", method = RequestMethod.GET)
+    public Result findProductOfferStatisticsNew(@RequestParam("pageNum") Integer pageNum,
+                                             @RequestParam("pageSize") Integer pageSize,
+                                             @RequestParam("id") Integer id) {
+        Map<String ,Object> map = new HashMap<>(10);
+        map.put("pageNum",pageNum);
+        map.put("pageSize",pageSize);
+        map.put("id",id);
+        return ResultGenerator.genSuccessResult(productOfferService.findProductOfferStatisticsNew(map));
+    }
 
+
+    /**
+     *
+     * @param pageNum
+     * @param pageSize
+     * @param name
+     * @param note
+     * @return
+     */
+    @ApiOperation(value = "查询报盘列表信息", notes = "查询报盘列表信息")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "query",dataType = "Integer", name = "pageNum", value = "pageNum", required = true),
+            @ApiImplicitParam(paramType = "query",dataType = "Integer", name = "pageSize", value = "pageSize", required = true),
+            @ApiImplicitParam(paramType = "query",dataType = "String", name = "name", value = "name", required = true),
+            @ApiImplicitParam(paramType = "query",dataType = "String", name = "note", value = "note", required = true)
+    })
+    @RequestMapping(value = "/findProductOfferNote", method = RequestMethod.GET)
+    public Result findProductOfferNote(@RequestParam("pageNum") Integer pageNum,
+                                   @RequestParam("pageSize") Integer pageSize,
+                                   @RequestParam("name") String name,
+                                   @RequestParam("note") String note
+                                       ) {
+        Map<String ,Object> map = new HashMap<>(10);
+        map.put("pageNum",pageNum);
+        map.put("pageSize",pageSize);
+        map.put("name",name);
+        map.put("note",note);
+//        map.put("note2",note2);
+        return ResultGenerator.genSuccessResult(productOfferService.findProductOfferNote(map));
+    }
 
 }

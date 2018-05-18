@@ -17,9 +17,9 @@ public class Constant {
     public static final String SESSION_USER_KEY = "user";
 
 
-    public static final String CESHI_USER_IMG = "http://ceshi.nainaiwang.com/user/";
-    public static final String CESHI_ADMIN_IMG = "http://ceshi.nainaiwang.com/nnys-admin/";
-    public static final String CESHI_DEAL_IMG = "http://ceshi.nainaiwang.com/";
+    public static final String CESHI_USER_IMG = "https://nainaiwang.com/user/";
+    public static final String CESHI_ADMIN_IMG = "https://nainaiwang.com/nnys-admin/";
+    public static final String CESHI_DEAL_IMG = "https://nainaiwang.com/";
 
 
     public static final String CESHI_USER_IMG_O = "@user";

@@ -44,11 +44,15 @@ public class ProductCategoryController {
     @RequestMapping(value = "/findProductCategory", method = RequestMethod.GET)
     public Result findProductCategory(@RequestParam("id") Integer id,
                                       @RequestParam("name") String name,
-                                      @RequestParam("pid") Integer pid) {
+                                      @RequestParam("pid") Integer pid,
+                                      @RequestParam("status")Integer status,
+                                      @RequestParam("isDel")Integer isDel) {
         Map<String, Object> map = new HashMap<>(10);
         map.put("id", id);
         map.put("name", name);
         map.put("pid", pid);
+        map.put("status", status);
+        map.put("isDel", isDel);
         for (Map.Entry<String, Object> entry : map.entrySet()) {
             System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
         }
